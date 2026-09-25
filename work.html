@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work — Cold to Gold</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #0A0A0B;
+    --bg-2:    #111114;
+    --bg-3:    #1A1A1F;
+    --cold:    #7EC8E3;
+    --gold:    #C9A84C;
+    --gold-lt: #E8C96A;
+    --text:    #F0EDE6;
+    --muted:   #8A8A9A;
+    --border:  rgba(201,168,76,0.18);
+    --ff-d:    'Space Grotesk', sans-serif;
+    --ff-b:    'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--ff-b);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .g-text {
+    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 60%, var(--gold-lt) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,11,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px;
+  }
+  .logo {
+    font-family: var(--ff-d); font-size: 18px; font-weight: 700;
+    letter-spacing: -0.02em; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 14px; font-weight: 500; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--gold-lt); }
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--bg) !important;
+    padding: 8px 20px; border-radius: 6px; font-weight: 600 !important;
+  }
+  .nav-cta:hover { background: var(--gold-lt) !important; }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding-top: 136px; padding-bottom: 64px; text-align: center;
+  }
+  .hero-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--border); padding: 6px 18px;
+    border-radius: 100px; margin-bottom: 28px;
+  }
+  .page-hero h1 {
+    font-family: var(--ff-d);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 700; line-height: 1.06; letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+  .page-hero p {
+    color: var(--muted); font-size: 18px; max-width: 480px;
+    margin: 0 auto; line-height: 1.65;
+  }
+  .hero-rule {
+    height: 1px; margin-top: 56px;
+    background: linear-gradient(90deg, transparent 0%, var(--cold) 20%, var(--gold) 65%, transparent 100%);
+    opacity: 0.45;
+  }
+
+  /* PROJECTS */
+  .projects { padding: 80px 0 96px; }
+
+  .project {
+    display: grid; grid-template-columns: 1fr 1.7fr;
+    gap: 0; border: 1px solid var(--border); border-radius: 16px;
+    overflow: hidden; margin-bottom: 32px;
+    transition: border-color 0.2s;
+  }
+  .project:hover { border-color: rgba(201,168,76,0.4); }
+
+  /* Left panel */
+  .proj-meta {
+    background: var(--bg-2); padding: 44px 36px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    border-right: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .proj-meta::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--cold), var(--gold));
+  }
+  .proj-industry {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .proj-title {
+    font-family: var(--ff-d); font-size: 22px; font-weight: 700;
+    line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 14px;
+  }
+  .proj-year {
+    font-size: 13px; color: var(--muted); margin-bottom: 28px;
+  }
+  .proj-stack {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;
+  }
+  .stack-tag {
+    background: var(--bg-3); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 12px;
+    font-size: 12px; font-weight: 500; color: var(--muted);
+    font-family: var(--ff-d);
+  }
+
+  /* Right panel */
+  .proj-body {
+    background: var(--bg); padding: 44px 44px;
+  }
+  .proj-summary {
+    font-size: 15px; color: var(--text); line-height: 1.75;
+    margin-bottom: 28px; font-weight: 400;
+  }
+  .proj-outcomes {
+    list-style: none; margin-bottom: 0;
+  }
+  .proj-outcomes li {
+    font-size: 14px; color: var(--muted); padding: 9px 0;
+    display: flex; align-items: flex-start; gap: 12px; line-height: 1.5;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+  .proj-outcomes li:last-child { border-bottom: none; }
+  .proj-outcomes li::before {
+    content: '→'; color: var(--gold); font-weight: 700; font-size: 13px;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* Stat row inside project */
+  .proj-stats {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .proj-stat { text-align: left; }
+  .proj-stat-n {
+    font-family: var(--ff-d); font-size: 28px; font-weight: 700;
+    letter-spacing: -0.03em; line-height: 1; margin-bottom: 2px;
+  }
+  .proj-stat-l { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+  /* CTA CLOSE */
+  .cta-section { padding: 0 0 96px; text-align: center; }
+  .cta-card {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 16px;
+    padding: 72px 48px; position: relative; overflow: hidden;
+  }
+  .cta-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 100%);
+  }
+  .ey {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px;
+  }
+  .st {
+    font-family: var(--ff-d); font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px;
+  }
+  .sd { color: var(--muted); font-size: 17px; max-width: 480px; line-height: 1.65; margin: 0 auto; }
+  .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+  .btn {
+    padding: 13px 28px; border-radius: 8px; font-family: var(--ff-d);
+    font-weight: 600; font-size: 15px; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.15s, background 0.2s, border-color 0.2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-gold { background: var(--gold); color: var(--bg); }
+  .btn-gold:hover { background: var(--gold-lt); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1px solid rgba(240,237,230,0.18);
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 28px 0; }
+  .ft { display: flex; align-items: center; justify-content: space-between; }
+  .ft-t { font-size: 13px; color: var(--muted); }
+
+  /* SCROLL REVEAL */
+  .fi { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .fi.vis { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 800px) {
+    .project { grid-template-columns: 1fr; }
+    .proj-meta { border-right: none; border-bottom: 1px solid var(--border); padding: 32px 24px; }
+    .proj-body { padding: 32px 24px; }
+    .proj-stats { gap: 16px; }
+    .cta-card { padding: 48px 24px; }
+    .nav-links { display: none; }
+    .ft { flex-direction: column; gap: 10px; text-align: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fi { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo g-text">Cold to Gold</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="work.html" class="active">Our Work</a></li>
+      <li><a href="index.html#cta" class="nav-cta">Book a Call</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="wrap">
+    <div class="hero-pill">Real Builds · Real Results</div>
+    <h1>Automation that's<br>already <span class="g-text">been shipped</span></h1>
+    <p>Four production systems built and deployed for real clients — across healthcare, real estate, enterprise, and SaaS.</p>
+    <div class="hero-rule"></div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="projects">
+  <div class="wrap">
+
+    <!-- PROJECT 1: Enterprise -->
+    <div class="project fi">
+      <div class="proj-meta">
+        <div>
+          <div class="proj-industry">Enterprise</div>
+          <div class="proj-title">Lead-to-Support Lifecycle Automation</div>
+          <div class="proj-year">2026</div>
+        </div>
+        <div class="proj-stack">
+          <span class="stack-tag">n8n</span>
+          <span class="stack-tag">OpenAI</span>
+          <span class="stack-tag">Pipedrive</span>
+          <span class="stack-tag">Zoho Desk</span>
+          <span class="stack-tag">Stripe</span>
+          <span class="stack-tag">Slack</span>
+          <span class="stack-tag">Vonage</span>
+          <span class="stack-tag">Brevo</span>
+          <span class="stack-tag">Google Sheets</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stats">
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">56</div>
+            <div class="proj-stat-l">Workflow nodes</div>
+          </div>
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">9</div>
+            <div class="proj-stat-l">APIs integrated</div>
+          </div>
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">100%</div>
+            <div class="proj-stat-l">End-to-end automated</div>
+          </div>
+        </div>
+        <p class="proj-summary">
+          Architected a 56-node n8n workflow automating the full customer lifecycle — from inbound lead capture all the way through sales handoff, support ticketing, and billing checks. AI handles lead scoring and sentiment classification, routing each enquiry by tier, intent, and urgency without any manual intervention.
+        </p>
+        <ul class="proj-outcomes">
+          <li>AI-driven lead scoring and sentiment classification routes inbound leads and support requests automatically</li>
+          <li>Zoho Desk ticketing with SLA deadline tracking and automatic Slack alerts for at-risk tickets</li>
+          <li>Stripe billing checks integrated into the support flow — agents see payment status before responding</li>
+          <li>Zoho OAuth2 authentication and live API failure diagnosis across Zoho, Stripe, and Slack</li>
+          <li>Single pipeline connecting Google Sheets, Pipedrive, Zoho Desk, Stripe, Slack, Vonage, and Brevo</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: Healthcare Voice AI -->
+    <div class="project fi">
+      <div class="proj-meta">
+        <div>
+          <div class="proj-industry">Healthcare · Clinic</div>
+          <div class="proj-title">AI Voice Agent — Automated Lead Follow-Up</div>
+          <div class="proj-year">2026</div>
+        </div>
+        <div class="proj-stack">
+          <span class="stack-tag">n8n</span>
+          <span class="stack-tag">VAPI</span>
+          <span class="stack-tag">OpenAI</span>
+          <span class="stack-tag">ElevenLabs</span>
+          <span class="stack-tag">Airtable</span>
+          <span class="stack-tag">WhatsApp Business API</span>
+          <span class="stack-tag">Gmail</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stats">
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">&lt;60s</div>
+            <div class="proj-stat-l">Lead response time</div>
+          </div>
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">Auto</div>
+            <div class="proj-stat-l">Call retry on missed</div>
+          </div>
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">3-way</div>
+            <div class="proj-stat-l">Channel follow-up</div>
+          </div>
+        </div>
+        <p class="proj-summary">
+          End-to-end voice AI system for a healthcare clinic that automatically calls new leads, confirms interest, and classifies each call outcome — booking intent, no interest, or did-not-connect. A custom ElevenLabs voice clone gives the assistant a natural, on-brand feel. Missed calls are retried automatically with per-lead context passed dynamically into each attempt.
+        </p>
+        <ul class="proj-outcomes">
+          <li>Automated outbound calling via VAPI + OpenAI — classifies intent without human involvement</li>
+          <li>Smart retry system re-attempts calls that didn't connect, with attempt count tracked per lead</li>
+          <li>AI-generated, personalised follow-up via WhatsApp and email triggered by call outcome</li>
+          <li>Custom ElevenLabs voice clone for a natural, clinic-branded assistant voice</li>
+          <li>Full webhook and API layer connecting VAPI, n8n, Airtable, Gmail, and WhatsApp Business API</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: Real Estate -->
+    <div class="project fi">
+      <div class="proj-meta">
+        <div>
+          <div class="proj-industry">Real Estate</div>
+          <div class="proj-title">Multi-Stage Lead Automation Pipeline</div>
+          <div class="proj-year">2025</div>
+        </div>
+        <div class="proj-stack">
+          <span class="stack-tag">Make.com</span>
+          <span class="stack-tag">OpenAI</span>
+          <span class="stack-tag">Twilio</span>
+          <span class="stack-tag">WhatsApp Business API</span>
+          <span class="stack-tag">Airtable</span>
+          <span class="stack-tag">Calendly</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stats">
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">3</div>
+            <div class="proj-stat-l">Automation scenarios</div>
+          </div>
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">24/7</div>
+            <div class="proj-stat-l">Always-on follow-up</div>
+          </div>
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">Full</div>
+            <div class="proj-stat-l">Lifecycle CRM tracking</div>
+          </div>
+        </div>
+        <p class="proj-summary">
+          Built for property agents who were losing leads to slow response times. A 3-scenario Make.com automation handles instant WhatsApp reply, 24-hour follow-up, and Calendly booking confirmation — all without the agent lifting a finger. A full Kanban CRM in Airtable tracks every lead from first touch to appointment.
+        </p>
+        <ul class="proj-outcomes">
+          <li>Instant AI-generated WhatsApp reply within 60 seconds of a new lead coming in</li>
+          <li>Scheduled 24-hour follow-up message if the lead hasn't booked</li>
+          <li>Calendly booking confirmation sent automatically on appointment creation</li>
+          <li>Full Airtable CRM pipeline with automatic lead status updates across the lifecycle</li>
+          <li>Packaged as a productized service with a dedicated agency website and client-facing offering</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECT 4: SaaS -->
+    <div class="project fi">
+      <div class="proj-meta">
+        <div>
+          <div class="proj-industry">SaaS · AI Product</div>
+          <div class="proj-title">AI Customer Support Agent — SaaS Platform</div>
+          <div class="proj-year">2025</div>
+        </div>
+        <div class="proj-stack">
+          <span class="stack-tag">UI/UX Design</span>
+          <span class="stack-tag">Figma</span>
+          <span class="stack-tag">OpenAI</span>
+          <span class="stack-tag">SaaS Architecture</span>
+          <span class="stack-tag">User Flow Mapping</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stats">
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">E2E</div>
+            <div class="proj-stat-l">Product design</div>
+          </div>
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">AI</div>
+            <div class="proj-stat-l">Powered support flows</div>
+          </div>
+          <div class="proj-stat">
+            <div class="proj-stat-n g-text">Live</div>
+            <div class="proj-stat-l">In production</div>
+          </div>
+        </div>
+        <p class="proj-summary">
+          Designed the end-to-end product interface for an AI-driven customer support and automation platform. Responsible for product structure, feature logic, interface behaviour, and full user flow optimisation — translating complex backend automation into a clean, usable front-end experience that non-technical operators can manage.
+        </p>
+        <ul class="proj-outcomes">
+          <li>End-to-end SaaS product interface designed from scratch — wireframes through to final UI</li>
+          <li>Conversational UX flows and real-time automation behaviour for customer interaction handling</li>
+          <li>Feature logic and interface behaviour defined to support AI-powered ticket routing and response</li>
+          <li>User flow optimisation focused on reducing friction for non-technical operators</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="wrap">
+    <div class="cta-card fi">
+      <div class="ey" style="margin-bottom:14px;">Want Something Like This?</div>
+      <h2 class="st" style="margin-bottom:12px;">
+        Let's build your <span class="g-text">next automation</span>
+      </h2>
+      <p class="sd">
+        Book a free 20-minute call. We'll map your workflow and tell you exactly what we'd automate — no fluff.
+      </p>
+      <div class="cta-actions">
+        <a href="https://wa.me/6590183930" class="btn btn-gold">💬 WhatsApp Us</a>
+        <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">✉️ Email Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <span class="logo g-text" style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;">Cold to Gold</span>
+      <span class="ft-t">© 2026 Cold to Gold · Singapore · AI Automation Agency</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
+  document.querySelectorAll('.fi').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 40}ms`;
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
