@@ -3,350 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cold to Gold — AI Automation Agency</title>
+<title>Cold to Gold — Thoughtful automation for growing teams</title>
+<meta name="description" content="Practical AI and workflow automation for lead follow-up, bookings and customer operations. Built around your tools, with your team in control.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg:      #FFFFFF;
-    --bg-2:    #F5F2EC;
-    --bg-3:    #FBFAF6;
-    --cold:    #18365B;
-    --gold:    #87681C;
-    --gold-lt: #C9A84C;
-    --on-gold: #14171F;
-    --text:    #14171F;
-    --muted:   #5B6172;
-    --border:  rgba(24,54,91,0.14);
-    --ff-h:    'Playfair Display', Georgia, serif;
-    --ff-d:    'Space Grotesk', sans-serif;
-    --ff-b:    'Inter', sans-serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--ff-b);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ---- GRADIENT TEXT ---- */
-  .g-text {
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 60%, var(--gold-lt) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .shimmer {
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 35%, var(--gold-lt) 55%, var(--cold) 100%);
-    background-size: 220% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4.5s ease-in-out infinite;
-  }
-  @keyframes shimmer {
-    0%   { background-position: 100% 0; }
-    50%  { background-position: 0% 0; }
-    100% { background-position: 100% 0; }
-  }
-
-  /* ---- LAYOUT ---- */
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 96px 0; }
-
-  /* ---- NAV ---- */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.86);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px;
-  }
-  .logo {
-    display: inline-flex; align-items: center; gap: 10px;
-    text-decoration: none; line-height: 1;
-  }
-  .logo-wm {
-    font-family: var(--ff-h); font-size: 21px; font-weight: 800;
-    font-style: italic; letter-spacing: 0.005em; white-space: nowrap;
-  }
-  .logo-mark { display: block; flex-shrink: 0; height: 44px; width: auto; }
-  .logo-ft .logo-wm { font-size: 17px; }
-  .logo-ft .logo-mark { height: 34px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: 14px; font-weight: 500; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta {
-    background: var(--gold) !important;
-    color: var(--on-gold) !important;
-    padding: 8px 20px; border-radius: 6px; font-weight: 600 !important;
-  }
-  .nav-cta:hover { background: var(--gold-lt) !important; }
-
-  /* ---- HERO ---- */
-  #hero { padding-top: 152px; padding-bottom: 80px; text-align: center; }
-
-  .hero-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--gold); border: 1px solid var(--border); padding: 6px 18px;
-    border-radius: 100px; margin-bottom: 36px;
-  }
-  .hero-pill::before {
-    content: ''; width: 6px; height: 6px; background: var(--gold);
-    border-radius: 50%; animation: blink 2s ease-in-out infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
-
-  h1 {
-    font-family: var(--ff-h);
-    font-size: clamp(44px, 6.5vw, 84px);
-    font-weight: 700; line-height: 1.04; letter-spacing: -0.035em;
-    margin-bottom: 24px;
-  }
-  .hero-sub {
-    font-size: clamp(16px, 2vw, 20px); color: var(--muted);
-    max-width: 520px; margin: 0 auto 40px; line-height: 1.65;
-  }
-  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-  .btn {
-    padding: 13px 28px; border-radius: 8px; font-family: var(--ff-d);
-    font-weight: 600; font-size: 15px; text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: transform 0.15s, background 0.2s, border-color 0.2s;
-  }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-gold  { background: var(--gold-lt); color: var(--on-gold); }
-  .btn-gold:hover { background: var(--gold-lt); }
-  .btn-outline {
-    background: transparent; color: var(--text);
-    border: 1px solid rgba(20,23,31,0.20);
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold-lt); }
-
-  .hero-rule {
-    height: 1px; margin-top: 64px;
-    background: linear-gradient(90deg, transparent 0%, var(--cold) 20%, var(--gold) 65%, transparent 100%);
-    opacity: 0.55;
-  }
-
-  /* ---- STATS ---- */
-  .stats {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-    margin-top: 72px;
-  }
-  .stat {
-    padding: 32px; text-align: center;
-    border-right: 1px solid var(--border);
-  }
-  .stat:last-child { border-right: none; }
-  .stat-n {
-    font-family: var(--ff-d); font-size: 46px; font-weight: 700;
-    letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px;
-  }
-  .stat-l { font-size: 13px; color: var(--muted); font-weight: 500; }
-
-  /* ---- SECTION HEAD ---- */
-  .sh { margin-bottom: 52px; }
-  .ey {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 14px;
-  }
-  .st {
-    font-family: var(--ff-h); font-size: clamp(28px, 4vw, 46px);
-    font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px;
-  }
-  .sd { color: var(--muted); font-size: 17px; max-width: 520px; line-height: 1.65; }
-
-  /* ---- SERVICES ---- */
-  #services { background: var(--bg-2); }
-
-  .svc-grid {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 1px; background: var(--border);
-    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-  }
-  .svc {
-    background: var(--bg-2); padding: 36px 30px;
-    position: relative; transition: background 0.2s;
-  }
-  .svc::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--cold), var(--gold));
-    opacity: 0; transition: opacity 0.2s;
-  }
-  .svc:hover { background: var(--bg-3); }
-  .svc:hover::before { opacity: 1; }
-  .svc-ico { font-size: 26px; margin-bottom: 16px; display: block; }
-  .svc-t {
-    font-family: var(--ff-d); font-size: 17px; font-weight: 600;
-    letter-spacing: -0.01em; margin-bottom: 10px;
-  }
-  .svc-d { font-size: 14px; color: var(--muted); line-height: 1.65; }
-
-  /* ---- PROCESS ---- */
-  .proc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 48px; margin-top: 52px; }
-  .proc-step {}
-  .proc-n {
-    font-family: var(--ff-d); font-size: 72px; font-weight: 700;
-    letter-spacing: -0.045em; line-height: 1;
-    color: rgba(24,54,91,0.13); margin-bottom: 14px;
-  }
-  .proc-t {
-    font-family: var(--ff-d); font-size: 22px; font-weight: 600;
-    letter-spacing: -0.01em; margin-bottom: 10px;
-  }
-  .proc-d { font-size: 15px; color: var(--muted); line-height: 1.7; }
-
-  /* ---- TOOLS STRIP ---- */
-  #tools { background: var(--bg-2); padding: 56px 0; }
-  .tools-label {
-    text-align: center; font-size: 13px; color: var(--muted);
-    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 28px;
-  }
-  .tools-row {
-    display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-  }
-  .tool-tag {
-    background: var(--bg-3); border: 1px solid var(--border);
-    border-radius: 8px; padding: 8px 18px;
-    font-family: var(--ff-d); font-size: 13px; font-weight: 500; color: var(--muted);
-  }
-
-  /* ---- PRICING ---- */
-  #pricing { background: var(--bg); }
-  .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 52px; }
-  .pc {
-    background: var(--bg-3); border: 1px solid var(--border); border-radius: 12px;
-    padding: 36px 30px; position: relative; transition: border-color 0.2s, transform 0.15s;
-  }
-  .pc:hover { border-color: rgba(156,124,47,0.50); transform: translateY(-2px); }
-  .pc.feat {
-    border-color: var(--gold);
-    background: linear-gradient(175deg, rgba(201,168,76,0.14) 0%, var(--bg-3) 100%);
-  }
-  .feat-badge {
-    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-    background: var(--gold-lt); color: var(--on-gold);
-    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 4px 14px; border-radius: 100px; white-space: nowrap;
-  }
-  .plan-n {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
-  }
-  .plan-p {
-    font-family: var(--ff-d); font-size: 48px; font-weight: 700;
-    letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px;
-  }
-  .plan-p sup { font-size: 22px; font-weight: 500; color: var(--muted); vertical-align: super; }
-  .plan-note { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
-  .plan-hr { height: 1px; background: var(--border); margin-bottom: 22px; }
-  .plan-feats { list-style: none; margin-bottom: 30px; }
-  .plan-feats li {
-    font-size: 14px; color: var(--muted); padding: 7px 0;
-    display: flex; align-items: flex-start; gap: 10px; line-height: 1.45;
-  }
-  .plan-feats li::before {
-    content: '✓'; color: var(--gold); font-weight: 700; font-size: 13px;
-    flex-shrink: 0; margin-top: 1px;
-  }
-  .btn-plan {
-    display: block; text-align: center; padding: 12px 20px; border-radius: 8px;
-    font-family: var(--ff-d); font-weight: 600; font-size: 14px; text-decoration: none;
-    transition: all 0.2s;
-  }
-  .bp-outline { border: 1px solid var(--border); color: var(--text); }
-  .bp-outline:hover { border-color: var(--gold); color: var(--gold-lt); }
-  .bp-gold { background: var(--gold-lt); color: var(--on-gold); }
-  .bp-gold:hover { background: var(--gold-lt); }
-
-  /* ---- WORK PREVIEW ---- */
-  #work { background: var(--bg-2); }
-  .work-grid { display: grid; gap: 14px; margin-top: 44px; }
-  .work-card {
-    display: flex; align-items: center; justify-content: space-between; gap: 28px;
-    background: var(--bg-3); border: 1px solid var(--border); border-radius: 12px;
-    padding: 22px 26px; text-decoration: none; color: inherit;
-    transition: border-color 0.2s, transform 0.15s;
-  }
-  .work-card:hover { border-color: rgba(156,124,47,0.50); transform: translateY(-2px); }
-  .work-ind {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
-  }
-  .work-t {
-    font-family: var(--ff-d); font-size: 17px; font-weight: 600;
-    letter-spacing: -0.01em; line-height: 1.3;
-  }
-  .work-chips {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    justify-content: flex-end; flex-shrink: 0;
-  }
-  .work-chip {
-    background: var(--bg-2); border: 1px solid var(--border); border-radius: 6px;
-    padding: 5px 12px; font-family: var(--ff-d); font-size: 12px;
-    font-weight: 500; color: var(--muted); white-space: nowrap;
-  }
-  .work-more { display: flex; justify-content: center; margin-top: 40px; }
-
-  /* ---- CTA CLOSE ---- */
-  #cta { text-align: center; }
-  .cta-card {
-    background: var(--bg-2); border: 1px solid var(--border); border-radius: 16px;
-    padding: 72px 48px; position: relative; overflow: hidden;
-  }
-  .cta-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 100%);
-  }
-  .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
-
-  /* ---- FOOTER ---- */
-  footer { border-top: 1px solid var(--border); padding: 28px 0; }
-  .ft { display: flex; align-items: center; justify-content: space-between; }
-  .ft-t { font-size: 13px; color: var(--muted); }
-
-  /* ---- SCROLL REVEAL ---- */
-  .fi { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .fi.vis { opacity: 1; transform: none; }
-
-  /* ---- RESPONSIVE ---- */
-  @media (max-width: 800px) {
-    section { padding: 64px 0; }
-    .nav-links { display: none; }
-    .stats, .svc-grid, .proc-grid, .price-grid { grid-template-columns: 1fr; }
-    .stat { border-right: none; border-bottom: 1px solid var(--border); }
-    .stat:last-child { border-bottom: none; }
-    .cta-card { padding: 48px 24px; }
-    .work-card { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .work-chips { justify-content: flex-start; }
-    .ft { flex-direction: column; gap: 10px; text-align: center; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .fi { opacity: 1; transform: none; }
-    .shimmer { animation: none; }
-    .hero-pill::before { animation: none; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
@@ -354,44 +18,46 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo"><img class="logo-mark" src="assets/logo.png" alt=""><span class="logo-wm g-text">Cold to Gold</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="work.html">Our Work</a></li>
       <li><a href="#cta" class="nav-cta">Book a Call</a></li>
     </ul>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="nav-links" aria-expanded="false"><span class="nav-toggle-lines" aria-hidden="true"></span></button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="wrap">
-    <div class="hero-pill">AI Automation Agency · Singapore</div>
-    <h1>
-      Turn cold leads<br>into <span class="shimmer">gold clients</span>
-    </h1>
-    <p class="hero-sub">
-      We build AI-powered automation workflows that follow up, qualify, and book meetings — while you sleep.
-    </p>
-    <div class="hero-actions">
-      <a href="https://wa.me/6590183930" class="btn btn-gold">💬 WhatsApp Us</a>
-      <a href="#services" class="btn btn-outline">See What We Build →</a>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <div class="hero-pill">Independent automation studio · Singapore</div>
+        <h1>Your next customer shouldn't have to wait.</h1>
+        <p class="hero-sub">We design and build practical systems that respond to new enquiries, keep follow-ups moving and give your team time back.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/6590183930" class="btn btn-gold">Talk through a workflow <span aria-hidden="true">↗</span></a>
+          <a href="#services" class="btn btn-outline">Explore what we do</a>
+        </div>
+      </div>
+      <aside class="workflow-card" aria-label="Illustration of an automated enquiry workflow">
+        <div class="workflow-top"><span class="workflow-kicker">A considered workflow</span><span class="workflow-live">Always on</span></div>
+        <h2 class="workflow-title">From enquiry to next step</h2>
+        <div class="workflow-steps">
+          <div class="workflow-step"><span class="workflow-index">01</span><span class="workflow-name">A new enquiry arrives<small class="workflow-detail">Website, WhatsApp or referral</small></span><span class="workflow-status">Received</span></div>
+          <div class="workflow-step"><span class="workflow-index">02</span><span class="workflow-name">The right follow-up goes out<small class="workflow-detail">Context-aware, on your terms</small></span><span class="workflow-status">In motion</span></div>
+          <div class="workflow-step"><span class="workflow-index">03</span><span class="workflow-name">Your team picks up with context<small class="workflow-detail">Notes, status and next action together</small></span><span class="workflow-status">Ready</span></div>
+        </div>
+        <div class="workflow-foot">CONNECTED TO YOUR TOOLS &nbsp;·&nbsp; OWNED BY YOUR TEAM</div>
+      </aside>
     </div>
     <div class="hero-rule"></div>
-    <div class="stats fi">
-      <div class="stat">
-        <div class="stat-n g-text">&lt;60s</div>
-        <div class="stat-l">Lead response time</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n g-text">24/7</div>
-        <div class="stat-l">Fully automated follow-up</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n g-text">4+</div>
-        <div class="stat-l">APIs per workflow, on average</div>
-      </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">Under a minute</div><div class="stat-l">Aiming for a faster first response</div></div>
+      <div class="stat"><div class="stat-n">Always on</div><div class="stat-l">Follow-up that doesn't depend on memory</div></div>
+      <div class="stat"><div class="stat-n">One clear view</div><div class="stat-l">Your CRM stays in step with the work</div></div>
     </div>
   </div>
 </section>
@@ -401,39 +67,39 @@
   <div class="wrap">
     <div class="sh fi">
       <div class="ey">What We Build</div>
-      <h2 class="st">Automation that actually closes</h2>
+      <h2 class="st">Systems that make the next step easier</h2>
       <p class="sd">Every workflow we ship is tied to a business result — faster responses, more bookings, fewer manual tasks.</p>
     </div>
     <div class="svc-grid">
       <div class="svc fi">
-        <span class="svc-ico">💬</span>
+        <span class="svc-ico" aria-hidden="true">01 / Conversation</span>
         <div class="svc-t">WhatsApp AI Automation</div>
-        <div class="svc-d">Instant replies, smart follow-ups, and booking flows via WhatsApp. Zero human-in-the-loop required.</div>
+        <div class="svc-d">Timely WhatsApp replies, considered follow-ups and booking flows, with a clear handoff to a person when it matters.</div>
       </div>
       <div class="svc fi">
-        <span class="svc-ico">📞</span>
+        <span class="svc-ico" aria-hidden="true">02 / Voice</span>
         <div class="svc-t">AI Voice Agents</div>
-        <div class="svc-d">AI callers that qualify leads, answer FAQs, and book appointments over the phone — built on VAPI and Twilio.</div>
+        <div class="svc-d">Voice assistants that can handle routine questions, qualify enquiries and offer a route to an appointment.</div>
       </div>
       <div class="svc fi">
-        <span class="svc-ico">🔄</span>
+        <span class="svc-ico" aria-hidden="true">03 / Pipeline</span>
         <div class="svc-t">Lead Pipeline Automation</div>
-        <div class="svc-d">Form fill → CRM → follow-up, fully automated. We connect every lead source to your pipeline in one workflow.</div>
+        <div class="svc-d">Connect forms and campaigns to your CRM, then assign, follow up and track each enquiry in one dependable flow.</div>
       </div>
       <div class="svc fi">
-        <span class="svc-ico">🛍️</span>
+        <span class="svc-ico" aria-hidden="true">04 / Commerce</span>
         <div class="svc-t">E-commerce Automation</div>
         <div class="svc-d">Abandoned cart recovery, post-purchase flows, review requests, and restock alerts — personalised and automatic.</div>
       </div>
       <div class="svc fi">
-        <span class="svc-ico">📊</span>
+        <span class="svc-ico" aria-hidden="true">05 / Visibility</span>
         <div class="svc-t">CRM & Reporting Sync</div>
         <div class="svc-d">Every lead action auto-updates your Airtable or CRM. Know what's happening without having to log in and check.</div>
       </div>
       <div class="svc fi">
-        <span class="svc-ico">⚙️</span>
+        <span class="svc-ico" aria-hidden="true">06 / Custom</span>
         <div class="svc-t">Custom Workflows</div>
-        <div class="svc-d">Got a manual process eating your team's time? We audit it, design the automation, and ship it — usually in under 2 weeks.</div>
+        <div class="svc-d">Bring us the repetitive process your team works around. We'll map it, choose the right integrations and build around how you already operate.</div>
       </div>
     </div>
   </div>
@@ -444,7 +110,7 @@
   <div class="wrap">
     <div class="sh fi">
       <div class="ey">How It Works</div>
-      <h2 class="st">Audit to live in 2 weeks</h2>
+      <h2 class="st">A clear path from audit to handover</h2>
     </div>
     <div class="proc-grid">
       <div class="proc-step fi">
@@ -455,12 +121,12 @@
       <div class="proc-step fi">
         <div class="proc-n">02</div>
         <div class="proc-t">Build</div>
-        <p class="proc-d">We design and wire your automation — connecting tools, writing the AI logic, and testing until it's bulletproof before we hand it over.</p>
+        <p class="proc-d">We build the workflow, connect the tools and test edge cases with your team before anything goes live.</p>
       </div>
       <div class="proc-step fi">
         <div class="proc-n">03</div>
         <div class="proc-t">Scale</div>
-        <p class="proc-d">You get full documentation and ownership. Once it's live, the workflow runs itself — we're on hand for support and future builds.</p>
+        <p class="proc-d">You receive clear documentation, ownership and a practical handover. We can stay close for support and the next improvement.</p>
       </div>
     </div>
   </div>
@@ -499,7 +165,7 @@
 
       <div class="pc fi">
         <div class="plan-n">Starter</div>
-        <div class="plan-p" style="font-size:28px;letter-spacing:-0.02em;margin-bottom:6px;">Custom</div>
+        <div class="plan-p">Custom</div>
         <div class="plan-note">Billed monthly &mdash; book a call for pricing</div>
         <div class="plan-hr"></div>
         <ul class="plan-feats">
@@ -515,7 +181,7 @@
       <div class="pc feat fi">
         <div class="feat-badge">Most Popular</div>
         <div class="plan-n">Pro Suite</div>
-        <div class="plan-p" style="font-size:28px;letter-spacing:-0.02em;margin-bottom:6px;">Custom</div>
+        <div class="plan-p">Custom</div>
         <div class="plan-note">Billed monthly &mdash; book a call for pricing</div>
         <div class="plan-hr"></div>
         <ul class="plan-feats">
@@ -532,7 +198,7 @@
 
       <div class="pc fi">
         <div class="plan-n">Agency</div>
-        <div class="plan-p" style="font-size:28px;letter-spacing:-0.02em;margin-bottom:6px;">Custom</div>
+        <div class="plan-p">Custom</div>
         <div class="plan-note">Billed monthly &mdash; book a call for pricing</div>
         <div class="plan-hr"></div>
         <ul class="plan-feats">
@@ -556,7 +222,7 @@
   <div class="wrap">
     <div class="sh fi">
       <div class="ey">Our Work</div>
-      <h2 class="st">Real automations. <span class="g-text">Real results.</span></h2>
+      <h2 class="st">A few systems we've put to work</h2>
       <p class="sd">Four production systems built and deployed for real clients &mdash; across enterprise, healthcare, real estate, and SaaS.</p>
     </div>
 
@@ -621,16 +287,16 @@
 <section id="cta">
   <div class="wrap">
     <div class="cta-card fi">
-      <div class="ey" style="margin-bottom:14px;">Ready to Automate?</div>
+      <div class="ey" style="margin-bottom:14px;">Start with one workflow</div>
       <h2 class="st" style="margin-bottom:12px;">
-        Turn your first cold lead <span class="g-text">into gold</span>
+        Give each new enquiry <span class="g-text">a better next step</span>
       </h2>
       <p class="sd" style="margin:0 auto;">
-        Book a free 20-minute call. We'll audit one of your current workflows and tell you exactly what we'd automate — no fluff.
+        Book a free 20-minute call. We'll look at one of your current workflows and talk through where automation could help.
       </p>
       <div class="cta-actions">
-        <a href="https://wa.me/6590183930" class="btn btn-gold">💬 WhatsApp Us</a>
-        <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">✉️ Email Us</a>
+        <a href="https://wa.me/6590183930" class="btn btn-gold">WhatsApp the studio</a>
+        <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">Email the studio</a>
       </div>
     </div>
   </div>
@@ -647,6 +313,23 @@
 </footer>
 
 <script>
+  // A small, keyboard-accessible mobile navigation.
+  const nav = document.querySelector('nav');
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  navToggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('menu-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+  });
+  navLinks.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+      nav.classList.remove('menu-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open navigation');
+    }
+  });
+
   // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });

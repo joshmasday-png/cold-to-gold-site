@@ -3,248 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Work — Cold to Gold</title>
+<title>Selected work — Cold to Gold</title>
+<meta name="description" content="Selected workflow automation and AI projects by Cold to Gold, an independent automation studio in Singapore.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg:      #FFFFFF;
-    --bg-2:    #F5F2EC;
-    --bg-3:    #FBFAF6;
-    --cold:    #18365B;
-    --gold:    #87681C;
-    --gold-lt: #C9A84C;
-    --on-gold: #14171F;
-    --text:    #14171F;
-    --muted:   #5B6172;
-    --border:  rgba(24,54,91,0.14);
-    --ff-h:    'Playfair Display', Georgia, serif;
-    --ff-d:    'Space Grotesk', sans-serif;
-    --ff-b:    'Inter', sans-serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--ff-b);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .g-text {
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 60%, var(--gold-lt) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.86);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px;
-  }
-  .logo {
-    display: inline-flex; align-items: center; gap: 10px;
-    text-decoration: none; line-height: 1;
-  }
-  .logo-wm {
-    font-family: var(--ff-h); font-size: 21px; font-weight: 800;
-    font-style: italic; letter-spacing: 0.005em; white-space: nowrap;
-  }
-  .logo-mark { display: block; flex-shrink: 0; height: 44px; width: auto; }
-  .logo-ft .logo-wm { font-size: 17px; }
-  .logo-ft .logo-mark { height: 34px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: 14px; font-weight: 500; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a.active { color: var(--gold-lt); }
-  .nav-cta {
-    background: var(--gold) !important;
-    color: var(--on-gold) !important;
-    padding: 8px 20px; border-radius: 6px; font-weight: 600 !important;
-  }
-  .nav-cta:hover { background: var(--gold-lt) !important; }
-
-  /* PAGE HERO */
-  .page-hero {
-    padding-top: 136px; padding-bottom: 64px; text-align: center;
-  }
-  .hero-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--gold); border: 1px solid var(--border); padding: 6px 18px;
-    border-radius: 100px; margin-bottom: 28px;
-  }
-  .page-hero h1 {
-    font-family: var(--ff-h);
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 700; line-height: 1.06; letter-spacing: -0.03em;
-    margin-bottom: 18px;
-  }
-  .page-hero p {
-    color: var(--muted); font-size: 18px; max-width: 480px;
-    margin: 0 auto; line-height: 1.65;
-  }
-  .hero-rule {
-    height: 1px; margin-top: 56px;
-    background: linear-gradient(90deg, transparent 0%, var(--cold) 20%, var(--gold) 65%, transparent 100%);
-    opacity: 0.45;
-  }
-
-  /* PROJECTS */
-  .projects { padding: 80px 0 96px; }
-
-  .project {
-    display: grid; grid-template-columns: 1fr 1.7fr;
-    gap: 0; border: 1px solid var(--border); border-radius: 16px;
-    overflow: hidden; margin-bottom: 32px;
-    transition: border-color 0.2s;
-  }
-  .project:hover { border-color: rgba(156,124,47,0.50); }
-
-  /* Left panel */
-  .proj-meta {
-    background: var(--bg-2); padding: 44px 36px;
-    display: flex; flex-direction: column; justify-content: space-between;
-    border-right: 1px solid var(--border);
-    position: relative; overflow: hidden;
-  }
-  .proj-meta::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--cold), var(--gold));
-  }
-  .proj-industry {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 16px;
-  }
-  .proj-title {
-    font-family: var(--ff-h); font-size: 22px; font-weight: 700;
-    line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 14px;
-  }
-  .proj-year {
-    font-size: 13px; color: var(--muted); margin-bottom: 28px;
-  }
-  .proj-stack {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;
-  }
-  .stack-tag {
-    background: var(--bg-3); border: 1px solid var(--border);
-    border-radius: 6px; padding: 4px 12px;
-    font-size: 12px; font-weight: 500; color: var(--muted);
-    font-family: var(--ff-d);
-  }
-
-  /* Right panel */
-  .proj-body {
-    background: var(--bg); padding: 44px 44px;
-  }
-  .proj-summary {
-    font-size: 15px; color: var(--text); line-height: 1.75;
-    margin-bottom: 28px; font-weight: 400;
-  }
-  .proj-outcomes {
-    list-style: none; margin-bottom: 0;
-  }
-  .proj-outcomes li {
-    font-size: 14px; color: var(--muted); padding: 9px 0;
-    display: flex; align-items: flex-start; gap: 12px; line-height: 1.5;
-    border-bottom: 1px solid rgba(24,54,91,0.09);
-  }
-  .proj-outcomes li:last-child { border-bottom: none; }
-  .proj-outcomes li::before {
-    content: '→'; color: var(--gold); font-weight: 700; font-size: 13px;
-    flex-shrink: 0; margin-top: 1px;
-  }
-
-  /* Stat row inside project */
-  .proj-stats {
-    display: flex; gap: 24px; flex-wrap: wrap;
-    margin-bottom: 28px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid rgba(24,54,91,0.10);
-  }
-  .proj-stat { text-align: left; }
-  .proj-stat-n {
-    font-family: var(--ff-d); font-size: 28px; font-weight: 700;
-    letter-spacing: -0.03em; line-height: 1; margin-bottom: 2px;
-  }
-  .proj-stat-l { font-size: 12px; color: var(--muted); font-weight: 500; }
-
-  /* CTA CLOSE */
-  .cta-section { padding: 0 0 96px; text-align: center; }
-  .cta-card {
-    background: var(--bg-2); border: 1px solid var(--border); border-radius: 16px;
-    padding: 72px 48px; position: relative; overflow: hidden;
-  }
-  .cta-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 100%);
-  }
-  .ey {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 14px;
-  }
-  .st {
-    font-family: var(--ff-h); font-size: clamp(26px, 3.5vw, 42px);
-    font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px;
-  }
-  .sd { color: var(--muted); font-size: 17px; max-width: 480px; line-height: 1.65; margin: 0 auto; }
-  .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
-  .btn {
-    padding: 13px 28px; border-radius: 8px; font-family: var(--ff-d);
-    font-weight: 600; font-size: 15px; text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: transform 0.15s, background 0.2s, border-color 0.2s;
-  }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-gold { background: var(--gold-lt); color: var(--on-gold); }
-  .btn-gold:hover { background: var(--gold-lt); }
-  .btn-outline {
-    background: transparent; color: var(--text);
-    border: 1px solid rgba(20,23,31,0.20);
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold-lt); }
-
-  /* FOOTER */
-  footer { border-top: 1px solid var(--border); padding: 28px 0; }
-  .ft { display: flex; align-items: center; justify-content: space-between; }
-  .ft-t { font-size: 13px; color: var(--muted); }
-
-  /* SCROLL REVEAL */
-  .fi { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
-  .fi.vis { opacity: 1; transform: none; }
-
-  /* RESPONSIVE */
-  @media (max-width: 800px) {
-    .project { grid-template-columns: 1fr; }
-    .proj-meta { border-right: none; border-bottom: 1px solid var(--border); padding: 32px 24px; }
-    .proj-body { padding: 32px 24px; }
-    .proj-stats { gap: 16px; }
-    .cta-card { padding: 48px 24px; }
-    .nav-links { display: none; }
-    .ft { flex-direction: column; gap: 10px; text-align: center; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .fi { opacity: 1; transform: none; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
@@ -252,22 +18,23 @@
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="logo"><img class="logo-mark" src="assets/logo.png" alt=""><span class="logo-wm g-text">Cold to Gold</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#process">Process</a></li>
       <li><a href="index.html#pricing">Pricing</a></li>
       <li><a href="work.html" class="active">Our Work</a></li>
       <li><a href="index.html#cta" class="nav-cta">Book a Call</a></li>
     </ul>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="nav-links" aria-expanded="false"><span class="nav-toggle-lines" aria-hidden="true"></span></button>
   </div>
 </nav>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="wrap">
-    <div class="hero-pill">Real Builds · Real Results</div>
-    <h1>Automation that's<br>already <span class="g-text">been shipped</span></h1>
-    <p>Four production systems built and deployed for real clients — across healthcare, real estate, enterprise, and SaaS.</p>
+    <div class="hero-pill">Selected work · 2025—26</div>
+    <h1>Systems designed for the work behind the work.</h1>
+    <p>A selection of workflow automation and AI projects, built to fit existing teams, tools and customer journeys.</p>
     <div class="hero-rule"></div>
   </div>
 </div>
@@ -465,16 +232,16 @@
 <div class="cta-section">
   <div class="wrap">
     <div class="cta-card fi">
-      <div class="ey" style="margin-bottom:14px;">Want Something Like This?</div>
+      <div class="ey" style="margin-bottom:14px;">Bring us a process to improve</div>
       <h2 class="st" style="margin-bottom:12px;">
-        Let's build your <span class="g-text">next automation</span>
+        Let's make the next step <span class="g-text">work better</span>
       </h2>
       <p class="sd">
-        Book a free 20-minute call. We'll map your workflow and tell you exactly what we'd automate — no fluff.
+        Book a free 20-minute call. We'll map the process together and discuss whether automation is the right fit.
       </p>
       <div class="cta-actions">
-        <a href="https://wa.me/6590183930" class="btn btn-gold">💬 WhatsApp Us</a>
-        <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">✉️ Email Us</a>
+        <a href="https://wa.me/6590183930" class="btn btn-gold">WhatsApp the studio</a>
+        <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">Email the studio</a>
       </div>
     </div>
   </div>
@@ -491,6 +258,22 @@
 </footer>
 
 <script>
+  const nav = document.querySelector('nav');
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  navToggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('menu-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+  });
+  navLinks.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+      nav.classList.remove('menu-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open navigation');
+    }
+  });
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
   }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
