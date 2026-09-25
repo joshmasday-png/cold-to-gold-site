@@ -4,21 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Work — COLD TO GOLD</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='f' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%237EC8E3'/><stop offset='100%25' stop-color='%23C9A84C'/></linearGradient></defs><rect width='32' height='32' rx='7' fill='%23FFFFFF'/><path d='M18.5 5 L10 17.5 h4.8 L13.5 27 L22 14.5 h-4.8 z' fill='url(%23f)'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='f' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2318365B'/><stop offset='100%25' stop-color='%23C9A84C'/></linearGradient></defs><rect width='32' height='32' rx='7' fill='url(%23f)'/><path d='M18.5 5 L10 17.5 h4.8 L13.5 27 L22 14.5 h-4.8 z' fill='%23FFFFFF'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:      #0A0A0B;
-    --bg-2:    #111114;
-    --bg-3:    #1A1A1F;
-    --cold:    #7EC8E3;
-    --gold:    #C9A84C;
-    --gold-lt: #E8C96A;
-    --text:    #F0EDE6;
-    --muted:   #8A8A9A;
-    --border:  rgba(201,168,76,0.18);
+    --bg:      #FFFFFF;
+    --bg-2:    #F5F2EC;
+    --bg-3:    #FBFAF6;
+    --cold:    #18365B;
+    --gold:    #87681C;
+    --gold-lt: #C9A84C;
+    --on-gold: #14171F;
+    --text:    #14171F;
+    --muted:   #5B6172;
+    --border:  rgba(24,54,91,0.14);
+    --ff-h:    'Playfair Display', Georgia, serif;
     --ff-d:    'Space Grotesk', sans-serif;
     --ff-b:    'Inter', sans-serif;
   }
@@ -46,7 +48,7 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(10,10,11,0.88);
+    background: rgba(255,255,255,0.86);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
@@ -60,8 +62,8 @@
   }
   .logo-mark { display: block; flex-shrink: 0; }
   .logo-wm {
-    font-family: 'Outfit', var(--ff-d); font-size: 18px; font-weight: 800;
-    letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap;
+    font-family: var(--ff-h); font-size: 20px; font-weight: 800;
+    letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap;
   }
   .logo-ft .logo-wm { font-size: 16px; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -73,7 +75,7 @@
   .nav-links a.active { color: var(--gold-lt); }
   .nav-cta {
     background: var(--gold) !important;
-    color: var(--bg) !important;
+    color: var(--on-gold) !important;
     padding: 8px 20px; border-radius: 6px; font-weight: 600 !important;
   }
   .nav-cta:hover { background: var(--gold-lt) !important; }
@@ -89,7 +91,7 @@
     border-radius: 100px; margin-bottom: 28px;
   }
   .page-hero h1 {
-    font-family: var(--ff-d);
+    font-family: var(--ff-h);
     font-size: clamp(36px, 5vw, 64px);
     font-weight: 700; line-height: 1.06; letter-spacing: -0.03em;
     margin-bottom: 18px;
@@ -113,7 +115,7 @@
     overflow: hidden; margin-bottom: 32px;
     transition: border-color 0.2s;
   }
-  .project:hover { border-color: rgba(201,168,76,0.4); }
+  .project:hover { border-color: rgba(156,124,47,0.50); }
 
   /* Left panel */
   .proj-meta {
@@ -131,7 +133,7 @@
     color: var(--gold); margin-bottom: 16px;
   }
   .proj-title {
-    font-family: var(--ff-d); font-size: 22px; font-weight: 700;
+    font-family: var(--ff-h); font-size: 22px; font-weight: 700;
     line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 14px;
   }
   .proj-year {
@@ -161,7 +163,7 @@
   .proj-outcomes li {
     font-size: 14px; color: var(--muted); padding: 9px 0;
     display: flex; align-items: flex-start; gap: 12px; line-height: 1.5;
-    border-bottom: 1px solid rgba(201,168,76,0.08);
+    border-bottom: 1px solid rgba(24,54,91,0.09);
   }
   .proj-outcomes li:last-child { border-bottom: none; }
   .proj-outcomes li::before {
@@ -174,7 +176,7 @@
     display: flex; gap: 24px; flex-wrap: wrap;
     margin-bottom: 28px;
     padding-bottom: 28px;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(24,54,91,0.10);
   }
   .proj-stat { text-align: left; }
   .proj-stat-n {
@@ -198,7 +200,7 @@
     color: var(--gold); margin-bottom: 14px;
   }
   .st {
-    font-family: var(--ff-d); font-size: clamp(26px, 3.5vw, 42px);
+    font-family: var(--ff-h); font-size: clamp(26px, 3.5vw, 42px);
     font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px;
   }
   .sd { color: var(--muted); font-size: 17px; max-width: 480px; line-height: 1.65; margin: 0 auto; }
@@ -210,11 +212,11 @@
     transition: transform 0.15s, background 0.2s, border-color 0.2s;
   }
   .btn:hover { transform: translateY(-2px); }
-  .btn-gold { background: var(--gold); color: var(--bg); }
+  .btn-gold { background: var(--gold-lt); color: var(--on-gold); }
   .btn-gold:hover { background: var(--gold-lt); }
   .btn-outline {
     background: transparent; color: var(--text);
-    border: 1px solid rgba(240,237,230,0.18);
+    border: 1px solid rgba(20,23,31,0.20);
   }
   .btn-outline:hover { border-color: var(--gold); color: var(--gold-lt); }
 
@@ -247,7 +249,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo"><svg class="logo-mark" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="ctg-nav" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#7EC8E3"/><stop offset="1" stop-color="#C9A84C"/></linearGradient></defs><rect width="28" height="28" rx="7" fill="#FFFFFF"/><path d="M16.4 5.2 L8.8 16.1 h4.3 L11.6 22.8 L19.2 11.9 h-4.3 z" fill="url(#ctg-nav)"/></svg><span class="logo-wm g-text">COLD TO GOLD</span></a>
+    <a href="index.html" class="logo"><svg class="logo-mark" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="ctg-nav" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#18365B"/><stop offset="1" stop-color="#C9A84C"/></linearGradient></defs><rect width="28" height="28" rx="7" fill="url(#ctg-nav)"/><path d="M16.4 5.2 L8.8 16.1 h4.3 L11.6 22.8 L19.2 11.9 h-4.3 z" fill="#FFFFFF"/></svg><span class="logo-wm g-text">COLD TO GOLD</span></a>
     <ul class="nav-links">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#process">Process</a></li>
@@ -480,7 +482,7 @@
 <footer>
   <div class="wrap">
     <div class="ft">
-      <a href="index.html" class="logo logo-ft"><svg class="logo-mark" width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="ctg-ft" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#7EC8E3"/><stop offset="1" stop-color="#C9A84C"/></linearGradient></defs><rect width="28" height="28" rx="7" fill="#FFFFFF"/><path d="M16.4 5.2 L8.8 16.1 h4.3 L11.6 22.8 L19.2 11.9 h-4.3 z" fill="url(#ctg-ft)"/></svg><span class="logo-wm g-text">COLD TO GOLD</span></a>
+      <a href="index.html" class="logo logo-ft"><svg class="logo-mark" width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="ctg-ft" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#18365B"/><stop offset="1" stop-color="#C9A84C"/></linearGradient></defs><rect width="28" height="28" rx="7" fill="url(#ctg-ft)"/><path d="M16.4 5.2 L8.8 16.1 h4.3 L11.6 22.8 L19.2 11.9 h-4.3 z" fill="#FFFFFF"/></svg><span class="logo-wm g-text">COLD TO GOLD</span></a>
       <span class="ft-t">© 2026 COLD TO GOLD · Singapore · AI Automation Agency</span>
     </div>
   </div>
