@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cold to Gold — AI Automation Agency</title>
+<title>COLD TO GOLD — AI Automation Agency</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='f' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%237EC8E3'/><stop offset='100%25' stop-color='%23C9A84C'/></linearGradient></defs><rect width='32' height='32' rx='7' fill='url(%23f)'/><path d='M18.5 5 L10 17.5 h4.8 L13.5 27 L22 14.5 h-4.8 z' fill='%230A0A0B'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -71,9 +72,15 @@
     height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px;
   }
   .logo {
-    font-family: var(--ff-d); font-size: 18px; font-weight: 700;
-    letter-spacing: -0.02em; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    text-decoration: none; line-height: 1;
   }
+  .logo-mark { display: block; flex-shrink: 0; }
+  .logo-wm {
+    font-family: var(--ff-d); font-size: 15px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap;
+  }
+  .logo-ft .logo-wm { font-size: 13px; letter-spacing: 0.13em; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a {
     color: var(--muted); text-decoration: none;
@@ -267,6 +274,35 @@
   .bp-gold { background: var(--gold); color: var(--bg); }
   .bp-gold:hover { background: var(--gold-lt); }
 
+  /* ---- WORK PREVIEW ---- */
+  #work { background: var(--bg-2); }
+  .work-grid { display: grid; gap: 14px; margin-top: 44px; }
+  .work-card {
+    display: flex; align-items: center; justify-content: space-between; gap: 28px;
+    background: var(--bg-3); border: 1px solid var(--border); border-radius: 12px;
+    padding: 22px 26px; text-decoration: none; color: inherit;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .work-card:hover { border-color: rgba(201,168,76,0.45); transform: translateY(-2px); }
+  .work-ind {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+  }
+  .work-t {
+    font-family: var(--ff-d); font-size: 17px; font-weight: 600;
+    letter-spacing: -0.01em; line-height: 1.3;
+  }
+  .work-chips {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    justify-content: flex-end; flex-shrink: 0;
+  }
+  .work-chip {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 5px 12px; font-family: var(--ff-d); font-size: 12px;
+    font-weight: 500; color: var(--muted); white-space: nowrap;
+  }
+  .work-more { display: flex; justify-content: center; margin-top: 40px; }
+
   /* ---- CTA CLOSE ---- */
   #cta { text-align: center; }
   .cta-card {
@@ -296,6 +332,8 @@
     .stat { border-right: none; border-bottom: 1px solid var(--border); }
     .stat:last-child { border-bottom: none; }
     .cta-card { padding: 48px 24px; }
+    .work-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .work-chips { justify-content: flex-start; }
     .ft { flex-direction: column; gap: 10px; text-align: center; }
   }
 
@@ -311,7 +349,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo g-text">Cold to Gold</a>
+    <a href="#" class="logo"><svg class="logo-mark" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="ctg-nav" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#7EC8E3"/><stop offset="1" stop-color="#C9A84C"/></linearGradient></defs><rect x="0.6" y="0.6" width="26.8" height="26.8" rx="7" stroke="url(#ctg-nav)" stroke-opacity="0.45" stroke-width="1.2"/><path d="M16.4 5.2 L8.8 16.1 h4.3 L11.6 22.8 L19.2 11.9 h-4.3 z" fill="url(#ctg-nav)"/></svg><span class="logo-wm g-text">COLD TO GOLD</span></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
@@ -509,6 +547,72 @@
   </div>
 </section>
 
+<!-- OUR WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sh fi">
+      <div class="ey">Our Work</div>
+      <h2 class="st">Real automations. <span class="g-text">Real results.</span></h2>
+      <p class="sd">Four production systems built and deployed for real clients &mdash; across enterprise, healthcare, real estate, and SaaS.</p>
+    </div>
+
+    <div class="work-grid">
+      <a href="work.html" class="work-card fi">
+        <div>
+          <div class="work-ind">Enterprise</div>
+          <div class="work-t">Lead-to-Support Lifecycle Automation</div>
+        </div>
+        <div class="work-chips">
+          <span class="work-chip">n8n</span>
+          <span class="work-chip">OpenAI</span>
+          <span class="work-chip">Pipedrive</span>
+        </div>
+      </a>
+
+      <a href="work.html" class="work-card fi">
+        <div>
+          <div class="work-ind">Healthcare &middot; Clinic</div>
+          <div class="work-t">AI Voice Agent &mdash; Automated Lead Follow-Up</div>
+        </div>
+        <div class="work-chips">
+          <span class="work-chip">VAPI</span>
+          <span class="work-chip">ElevenLabs</span>
+          <span class="work-chip">Airtable</span>
+        </div>
+      </a>
+
+      <a href="work.html" class="work-card fi">
+        <div>
+          <div class="work-ind">Real Estate</div>
+          <div class="work-t">Multi-Stage Lead Automation Pipeline</div>
+        </div>
+        <div class="work-chips">
+          <span class="work-chip">n8n</span>
+          <span class="work-chip">WhatsApp API</span>
+          <span class="work-chip">Airtable</span>
+        </div>
+      </a>
+
+      <a href="work.html" class="work-card fi">
+        <div>
+          <div class="work-ind">SaaS &middot; AI Product</div>
+          <div class="work-t">AI Customer Support Agent &mdash; SaaS Platform</div>
+        </div>
+        <div class="work-chips">
+          <span class="work-chip">OpenAI</span>
+          <span class="work-chip">Zoho Desk</span>
+          <span class="work-chip">Slack</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="work-more fi">
+      <a href="work.html" class="btn btn-outline">View all case studies &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="cta">
   <div class="wrap">
@@ -532,8 +636,8 @@
 <footer>
   <div class="wrap">
     <div class="ft">
-      <span class="logo g-text" style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;">Cold to Gold</span>
-      <span class="ft-t">© 2026 Cold to Gold · Singapore · AI Automation Agency</span>
+      <a href="#" class="logo logo-ft"><svg class="logo-mark" width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="ctg-ft" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#7EC8E3"/><stop offset="1" stop-color="#C9A84C"/></linearGradient></defs><rect x="0.6" y="0.6" width="26.8" height="26.8" rx="7" stroke="url(#ctg-ft)" stroke-opacity="0.45" stroke-width="1.2"/><path d="M16.4 5.2 L8.8 16.1 h4.3 L11.6 22.8 L19.2 11.9 h-4.3 z" fill="url(#ctg-ft)"/></svg><span class="logo-wm g-text">COLD TO GOLD</span></a>
+      <span class="ft-t">© 2026 COLD TO GOLD · Singapore · AI Automation Agency</span>
     </div>
   </div>
 </footer>
