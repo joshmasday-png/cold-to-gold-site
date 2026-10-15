@@ -13,9 +13,30 @@
 <link rel="stylesheet" href="assets/site.css">
 <style>
   /* ---- HERO ---- */
-  #hero { padding: 150px 0 96px; }
-  #hero .lede { margin: 30px 0 38px; }
-  figure.hero-shot { margin-top: 80px; }
+  #hero { padding: 150px 0 96px; text-align: center; }
+  #hero h1 { margin: 0 auto; }
+  #hero h1 em { font-style: normal; }
+  #hero .actions { justify-content: center; margin-top: 40px; }
+  #hero .btn-white {
+    background: #fff; color: var(--ink); border: 1px solid var(--rule);
+  }
+  #hero .btn-white:hover { background: var(--paper-2); }
+  figure.hero-shot { margin-top: 80px; text-align: left; }
+
+  /* ---- ABOUT ---- */
+  .about-lead {
+    font-family: var(--ff-h); font-weight: 700;
+    font-size: clamp(22px, 2.5vw, 30px); line-height: 1.3; letter-spacing: -0.01em;
+    max-width: 30em; margin-bottom: 48px;
+  }
+  .about-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .about-cols div { border-top: 2px solid var(--ink); padding-top: 20px; }
+  .about-cols h3 {
+    font-family: var(--ff-m); font-size: 13px; font-weight: 500; color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .about-cols p { font-size: 15.5px; color: var(--muted); }
+  .about-cols p + p { margin-top: 12px; }
 
   /* ---- SERVICES ---- */
   .svc-list {
@@ -94,7 +115,7 @@
   .contact-rows small { font-family: var(--ff-m); font-size: 13px; color: rgba(255,255,255,0.65); }
 
   @media (max-width: 900px) {
-    .svc-list, .steps { grid-template-columns: 1fr; }
+    .svc-list, .steps, .about-cols { grid-template-columns: 1fr; }
     .steps { gap: 32px; }
     .plans { grid-template-columns: 1fr; }
     .plan, .plan:first-child, .plan:last-child { padding: 26px 0 30px; }
@@ -129,12 +150,9 @@
   <div class="wrap">
     <p class="kicker"><b>Cold to Gold</b> &nbsp;/&nbsp; AI automation agency</p>
     <h1>Turn cold leads into <em>gold</em> clients.</h1>
-    <p class="lede">
-      We design and deploy AI automation systems, each one built around your company's needs.
-    </p>
     <div class="actions">
-      <a href="https://wa.me/6590183930" class="btn">Message us on WhatsApp</a>
-      <a href="work.html" class="link">See what we've built</a>
+      <a href="https://wa.me/6590183930" class="btn">Book an appointment</a>
+      <a href="#about" class="btn btn-white">About Us</a>
     </div>
 
     <figure class="shot hero-shot fi">
@@ -144,10 +162,45 @@
   </div>
 </header>
 
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="sec-head fi">
+      <div class="sec-num">01 &nbsp;About us</div>
+      <div>
+        <h2>About us</h2>
+      </div>
+    </div>
+    <div class="indent">
+      <p class="about-lead fi">
+        Cold to Gold is an AI automation studio based in Singapore. We build the systems
+        that sit between a company's leads, customers and tools, so enquiries get answered, follow-ups happen
+        and records stay accurate without anyone chasing them.
+      </p>
+      <div class="about-cols">
+        <div class="fi">
+          <h3>What we build</h3>
+          <p>Workflows in n8n and Make.com, AI voice agents, customer support assistants and multi-agent systems, where several AI agents work together on one task.</p>
+          <p>Whether it's a single follow-up flow or a system that runs across sales, support and billing, every build is shaped around how your business already works.</p>
+        </div>
+        <div class="fi">
+          <h3>How we work</h3>
+          <p>We start with the one process that costs your team the most time. We build it on your own accounts and test it against real examples before it goes live.</p>
+          <p>We design and build every system ourselves, from the prompts and workflow logic to the screens your team uses. You get full documentation and full ownership.</p>
+        </div>
+        <div class="fi">
+          <h3>What we care about</h3>
+          <p>AI that sticks to the facts. Our systems answer from your own data, check what they say before they say it, and leave the decisions that matter to a person.</p>
+          <p>If something shouldn't be automated, we'll tell you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="services" class="sec">
   <div class="wrap">
     <div class="sec-head fi">
-      <div class="sec-num">01 &nbsp;Services</div>
+      <div class="sec-num">02 &nbsp;Services</div>
       <div>
         <h2>What we build</h2>
         <p>Each project starts with one job your team does by hand and ends with a system that does it for them.</p>
@@ -170,7 +223,7 @@
 <section id="process" class="sec">
   <div class="wrap">
     <div class="sec-head fi">
-      <div class="sec-num">02 &nbsp;Process</div>
+      <div class="sec-num">03 &nbsp;Process</div>
       <div>
         <h2>From first call to live in about two weeks</h2>
       </div>
@@ -198,7 +251,7 @@
 <section id="pricing" class="sec">
   <div class="wrap">
     <div class="sec-head fi">
-      <div class="sec-num">03 &nbsp;Pricing</div>
+      <div class="sec-num">04 &nbsp;Pricing</div>
       <div>
         <h2>Monthly retainer</h2>
         <p>Builds, support and maintenance are billed monthly. We quote once we know the scope, usually at the end of the first call.</p>
@@ -254,7 +307,7 @@
 <section id="work" class="sec">
   <div class="wrap">
     <div class="sec-head fi">
-      <div class="sec-num">04 &nbsp;Our work</div>
+      <div class="sec-num">05 &nbsp;Our work</div>
       <div>
         <h2>Recent projects</h2>
       </div>
