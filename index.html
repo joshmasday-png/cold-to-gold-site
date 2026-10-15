@@ -4,356 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cold to Gold — AI Automation Agency</title>
+<meta name="description" content="Cold to Gold builds n8n and AI automations for Singapore businesses: WhatsApp replies, voice follow-up, CRM sync and multi-agent systems.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-  :root {
-    --bg:      #FFFFFF;
-    --bg-2:    #F5F2EC;
-    --bg-3:    #FBFAF6;
-    --cold:    #18365B;
-    --gold:    #87681C;
-    --gold-lt: #C9A84C;
-    --on-gold: #14171F;
-    --text:    #14171F;
-    --muted:   #5B6172;
-    --border:  rgba(24,54,91,0.14);
-    --ff-h:    'Playfair Display', Georgia, serif;
-    --ff-d:    'Space Grotesk', sans-serif;
-    --ff-b:    'Inter', sans-serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--ff-b);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ---- GRADIENT TEXT ---- */
-  .g-text {
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 60%, var(--gold-lt) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .shimmer {
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 35%, var(--gold-lt) 55%, var(--cold) 100%);
-    background-size: 220% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4.5s ease-in-out infinite;
-  }
-  @keyframes shimmer {
-    0%   { background-position: 100% 0; }
-    50%  { background-position: 0% 0; }
-    100% { background-position: 100% 0; }
-  }
-
-  /* ---- LAYOUT ---- */
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 96px 0; }
-
-  /* ---- NAV ---- */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.86);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px;
-  }
-  .logo {
-    display: inline-flex; align-items: center; gap: 10px;
-    text-decoration: none; line-height: 1;
-  }
-  .logo-wm {
-    font-family: var(--ff-h); font-size: 21px; font-weight: 800;
-    letter-spacing: 0.005em; white-space: nowrap;
-  }
-  .logo-mark { display: block; flex-shrink: 0; height: 44px; width: auto; }
-  .logo-ft .logo-wm { font-size: 17px; }
-  .logo-ft .logo-mark { height: 34px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: 14px; font-weight: 500; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta {
-    background: var(--gold) !important;
-    color: var(--on-gold) !important;
-    padding: 8px 20px; border-radius: 6px; font-weight: 600 !important;
-  }
-  .nav-cta:hover { background: var(--gold-lt) !important; }
-
   /* ---- HERO ---- */
-  #hero { padding-top: 152px; padding-bottom: 80px; text-align: center; }
-
-  .hero-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--gold); border: 1px solid var(--border); padding: 6px 18px;
-    border-radius: 100px; margin-bottom: 36px;
-  }
-  .hero-pill::before {
-    content: ''; width: 6px; height: 6px; background: var(--gold);
-    border-radius: 50%; animation: blink 2s ease-in-out infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
-
-  h1 {
-    font-family: var(--ff-h);
-    font-size: clamp(44px, 6.5vw, 84px);
-    font-weight: 700; line-height: 1.04; letter-spacing: -0.035em;
-    margin-bottom: 24px;
-  }
-  .hero-sub {
-    font-size: clamp(16px, 2vw, 20px); color: var(--muted);
-    max-width: 520px; margin: 0 auto 40px; line-height: 1.65;
-  }
-  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-  .btn {
-    padding: 13px 28px; border-radius: 8px; font-family: var(--ff-d);
-    font-weight: 600; font-size: 15px; text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: transform 0.15s, background 0.2s, border-color 0.2s;
-  }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-gold  { background: var(--gold-lt); color: var(--on-gold); }
-  .btn-gold:hover { background: var(--gold-lt); }
-  .btn-outline {
-    background: transparent; color: var(--text);
-    border: 1px solid rgba(20,23,31,0.20);
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold-lt); }
-
-  .hero-rule {
-    height: 1px; margin-top: 64px;
-    background: linear-gradient(90deg, transparent 0%, var(--cold) 20%, var(--gold) 65%, transparent 100%);
-    opacity: 0.55;
-  }
-
-  /* ---- STATS ---- */
-  .stats {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-    margin-top: 72px;
-  }
-  .stat {
-    padding: 32px; text-align: center;
-    border-right: 1px solid var(--border);
-  }
-  .stat:last-child { border-right: none; }
-  .stat-n {
-    font-family: var(--ff-d); font-size: 46px; font-weight: 700;
-    letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px;
-  }
-  .stat-l { font-size: 13px; color: var(--muted); font-weight: 500; }
-
-  /* ---- SECTION HEAD ---- */
-  .sh { margin-bottom: 52px; }
-  .ey {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 14px;
-  }
-  .st {
-    font-family: var(--ff-h); font-size: clamp(28px, 4vw, 46px);
-    font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px;
-  }
-  .sd { color: var(--muted); font-size: 17px; max-width: 520px; line-height: 1.65; }
+  #hero { padding: 150px 0 96px; }
+  #hero .lede { margin: 30px 0 38px; }
+  figure.hero-shot { margin-top: 80px; }
 
   /* ---- SERVICES ---- */
-  #services { background: var(--bg-2); }
-
-  .svc-grid {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 1px; background: var(--border);
-    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  .svc-list {
+    display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px;
+    list-style: none; counter-reset: svc;
   }
-  .svc {
-    background: var(--bg-2); padding: 36px 30px;
-    position: relative; transition: background 0.2s;
+  .svc-list li {
+    counter-increment: svc;
+    display: grid; grid-template-columns: 44px 1fr; gap: 0 8px; align-content: start;
+    padding: 26px 0; border-top: 1px solid var(--rule);
   }
-  .svc::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--cold), var(--gold));
-    opacity: 0; transition: opacity 0.2s;
+  .svc-list li::before {
+    content: counter(svc, decimal-leading-zero);
+    font-family: var(--ff-m); font-size: 13px; color: var(--gold); padding-top: 4px;
   }
-  .svc:hover { background: var(--bg-3); }
-  .svc:hover::before { opacity: 1; }
-  .svc-ico { font-size: 26px; margin-bottom: 16px; display: block; }
-  .svc-t {
-    font-family: var(--ff-d); font-size: 17px; font-weight: 600;
-    letter-spacing: -0.01em; margin-bottom: 10px;
+  .svc-list h3 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
+  .svc-list p { grid-column: 2; font-size: 15.5px; color: var(--muted); }
+  .tools-line {
+    margin-top: 48px; font-family: var(--ff-m); font-size: 13.5px;
+    color: var(--muted); line-height: 1.8;
   }
-  .svc-d { font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .tools-line span { color: var(--ink); }
 
   /* ---- PROCESS ---- */
-  .proc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 48px; margin-top: 52px; }
-  .proc-step {}
-  .proc-n {
-    font-family: var(--ff-d); font-size: 72px; font-weight: 700;
-    letter-spacing: -0.045em; line-height: 1;
-    color: rgba(24,54,91,0.13); margin-bottom: 14px;
-  }
-  .proc-t {
-    font-family: var(--ff-d); font-size: 22px; font-weight: 600;
-    letter-spacing: -0.01em; margin-bottom: 10px;
-  }
-  .proc-d { font-size: 15px; color: var(--muted); line-height: 1.7; }
-
-  /* ---- TOOLS STRIP ---- */
-  #tools { background: var(--bg-2); padding: 56px 0; }
-  .tools-label {
-    text-align: center; font-size: 13px; color: var(--muted);
-    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 28px;
-  }
-  .tools-row {
-    display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-  }
-  .tool-tag {
-    background: var(--bg-3); border: 1px solid var(--border);
-    border-radius: 8px; padding: 8px 18px;
-    font-family: var(--ff-d); font-size: 13px; font-weight: 500; color: var(--muted);
-  }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; list-style: none; }
+  .steps li { border-top: 2px solid var(--ink); padding-top: 20px; }
+  .step-when { font-family: var(--ff-m); font-size: 13px; color: var(--gold); margin-bottom: 10px; }
+  .steps h3 { font-family: var(--ff-h); font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+  .steps p { font-size: 15.5px; color: var(--muted); }
 
   /* ---- PRICING ---- */
-  #pricing { background: var(--bg); }
-  .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 52px; }
-  .pc {
-    background: var(--bg-3); border: 1px solid var(--border); border-radius: 12px;
-    padding: 36px 30px; position: relative; transition: border-color 0.2s, transform 0.15s;
+  .plans {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule);
   }
-  .pc:hover { border-color: rgba(156,124,47,0.50); transform: translateY(-2px); }
-  .pc.feat {
-    border-color: var(--gold);
-    background: linear-gradient(175deg, rgba(201,168,76,0.14) 0%, var(--bg-3) 100%);
-  }
-  .feat-badge {
-    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-    background: var(--gold-lt); color: var(--on-gold);
-    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 4px 14px; border-radius: 100px; white-space: nowrap;
-  }
-  .plan-n {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
-  }
-  .plan-p {
-    font-family: var(--ff-d); font-size: 48px; font-weight: 700;
-    letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px;
-  }
-  .plan-p sup { font-size: 22px; font-weight: 500; color: var(--muted); vertical-align: super; }
-  .plan-note { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
-  .plan-hr { height: 1px; background: var(--border); margin-bottom: 22px; }
-  .plan-feats { list-style: none; margin-bottom: 30px; }
-  .plan-feats li {
-    font-size: 14px; color: var(--muted); padding: 7px 0;
-    display: flex; align-items: flex-start; gap: 10px; line-height: 1.45;
-  }
-  .plan-feats li::before {
-    content: '✓'; color: var(--gold); font-weight: 700; font-size: 13px;
-    flex-shrink: 0; margin-top: 1px;
-  }
-  .btn-plan {
-    display: block; text-align: center; padding: 12px 20px; border-radius: 8px;
-    font-family: var(--ff-d); font-weight: 600; font-size: 14px; text-decoration: none;
-    transition: all 0.2s;
-  }
-  .bp-outline { border: 1px solid var(--border); color: var(--text); }
-  .bp-outline:hover { border-color: var(--gold); color: var(--gold-lt); }
-  .bp-gold { background: var(--gold-lt); color: var(--on-gold); }
-  .bp-gold:hover { background: var(--gold-lt); }
+  .plan { padding: 30px 28px 34px; display: flex; flex-direction: column; }
+  .plan + .plan { border-left: 1px solid var(--rule); }
+  .plan:first-child { padding-left: 0; }
+  .plan:last-child { padding-right: 0; }
+  .plan h3 { font-family: var(--ff-h); font-size: 26px; font-weight: 700; }
+  .plan-for { font-size: 15px; color: var(--muted); margin: 6px 0 22px; }
+  .plan ul { list-style: none; margin-bottom: 28px; flex: 1; }
+  .plan li { font-size: 15px; padding: 8px 0; border-top: 1px solid var(--rule-lt); }
+  .plan .link { align-self: flex-start; font-size: 15px; }
 
-  /* ---- WORK PREVIEW ---- */
-  #work { background: var(--bg-2); }
-  .work-grid { display: grid; gap: 14px; margin-top: 44px; }
-  .work-card {
-    display: flex; align-items: center; justify-content: space-between; gap: 28px;
-    background: var(--bg-3); border: 1px solid var(--border); border-radius: 12px;
-    padding: 22px 26px; text-decoration: none; color: inherit;
-    transition: border-color 0.2s, transform 0.15s;
+  /* ---- WORK INDEX ---- */
+  .work-index { list-style: none; border-top: 2px solid var(--ink); }
+  .work-index a {
+    display: grid; grid-template-columns: 70px 1fr 200px 24px; gap: 20px; align-items: baseline;
+    padding: 24px 0; border-bottom: 1px solid var(--rule);
+    text-decoration: none; transition: background 0.15s, padding 0.15s;
   }
-  .work-card:hover { border-color: rgba(156,124,47,0.50); transform: translateY(-2px); }
-  .work-ind {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+  .work-index a:hover { background: var(--paper-2); padding-left: 12px; padding-right: 12px; }
+  .wi-year { font-family: var(--ff-m); font-size: 13px; color: var(--muted); }
+  .wi-title { font-family: var(--ff-h); font-size: clamp(21px, 2.4vw, 28px); font-weight: 700; line-height: 1.2; }
+  .wi-new {
+    font-family: var(--ff-m); font-size: 11px; font-weight: 500; color: var(--gold);
+    border: 1px solid var(--gold-lt); padding: 1px 6px; border-radius: 2px;
+    margin-left: 10px; vertical-align: 5px; letter-spacing: 0.04em; white-space: nowrap;
   }
-  .work-t {
-    font-family: var(--ff-d); font-size: 17px; font-weight: 600;
-    letter-spacing: -0.01em; line-height: 1.3;
-  }
-  .work-chips {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    justify-content: flex-end; flex-shrink: 0;
-  }
-  .work-chip {
-    background: var(--bg-2); border: 1px solid var(--border); border-radius: 6px;
-    padding: 5px 12px; font-family: var(--ff-d); font-size: 12px;
-    font-weight: 500; color: var(--muted); white-space: nowrap;
-  }
-  .work-more { display: flex; justify-content: center; margin-top: 40px; }
+  .wi-ind { font-size: 14.5px; color: var(--muted); }
+  .wi-arrow { color: var(--gold); font-size: 18px; }
 
-  /* ---- CTA CLOSE ---- */
-  #cta { text-align: center; }
-  .cta-card {
-    background: var(--bg-2); border: 1px solid var(--border); border-radius: 16px;
-    padding: 72px 48px; position: relative; overflow: hidden;
+  /* ---- CONTACT ---- */
+  #cta { background: var(--navy); color: #fff; border-top: none; }
+  #cta h2 { max-width: 17ch; }
+  #cta h2 em { color: var(--gold-lt); }
+  #cta .lede { color: rgba(255,255,255,0.72); margin: 22px 0 40px; }
+  .contact-rows { border-top: 1px solid rgba(255,255,255,0.22); max-width: 640px; }
+  .contact-rows a {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.22); text-decoration: none;
+    font-size: clamp(17px, 2.2vw, 22px);
   }
-  .cta-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 100%);
+  .contact-rows a:hover { color: var(--gold-lt); }
+  .contact-rows small { font-family: var(--ff-m); font-size: 13px; color: rgba(255,255,255,0.65); }
+
+  @media (max-width: 900px) {
+    .svc-list, .steps { grid-template-columns: 1fr; }
+    .steps { gap: 32px; }
+    .plans { grid-template-columns: 1fr; }
+    .plan, .plan:first-child, .plan:last-child { padding: 26px 0 30px; }
+    .plan + .plan { border-left: none; border-top: 1px solid var(--rule); }
+    .work-index a { grid-template-columns: 1fr 20px; gap: 4px 12px; }
+    .wi-year, .wi-title, .wi-ind { grid-column: 1; }
+    .wi-arrow { grid-column: 2; grid-row: 1 / span 3; align-self: center; }
   }
-  .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
-
-  /* ---- FOOTER ---- */
-  footer { border-top: 1px solid var(--border); padding: 28px 0; }
-  .ft { display: flex; align-items: center; justify-content: space-between; }
-  .ft-t { font-size: 13px; color: var(--muted); }
-
-  /* ---- SCROLL REVEAL ---- */
-  .fi { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .fi.vis { opacity: 1; transform: none; }
-
-  /* ---- RESPONSIVE ---- */
-  @media (max-width: 800px) {
-    section { padding: 64px 0; }
-    .nav-links { display: none; }
-    .stats, .svc-grid, .proc-grid, .price-grid { grid-template-columns: 1fr; }
-    .stat { border-right: none; border-bottom: 1px solid var(--border); }
-    .stat:last-child { border-bottom: none; }
-    .cta-card { padding: 48px 24px; }
-    .work-card { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .work-chips { justify-content: flex-start; }
-    .ft { flex-direction: column; gap: 10px; text-align: center; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .fi { opacity: 1; transform: none; }
-    .shimmer { animation: none; }
-    .hero-pill::before { animation: none; }
+  @media (max-width: 600px) {
+    #hero { padding: 120px 0 64px; }
+    figure.hero-shot { margin-top: 52px; }
+    .contact-rows a { flex-direction: column; gap: 2px; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><img class="logo-mark" src="assets/logo.png" alt=""><span class="logo-wm g-text">Cold to Gold</span></a>
+    <a href="#" class="logo"><img class="logo-mark" src="assets/logo.png" alt="Cold to Gold"></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
@@ -364,301 +125,203 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
+<header id="hero">
   <div class="wrap">
-    <div class="hero-pill">AI Automation Agency · Singapore</div>
-    <h1>
-      Turn cold leads<br>into <span class="shimmer">gold clients</span>
-    </h1>
-    <p class="hero-sub">
-      We build AI-powered automation workflows that follow up, qualify, and book meetings — while you sleep.
+    <p class="kicker"><b>Cold to Gold</b> &nbsp;/&nbsp; AI automation, Singapore</p>
+    <h1>Turn cold leads into <em>gold</em> clients.</h1>
+    <p class="lede">
+      We build the workflows that reply to new leads in under a minute, call them back,
+      chase the ones who go quiet and keep your CRM up to date. Most of it runs on n8n and
+      OpenAI, and you own all of it when we're done.
     </p>
-    <div class="hero-actions">
-      <a href="https://wa.me/6590183930" class="btn btn-gold">💬 WhatsApp Us</a>
-      <a href="#services" class="btn btn-outline">See What We Build →</a>
+    <div class="actions">
+      <a href="https://wa.me/6590183930" class="btn">Message us on WhatsApp</a>
+      <a href="work.html" class="link">See what we've built</a>
     </div>
-    <div class="hero-rule"></div>
-    <div class="stats fi">
-      <div class="stat">
-        <div class="stat-n g-text">&lt;60s</div>
-        <div class="stat-l">Lead response time</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n g-text">24/7</div>
-        <div class="stat-l">Fully automated follow-up</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n g-text">4+</div>
-        <div class="stat-l">APIs per workflow, on average</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- SERVICES -->
-<section id="services">
+    <figure class="shot hero-shot fi">
+      <img src="assets/work/nego-n8n-canvas.jpg" alt="n8n canvas showing buyer and supplier AI agents, verifiers, referees and a Telegram approval step" width="1800" height="847">
+      <figcaption>Fig. 1 &nbsp;The n8n workflow behind our multi-agent negotiation system. Two AI agents negotiate a bulk order, a verifier blocks any false claim, and a person approves the deal on Telegram.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section id="services" class="sec">
   <div class="wrap">
-    <div class="sh fi">
-      <div class="ey">What We Build</div>
-      <h2 class="st">Automation that actually closes</h2>
-      <p class="sd">Every workflow we ship is tied to a business result — faster responses, more bookings, fewer manual tasks.</p>
-    </div>
-    <div class="svc-grid">
-      <div class="svc fi">
-        <span class="svc-ico">💬</span>
-        <div class="svc-t">WhatsApp AI Automation</div>
-        <div class="svc-d">Instant replies, smart follow-ups, and booking flows via WhatsApp. Zero human-in-the-loop required.</div>
-      </div>
-      <div class="svc fi">
-        <span class="svc-ico">📞</span>
-        <div class="svc-t">AI Voice Agents</div>
-        <div class="svc-d">AI callers that qualify leads, answer FAQs, and book appointments over the phone — built on VAPI and Twilio.</div>
-      </div>
-      <div class="svc fi">
-        <span class="svc-ico">🔄</span>
-        <div class="svc-t">Lead Pipeline Automation</div>
-        <div class="svc-d">Form fill → CRM → follow-up, fully automated. We connect every lead source to your pipeline in one workflow.</div>
-      </div>
-      <div class="svc fi">
-        <span class="svc-ico">🛍️</span>
-        <div class="svc-t">E-commerce Automation</div>
-        <div class="svc-d">Abandoned cart recovery, post-purchase flows, review requests, and restock alerts — personalised and automatic.</div>
-      </div>
-      <div class="svc fi">
-        <span class="svc-ico">📊</span>
-        <div class="svc-t">CRM & Reporting Sync</div>
-        <div class="svc-d">Every lead action auto-updates your Airtable or CRM. Know what's happening without having to log in and check.</div>
-      </div>
-      <div class="svc fi">
-        <span class="svc-ico">⚙️</span>
-        <div class="svc-t">Custom Workflows</div>
-        <div class="svc-d">Got a manual process eating your team's time? We audit it, design the automation, and ship it — usually in under 2 weeks.</div>
+    <div class="sec-head fi">
+      <div class="sec-num">01 &nbsp;Services</div>
+      <div>
+        <h2>What we build</h2>
+        <p>Each project starts with one job your team does by hand and ends with a system that does it for them.</p>
       </div>
     </div>
+    <ol class="svc-list indent">
+      <li class="fi"><h3>WhatsApp replies and follow-up</h3><p>New enquiries get an answer straight away, a nudge the next day if they haven't booked, and a booking link when they're ready.</p></li>
+      <li class="fi"><h3>AI voice agents</h3><p>An assistant that calls new leads, asks the qualifying questions, retries when nobody picks up and logs what happened. Built on VAPI and Twilio.</p></li>
+      <li class="fi"><h3>Lead pipelines</h3><p>Website forms, ads and WhatsApp all land in one CRM with a status, an owner and a next step.</p></li>
+      <li class="fi"><h3>E-commerce flows</h3><p>Abandoned carts, post-purchase messages, review requests and restock alerts.</p></li>
+      <li class="fi"><h3>CRM and reporting sync</h3><p>Airtable or your CRM updates itself as leads move, so the numbers are right without anyone checking.</p></li>
+      <li class="fi"><h3>Agent systems</h3><p>Several AI agents working on one task, each limited to its own data, with checks on what they say and a person signing off at the end.</p></li>
+    </ol>
+    <p class="tools-line indent fi">
+      Tools we use: <span>n8n</span>, <span>Make.com</span>, <span>OpenAI</span>, <span>MCP</span>, <span>VAPI</span>, <span>Twilio</span>, <span>WhatsApp Business API</span>, <span>Telegram</span>, <span>Airtable</span>, <span>Calendly</span>, <span>Shopify</span>, <span>PandaDoc</span>, <span>Google Sheets</span>.
+    </p>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section id="process">
+<section id="process" class="sec">
   <div class="wrap">
-    <div class="sh fi">
-      <div class="ey">How It Works</div>
-      <h2 class="st">Audit to live in 2 weeks</h2>
-    </div>
-    <div class="proc-grid">
-      <div class="proc-step fi">
-        <div class="proc-n">01</div>
-        <div class="proc-t">Audit</div>
-        <p class="proc-d">We map your current workflow, find the bottlenecks, and pinpoint exactly where automation will move the needle.</p>
-      </div>
-      <div class="proc-step fi">
-        <div class="proc-n">02</div>
-        <div class="proc-t">Build</div>
-        <p class="proc-d">We design and wire your automation — connecting tools, writing the AI logic, and testing until it's bulletproof before we hand it over.</p>
-      </div>
-      <div class="proc-step fi">
-        <div class="proc-n">03</div>
-        <div class="proc-t">Scale</div>
-        <p class="proc-d">You get full documentation and ownership. Once it's live, the workflow runs itself — we're on hand for support and future builds.</p>
+    <div class="sec-head fi">
+      <div class="sec-num">02 &nbsp;Process</div>
+      <div>
+        <h2>From first call to live in about two weeks</h2>
       </div>
     </div>
+    <ol class="steps indent">
+      <li class="fi">
+        <div class="step-when">Day 1</div>
+        <h3>Audit</h3>
+        <p>A 20-minute call. We go through how leads and requests move through your business today and pick the step that costs you the most time.</p>
+      </li>
+      <li class="fi">
+        <div class="step-when">Week 1</div>
+        <h3>Build</h3>
+        <p>We connect your tools, write the AI logic and run it against real examples until it handles the awkward cases.</p>
+      </li>
+      <li class="fi">
+        <div class="step-when">Week 2</div>
+        <h3>Hand over</h3>
+        <p>It goes live on your accounts with documentation your team can follow. We stay on for support and whatever you want automated next.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
-<!-- TOOLS -->
-<section id="tools">
+<section id="pricing" class="sec">
   <div class="wrap">
-    <div class="tools-label">Tools we build with</div>
-    <div class="tools-row">
-      <div class="tool-tag">Make.com</div>
-      <div class="tool-tag">n8n</div>
-      <div class="tool-tag">OpenAI</div>
-      <div class="tool-tag">VAPI</div>
-      <div class="tool-tag">Twilio</div>
-      <div class="tool-tag">WhatsApp Business API</div>
-      <div class="tool-tag">Airtable</div>
-      <div class="tool-tag">Calendly</div>
-      <div class="tool-tag">Telegram Bot API</div>
-      <div class="tool-tag">Shopify</div>
-      <div class="tool-tag">PandaDoc</div>
-      <div class="tool-tag">Google Sheets</div>
+    <div class="sec-head fi">
+      <div class="sec-num">03 &nbsp;Pricing</div>
+      <div>
+        <h2>Monthly retainer</h2>
+        <p>Builds, support and maintenance are billed monthly. We quote once we know the scope, usually at the end of the first call.</p>
+      </div>
+    </div>
+    <div class="indent">
+      <div class="plans fi">
+        <div class="plan">
+          <h3>Starter</h3>
+          <p class="plan-for">One workflow, done properly.</p>
+          <ul>
+            <li>1 automation workflow</li>
+            <li>Up to 2 tool integrations</li>
+            <li>WhatsApp or email automation</li>
+            <li>Basic Airtable CRM setup</li>
+            <li>7 days of support after delivery</li>
+          </ul>
+          <a href="https://wa.me/6590183930" class="link">Ask about Starter</a>
+        </div>
+        <div class="plan">
+          <h3>Pro Suite</h3>
+          <p class="plan-for">Your lead flow, end to end.</p>
+          <ul>
+            <li>Up to 3 automation workflows</li>
+            <li>Up to 5 tool integrations</li>
+            <li>WhatsApp, email and CRM</li>
+            <li>AI response logic</li>
+            <li>Full Airtable CRM pipeline</li>
+            <li>Calendly booking</li>
+            <li>14 days of support after delivery</li>
+          </ul>
+          <a href="https://wa.me/6590183930" class="link">Ask about Pro Suite</a>
+        </div>
+        <div class="plan">
+          <h3>Agency</h3>
+          <p class="plan-for">Everything, including voice.</p>
+          <ul>
+            <li>Audit of your whole stack</li>
+            <li>Open workflow scope</li>
+            <li>AI voice agent (VAPI and Twilio)</li>
+            <li>WhatsApp, email, CRM and voice</li>
+            <li>Custom prompts and logic</li>
+            <li>Team handover and documentation</li>
+            <li>30 days of priority support</li>
+          </ul>
+          <a href="https://wa.me/6590183930" class="link">Ask about Agency</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing">
+<section id="work" class="sec">
   <div class="wrap">
-    <div class="sh fi">
-      <div class="ey">Pricing</div>
-      <h2 class="st">Monthly retainer plans</h2>
-      <p class="sd">Ongoing automation support, builds, and maintenance — on a monthly retainer. Pricing tailored to your scope.</p>
+    <div class="sec-head fi">
+      <div class="sec-num">04 &nbsp;Our work</div>
+      <div>
+        <h2>Recent projects</h2>
+      </div>
     </div>
-    <div class="price-grid">
-
-      <div class="pc fi">
-        <div class="plan-n">Starter</div>
-        <div class="plan-p" style="font-size:28px;letter-spacing:-0.02em;margin-bottom:6px;">Custom</div>
-        <div class="plan-note">Billed monthly &mdash; book a call for pricing</div>
-        <div class="plan-hr"></div>
-        <ul class="plan-feats">
-          <li>1 automation workflow</li>
-          <li>Up to 2 tool integrations</li>
-          <li>WhatsApp or email automation</li>
-          <li>Basic Airtable CRM setup</li>
-          <li>7-day support after delivery</li>
-        </ul>
-        <a href="https://wa.me/6590183930" class="btn-plan bp-outline">Get Started</a>
-      </div>
-
-      <div class="pc feat fi">
-        <div class="feat-badge">Most Popular</div>
-        <div class="plan-n">Pro Suite</div>
-        <div class="plan-p" style="font-size:28px;letter-spacing:-0.02em;margin-bottom:6px;">Custom</div>
-        <div class="plan-note">Billed monthly &mdash; book a call for pricing</div>
-        <div class="plan-hr"></div>
-        <ul class="plan-feats">
-          <li>Up to 3 automation workflows</li>
-          <li>Up to 5 tool integrations</li>
-          <li>WhatsApp + email + CRM</li>
-          <li>AI-powered response logic</li>
-          <li>Full Airtable CRM pipeline</li>
-          <li>Calendly booking integration</li>
-          <li>14-day support after delivery</li>
-        </ul>
-        <a href="https://wa.me/6590183930" class="btn-plan bp-gold">Book a Call</a>
-      </div>
-
-      <div class="pc fi">
-        <div class="plan-n">Agency</div>
-        <div class="plan-p" style="font-size:28px;letter-spacing:-0.02em;margin-bottom:6px;">Custom</div>
-        <div class="plan-note">Billed monthly &mdash; book a call for pricing</div>
-        <div class="plan-hr"></div>
-        <ul class="plan-feats">
-          <li>Full automation stack audit</li>
-          <li>Unlimited workflow scope</li>
-          <li>AI voice agent (VAPI + Twilio)</li>
-          <li>WhatsApp + email + CRM + voice</li>
-          <li>Custom AI prompts &amp; logic</li>
-          <li>Team handover + documentation</li>
-          <li>30-day priority support</li>
-        </ul>
-        <a href="https://wa.me/6590183930" class="btn-plan bp-outline">Get Started</a>
-      </div>
-
-    </div>
+    <ul class="work-index indent fi">
+      <li><a href="work.html#negotiation">
+        <span class="wi-year">2026</span>
+        <span class="wi-title">Multi-agent negotiation system<span class="wi-new">NEW</span></span>
+        <span class="wi-ind">Procurement</span>
+        <span class="wi-arrow">&rarr;</span>
+      </a></li>
+      <li><a href="work.html#lifecycle">
+        <span class="wi-year">2026</span>
+        <span class="wi-title">Lead-to-support lifecycle automation</span>
+        <span class="wi-ind">Enterprise</span>
+        <span class="wi-arrow">&rarr;</span>
+      </a></li>
+      <li><a href="work.html#voice">
+        <span class="wi-year">2026</span>
+        <span class="wi-title">AI voice agent for lead follow-up</span>
+        <span class="wi-ind">Healthcare clinic</span>
+        <span class="wi-arrow">&rarr;</span>
+      </a></li>
+      <li><a href="work.html#property">
+        <span class="wi-year">2025</span>
+        <span class="wi-title">Lead pipeline for property agents</span>
+        <span class="wi-ind">Real estate</span>
+        <span class="wi-arrow">&rarr;</span>
+      </a></li>
+      <li><a href="work.html#support">
+        <span class="wi-year">2025</span>
+        <span class="wi-title">Zypher, AI support agent for Shopify</span>
+        <span class="wi-ind">SaaS</span>
+        <span class="wi-arrow">&rarr;</span>
+      </a></li>
+    </ul>
   </div>
 </section>
 
-<!-- OUR WORK -->
-<section id="work">
+<section id="cta" class="sec">
   <div class="wrap">
-    <div class="sh fi">
-      <div class="ey">Our Work</div>
-      <h2 class="st">Real automations. <span class="g-text">Real results.</span></h2>
-      <p class="sd">Four production systems built and deployed for real clients &mdash; across enterprise, healthcare, real estate, and SaaS.</p>
-    </div>
-
-    <div class="work-grid">
-      <a href="work.html" class="work-card fi">
-        <div>
-          <div class="work-ind">Enterprise</div>
-          <div class="work-t">Lead-to-Support Lifecycle Automation</div>
-        </div>
-        <div class="work-chips">
-          <span class="work-chip">n8n</span>
-          <span class="work-chip">OpenAI</span>
-          <span class="work-chip">Pipedrive</span>
-        </div>
-      </a>
-
-      <a href="work.html" class="work-card fi">
-        <div>
-          <div class="work-ind">Healthcare &middot; Clinic</div>
-          <div class="work-t">AI Voice Agent &mdash; Automated Lead Follow-Up</div>
-        </div>
-        <div class="work-chips">
-          <span class="work-chip">VAPI</span>
-          <span class="work-chip">ElevenLabs</span>
-          <span class="work-chip">Airtable</span>
-        </div>
-      </a>
-
-      <a href="work.html" class="work-card fi">
-        <div>
-          <div class="work-ind">Real Estate</div>
-          <div class="work-t">Multi-Stage Lead Automation Pipeline</div>
-        </div>
-        <div class="work-chips">
-          <span class="work-chip">n8n</span>
-          <span class="work-chip">WhatsApp API</span>
-          <span class="work-chip">Airtable</span>
-        </div>
-      </a>
-
-      <a href="work.html" class="work-card fi">
-        <div>
-          <div class="work-ind">SaaS &middot; AI Product</div>
-          <div class="work-t">AI Customer Support Agent &mdash; SaaS Platform</div>
-        </div>
-        <div class="work-chips">
-          <span class="work-chip">OpenAI</span>
-          <span class="work-chip">Zoho Desk</span>
-          <span class="work-chip">Slack</span>
-        </div>
-      </a>
-
-    </div>
-
-    <div class="work-more fi">
-      <a href="work.html" class="btn btn-outline">View all case studies &rarr;</a>
+    <h2 class="fi">Tell us which part of your week you'd hand to a <em>machine</em>.</h2>
+    <p class="lede fi">Book a free 20-minute call. We'll look at one workflow and tell you what we'd automate and what we'd leave alone.</p>
+    <div class="contact-rows fi">
+      <a href="https://wa.me/6590183930"><span>WhatsApp</span><small>+65 9018 3930 &rarr;</small></a>
+      <a href="mailto:inquiry@coldtogoldsg.com"><span>Email</span><small>inquiry@coldtogoldsg.com &rarr;</small></a>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section id="cta">
-  <div class="wrap">
-    <div class="cta-card fi">
-      <div class="ey" style="margin-bottom:14px;">Ready to Automate?</div>
-      <h2 class="st" style="margin-bottom:12px;">
-        Turn your first cold lead <span class="g-text">into gold</span>
-      </h2>
-      <p class="sd" style="margin:0 auto;">
-        Book a free 20-minute call. We'll audit one of your current workflows and tell you exactly what we'd automate — no fluff.
-      </p>
-      <div class="cta-actions">
-        <a href="https://wa.me/6590183930" class="btn btn-gold">💬 WhatsApp Us</a>
-        <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">✉️ Email Us</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="ft">
-      <a href="#" class="logo logo-ft"><img class="logo-mark" src="assets/logo.png" alt=""><span class="logo-wm g-text">Cold to Gold</span></a>
-      <span class="ft-t">© 2026 Cold to Gold · Singapore · AI Automation Agency</span>
+      <a href="#" class="logo logo-ft"><img class="logo-mark" src="assets/logo.png" alt="Cold to Gold"></a>
+      <span class="ft-t">&copy; 2026 Cold to Gold &middot; Singapore</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Scroll reveal
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
   }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
   document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-
-  // Stagger grid children
-  ['.svc-grid .svc', '.proc-grid .proc-step', '.price-grid .pc'].forEach(sel => {
-    document.querySelectorAll(sel).forEach((el, i) => {
-      el.style.transitionDelay = `${(i % 3) * 80}ms`;
-    });
-  });
 </script>
+<script src="assets/robots.js"></script>
 </body>
 </html>

@@ -4,254 +4,101 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Work — Cold to Gold</title>
+<meta name="description" content="Case studies from Cold to Gold: a multi-agent negotiation system, lifecycle automation, voice AI follow-up, lead pipelines and an AI support product.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-  :root {
-    --bg:      #FFFFFF;
-    --bg-2:    #F5F2EC;
-    --bg-3:    #FBFAF6;
-    --cold:    #18365B;
-    --gold:    #87681C;
-    --gold-lt: #C9A84C;
-    --on-gold: #14171F;
-    --text:    #14171F;
-    --muted:   #5B6172;
-    --border:  rgba(24,54,91,0.14);
-    --ff-h:    'Playfair Display', Georgia, serif;
-    --ff-d:    'Space Grotesk', sans-serif;
-    --ff-b:    'Inter', sans-serif;
+  /* ---- PAGE HEAD ---- */
+  .page-head { padding: 150px 0 72px; }
+  .page-head .lede { margin-top: 26px; }
+  .toc {
+    list-style: none; margin-top: 52px; border-top: 2px solid var(--ink);
+    display: grid; grid-template-columns: repeat(5, 1fr);
   }
+  .toc a {
+    display: block; padding: 14px 16px 0 0; text-decoration: none;
+    font-size: 14.5px; line-height: 1.35;
+  }
+  .toc a span { display: block; font-family: var(--ff-m); font-size: 12px; color: var(--gold); margin-bottom: 4px; }
+  .toc a:hover { color: var(--gold); }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--ff-b);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+  /* ---- CASE STUDY ---- */
+  .case { padding: 88px 0; border-top: 1px solid var(--rule); scroll-margin-top: 64px; }
+  .case-meta { font-family: var(--ff-m); font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+  .case-meta b { color: var(--gold); font-weight: 500; }
+  .case h2 { max-width: 20ch; }
+  .case .lede { margin-top: 22px; }
 
-  .g-text {
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 60%, var(--gold-lt) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .facts {
+    display: flex; flex-wrap: wrap; gap: 0; margin-top: 40px;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
   }
+  .fact { padding: 18px 36px 18px 0; margin-right: 36px; border-right: 1px solid var(--rule-lt); }
+  .fact:last-child { border-right: none; margin-right: 0; }
+  .fact-n { font-family: var(--ff-h); font-size: 34px; font-weight: 700; line-height: 1.1; }
+  .fact-l { font-size: 13.5px; color: var(--muted); }
 
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .shots { margin-top: 52px; display: grid; gap: 36px; }
+  .shots-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  .shots-split { display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: start; }
+  .shots-stack { display: grid; gap: 28px; }
+  figure.shot.light img { background: #f7f8fa; }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.86);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
+  .case-body {
+    margin-top: 52px; display: grid; grid-template-columns: 1fr 260px; gap: 64px;
   }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px;
+  .case-body h3 {
+    font-family: var(--ff-m); font-size: 12.5px; font-weight: 500; color: var(--muted);
+    letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px;
   }
-  .logo {
-    display: inline-flex; align-items: center; gap: 10px;
-    text-decoration: none; line-height: 1;
+  .points { list-style: none; counter-reset: pt; }
+  .points li {
+    counter-increment: pt; position: relative;
+    padding: 14px 0 14px 40px; border-top: 1px solid var(--rule-lt); font-size: 16px;
   }
-  .logo-wm {
-    font-family: var(--ff-h); font-size: 21px; font-weight: 800;
-    letter-spacing: 0.005em; white-space: nowrap;
+  .points li::before {
+    content: counter(pt, decimal-leading-zero); position: absolute; left: 0; top: 17px;
+    font-family: var(--ff-m); font-size: 12.5px; color: var(--gold);
   }
-  .logo-mark { display: block; flex-shrink: 0; height: 44px; width: auto; }
-  .logo-ft .logo-wm { font-size: 17px; }
-  .logo-ft .logo-mark { height: 34px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: 14px; font-weight: 500; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a.active { color: var(--gold-lt); }
-  .nav-cta {
-    background: var(--gold) !important;
-    color: var(--on-gold) !important;
-    padding: 8px 20px; border-radius: 6px; font-weight: 600 !important;
-  }
-  .nav-cta:hover { background: var(--gold-lt) !important; }
+  .points b { font-weight: 600; }
+  .stack { list-style: none; }
+  .stack li { font-family: var(--ff-m); font-size: 14px; padding: 7px 0; border-top: 1px solid var(--rule-lt); }
+  .note { margin-top: 22px; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
 
-  /* PAGE HERO */
-  .page-hero {
-    padding-top: 136px; padding-bottom: 64px; text-align: center;
-  }
-  .hero-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--gold); border: 1px solid var(--border); padding: 6px 18px;
-    border-radius: 100px; margin-bottom: 28px;
-  }
-  .page-hero h1 {
-    font-family: var(--ff-h);
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 700; line-height: 1.06; letter-spacing: -0.03em;
-    margin-bottom: 18px;
-  }
-  .page-hero p {
-    color: var(--muted); font-size: 18px; max-width: 480px;
-    margin: 0 auto; line-height: 1.65;
-  }
-  .hero-rule {
-    height: 1px; margin-top: 56px;
-    background: linear-gradient(90deg, transparent 0%, var(--cold) 20%, var(--gold) 65%, transparent 100%);
-    opacity: 0.45;
-  }
+  /* ---- CLOSING ---- */
+  .closing { background: var(--navy); color: #fff; padding: 96px 0; }
+  .closing h2 { max-width: 18ch; }
+  .closing h2 em { color: var(--gold-lt); }
+  .closing .lede { color: rgba(255,255,255,0.72); margin: 22px 0 36px; }
+  .closing .btn { background: var(--gold-lt); color: var(--ink); }
+  .closing .btn:hover { background: #fff; }
+  .closing .link { color: #fff; }
 
-  /* PROJECTS */
-  .projects { padding: 80px 0 96px; }
-
-  .project {
-    display: grid; grid-template-columns: 1fr 1.7fr;
-    gap: 0; border: 1px solid var(--border); border-radius: 16px;
-    overflow: hidden; margin-bottom: 32px;
-    transition: border-color 0.2s;
+  @media (max-width: 900px) {
+    .toc { grid-template-columns: 1fr; }
+    .toc a { padding: 12px 0; border-bottom: 1px solid var(--rule-lt); }
+    .shots-2, .shots-split { grid-template-columns: 1fr; }
+    figure.shot.phone img { max-width: 360px; }
+    .case-body { grid-template-columns: 1fr; gap: 36px; }
+    .case { padding: 64px 0; }
   }
-  .project:hover { border-color: rgba(156,124,47,0.50); }
-
-  /* Left panel */
-  .proj-meta {
-    background: var(--bg-2); padding: 44px 36px;
-    display: flex; flex-direction: column; justify-content: space-between;
-    border-right: 1px solid var(--border);
-    position: relative; overflow: hidden;
-  }
-  .proj-meta::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--cold), var(--gold));
-  }
-  .proj-industry {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 16px;
-  }
-  .proj-title {
-    font-family: var(--ff-h); font-size: 22px; font-weight: 700;
-    line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 14px;
-  }
-  .proj-year {
-    font-size: 13px; color: var(--muted); margin-bottom: 28px;
-  }
-  .proj-stack {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;
-  }
-  .stack-tag {
-    background: var(--bg-3); border: 1px solid var(--border);
-    border-radius: 6px; padding: 4px 12px;
-    font-size: 12px; font-weight: 500; color: var(--muted);
-    font-family: var(--ff-d);
-  }
-
-  /* Right panel */
-  .proj-body {
-    background: var(--bg); padding: 44px 44px;
-  }
-  .proj-summary {
-    font-size: 15px; color: var(--text); line-height: 1.75;
-    margin-bottom: 28px; font-weight: 400;
-  }
-  .proj-outcomes {
-    list-style: none; margin-bottom: 0;
-  }
-  .proj-outcomes li {
-    font-size: 14px; color: var(--muted); padding: 9px 0;
-    display: flex; align-items: flex-start; gap: 12px; line-height: 1.5;
-    border-bottom: 1px solid rgba(24,54,91,0.09);
-  }
-  .proj-outcomes li:last-child { border-bottom: none; }
-  .proj-outcomes li::before {
-    content: '→'; color: var(--gold); font-weight: 700; font-size: 13px;
-    flex-shrink: 0; margin-top: 1px;
-  }
-
-  /* Stat row inside project */
-  .proj-stats {
-    display: flex; gap: 24px; flex-wrap: wrap;
-    margin-bottom: 28px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid rgba(24,54,91,0.10);
-  }
-  .proj-stat { text-align: left; }
-  .proj-stat-n {
-    font-family: var(--ff-d); font-size: 28px; font-weight: 700;
-    letter-spacing: -0.03em; line-height: 1; margin-bottom: 2px;
-  }
-  .proj-stat-l { font-size: 12px; color: var(--muted); font-weight: 500; }
-
-  /* CTA CLOSE */
-  .cta-section { padding: 0 0 96px; text-align: center; }
-  .cta-card {
-    background: var(--bg-2); border: 1px solid var(--border); border-radius: 16px;
-    padding: 72px 48px; position: relative; overflow: hidden;
-  }
-  .cta-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--cold) 0%, var(--gold) 100%);
-  }
-  .ey {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 14px;
-  }
-  .st {
-    font-family: var(--ff-h); font-size: clamp(26px, 3.5vw, 42px);
-    font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px;
-  }
-  .sd { color: var(--muted); font-size: 17px; max-width: 480px; line-height: 1.65; margin: 0 auto; }
-  .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
-  .btn {
-    padding: 13px 28px; border-radius: 8px; font-family: var(--ff-d);
-    font-weight: 600; font-size: 15px; text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: transform 0.15s, background 0.2s, border-color 0.2s;
-  }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-gold { background: var(--gold-lt); color: var(--on-gold); }
-  .btn-gold:hover { background: var(--gold-lt); }
-  .btn-outline {
-    background: transparent; color: var(--text);
-    border: 1px solid rgba(20,23,31,0.20);
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold-lt); }
-
-  /* FOOTER */
-  footer { border-top: 1px solid var(--border); padding: 28px 0; }
-  .ft { display: flex; align-items: center; justify-content: space-between; }
-  .ft-t { font-size: 13px; color: var(--muted); }
-
-  /* SCROLL REVEAL */
-  .fi { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
-  .fi.vis { opacity: 1; transform: none; }
-
-  /* RESPONSIVE */
-  @media (max-width: 800px) {
-    .project { grid-template-columns: 1fr; }
-    .proj-meta { border-right: none; border-bottom: 1px solid var(--border); padding: 32px 24px; }
-    .proj-body { padding: 32px 24px; }
-    .proj-stats { gap: 16px; }
-    .cta-card { padding: 48px 24px; }
-    .nav-links { display: none; }
-    .ft { flex-direction: column; gap: 10px; text-align: center; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .fi { opacity: 1; transform: none; }
+  @media (max-width: 600px) {
+    .page-head { padding: 120px 0 56px; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+    .fact { padding: 14px 0; margin-right: 0; border-right: none; }
+    .fact-n { font-size: 24px; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo"><img class="logo-mark" src="assets/logo.png" alt=""><span class="logo-wm g-text">Cold to Gold</span></a>
+    <a href="index.html" class="logo"><img class="logo-mark" src="assets/logo.png" alt="Cold to Gold"></a>
     <ul class="nav-links">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#process">Process</a></li>
@@ -262,242 +109,342 @@
   </div>
 </nav>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
+<header class="page-head">
   <div class="wrap">
-    <div class="hero-pill">Real Builds · Real Results</div>
-    <h1>Automation that's<br>already <span class="g-text">been shipped</span></h1>
-    <p>Four production systems built and deployed for real clients — across healthcare, real estate, enterprise, and SaaS.</p>
-    <div class="hero-rule"></div>
+    <p class="kicker"><b>Our work</b> &nbsp;/&nbsp; 2025 to now</p>
+    <h1>Five things we've built.</h1>
+    <p class="lede">From a WhatsApp follow-up for property agents to two AI agents negotiating a supply deal. Each one says what it does, what it's built on, and how it holds up.</p>
+    <ol class="toc">
+      <li><a href="#negotiation"><span>01</span>Multi-agent negotiation</a></li>
+      <li><a href="#lifecycle"><span>02</span>Lead-to-support lifecycle</a></li>
+      <li><a href="#voice"><span>03</span>AI voice follow-up</a></li>
+      <li><a href="#property"><span>04</span>Real estate lead pipeline</a></li>
+      <li><a href="#support"><span>05</span>Zypher, Shopify support agent</a></li>
+    </ol>
   </div>
-</div>
+</header>
 
-<!-- PROJECTS -->
-<div class="projects">
-  <div class="wrap">
+<main>
 
-    <!-- PROJECT 1: Enterprise -->
-    <div class="project fi">
-      <div class="proj-meta">
-        <div>
-          <div class="proj-industry">Enterprise</div>
-          <div class="proj-title">Lead-to-Support Lifecycle Automation</div>
-          <div class="proj-year">2026</div>
-        </div>
-        <div class="proj-stack">
-          <span class="stack-tag">n8n</span>
-          <span class="stack-tag">OpenAI</span>
-          <span class="stack-tag">Pipedrive</span>
-          <span class="stack-tag">Zoho Desk</span>
-          <span class="stack-tag">Stripe</span>
-          <span class="stack-tag">Slack</span>
-          <span class="stack-tag">Vonage</span>
-          <span class="stack-tag">Brevo</span>
-          <span class="stack-tag">Google Sheets</span>
-        </div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-stats">
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">56</div>
-            <div class="proj-stat-l">Workflow nodes</div>
-          </div>
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">9</div>
-            <div class="proj-stat-l">APIs integrated</div>
-          </div>
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">100%</div>
-            <div class="proj-stat-l">End-to-end automated</div>
-          </div>
-        </div>
-        <p class="proj-summary">
-          Architected a 56-node n8n workflow automating the full customer lifecycle — from inbound lead capture all the way through sales handoff, support ticketing, and billing checks. AI handles lead scoring and sentiment classification, routing each enquiry by tier, intent, and urgency without any manual intervention.
-        </p>
-        <ul class="proj-outcomes">
-          <li>AI-driven lead scoring and sentiment classification routes inbound leads and support requests automatically</li>
-          <li>Zoho Desk ticketing with SLA deadline tracking and automatic Slack alerts for at-risk tickets</li>
-          <li>Stripe billing checks integrated into the support flow — agents see payment status before responding</li>
-          <li>Zoho OAuth2 authentication and live API failure diagnosis across Zoho, Stripe, and Slack</li>
-          <li>Single pipeline connecting Google Sheets, Pipedrive, Zoho Desk, Stripe, Slack, Vonage, and Brevo</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- PROJECT 2: Healthcare Voice AI -->
-    <div class="project fi">
-      <div class="proj-meta">
-        <div>
-          <div class="proj-industry">Healthcare · Clinic</div>
-          <div class="proj-title">AI Voice Agent — Automated Lead Follow-Up</div>
-          <div class="proj-year">2026</div>
-        </div>
-        <div class="proj-stack">
-          <span class="stack-tag">n8n</span>
-          <span class="stack-tag">VAPI</span>
-          <span class="stack-tag">OpenAI</span>
-          <span class="stack-tag">ElevenLabs</span>
-          <span class="stack-tag">Airtable</span>
-          <span class="stack-tag">WhatsApp Business API</span>
-          <span class="stack-tag">Gmail</span>
-        </div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-stats">
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">&lt;60s</div>
-            <div class="proj-stat-l">Lead response time</div>
-          </div>
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">Auto</div>
-            <div class="proj-stat-l">Call retry on missed</div>
-          </div>
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">3-way</div>
-            <div class="proj-stat-l">Channel follow-up</div>
-          </div>
-        </div>
-        <p class="proj-summary">
-          End-to-end voice AI system for a healthcare clinic that automatically calls new leads, confirms interest, and classifies each call outcome — booking intent, no interest, or did-not-connect. A custom ElevenLabs voice clone gives the assistant a natural, on-brand feel. Missed calls are retried automatically with per-lead context passed dynamically into each attempt.
-        </p>
-        <ul class="proj-outcomes">
-          <li>Automated outbound calling via VAPI + OpenAI — classifies intent without human involvement</li>
-          <li>Smart retry system re-attempts calls that didn't connect, with attempt count tracked per lead</li>
-          <li>AI-generated, personalised follow-up via WhatsApp and email triggered by call outcome</li>
-          <li>Custom ElevenLabs voice clone for a natural, clinic-branded assistant voice</li>
-          <li>Full webhook and API layer connecting VAPI, n8n, Airtable, Gmail, and WhatsApp Business API</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- PROJECT 3: Real Estate -->
-    <div class="project fi">
-      <div class="proj-meta">
-        <div>
-          <div class="proj-industry">Real Estate</div>
-          <div class="proj-title">Multi-Stage Lead Automation Pipeline</div>
-          <div class="proj-year">2025</div>
-        </div>
-        <div class="proj-stack">
-          <span class="stack-tag">Make.com</span>
-          <span class="stack-tag">OpenAI</span>
-          <span class="stack-tag">Twilio</span>
-          <span class="stack-tag">WhatsApp Business API</span>
-          <span class="stack-tag">Airtable</span>
-          <span class="stack-tag">Calendly</span>
-        </div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-stats">
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">3</div>
-            <div class="proj-stat-l">Automation scenarios</div>
-          </div>
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">24/7</div>
-            <div class="proj-stat-l">Always-on follow-up</div>
-          </div>
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">Full</div>
-            <div class="proj-stat-l">Lifecycle CRM tracking</div>
-          </div>
-        </div>
-        <p class="proj-summary">
-          Built for property agents who were losing leads to slow response times. A 3-scenario Make.com automation handles instant WhatsApp reply, 24-hour follow-up, and Calendly booking confirmation — all without the agent lifting a finger. A full Kanban CRM in Airtable tracks every lead from first touch to appointment.
-        </p>
-        <ul class="proj-outcomes">
-          <li>Instant AI-generated WhatsApp reply within 60 seconds of a new lead coming in</li>
-          <li>Scheduled 24-hour follow-up message if the lead hasn't booked</li>
-          <li>Calendly booking confirmation sent automatically on appointment creation</li>
-          <li>Full Airtable CRM pipeline with automatic lead status updates across the lifecycle</li>
-          <li>Packaged as a productized service with a dedicated agency website and client-facing offering</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- PROJECT 4: SaaS -->
-    <div class="project fi">
-      <div class="proj-meta">
-        <div>
-          <div class="proj-industry">SaaS · AI Product</div>
-          <div class="proj-title">AI Customer Support Agent — SaaS Platform</div>
-          <div class="proj-year">2025</div>
-        </div>
-        <div class="proj-stack">
-          <span class="stack-tag">UI/UX Design</span>
-          <span class="stack-tag">Figma</span>
-          <span class="stack-tag">OpenAI</span>
-          <span class="stack-tag">SaaS Architecture</span>
-          <span class="stack-tag">User Flow Mapping</span>
-        </div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-stats">
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">E2E</div>
-            <div class="proj-stat-l">Product design</div>
-          </div>
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">AI</div>
-            <div class="proj-stat-l">Powered support flows</div>
-          </div>
-          <div class="proj-stat">
-            <div class="proj-stat-n g-text">Live</div>
-            <div class="proj-stat-l">In production</div>
-          </div>
-        </div>
-        <p class="proj-summary">
-          Designed the end-to-end product interface for an AI-driven customer support and automation platform. Responsible for product structure, feature logic, interface behaviour, and full user flow optimisation — translating complex backend automation into a clean, usable front-end experience that non-technical operators can manage.
-        </p>
-        <ul class="proj-outcomes">
-          <li>End-to-end SaaS product interface designed from scratch — wireframes through to final UI</li>
-          <li>Conversational UX flows and real-time automation behaviour for customer interaction handling</li>
-          <li>Feature logic and interface behaviour defined to support AI-powered ticket routing and response</li>
-          <li>User flow optimisation focused on reducing friction for non-technical operators</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <div class="wrap">
-    <div class="cta-card fi">
-      <div class="ey" style="margin-bottom:14px;">Want Something Like This?</div>
-      <h2 class="st" style="margin-bottom:12px;">
-        Let's build your <span class="g-text">next automation</span>
-      </h2>
-      <p class="sd">
-        Book a free 20-minute call. We'll map your workflow and tell you exactly what we'd automate — no fluff.
+  <!-- 01 NEGOTIATION -->
+  <article class="case" id="negotiation">
+    <div class="wrap">
+      <p class="case-meta fi"><b>01</b> &nbsp;Procurement &middot; Durian retail &middot; 2026</p>
+      <h2 class="fi">Multi-agent negotiation system</h2>
+      <p class="lede fi">
+        Two AI agents negotiate a bulk order of Mao Shan Wang durians. One buys for Durian Paradise, the other sells for a plantation.
+        Each can only see its own company's data. They can keep secrets but they can't lie: every message is fact-checked before
+        it's sent, and no deal goes through until the owner approves it on Telegram.
       </p>
-      <div class="cta-actions">
-        <a href="https://wa.me/6590183930" class="btn btn-gold">💬 WhatsApp Us</a>
-        <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">✉️ Email Us</a>
+
+      <div class="facts fi">
+        <div class="fact"><div class="fact-n">37</div><div class="fact-l">n8n nodes</div></div>
+        <div class="fact"><div class="fact-n">7 of 7</div><div class="fact-l">test runs ended in a deal</div></div>
+        <div class="fact"><div class="fact-n">SGD 31–33.50</div><div class="fact-l">agreed price per kg</div></div>
+        <div class="fact"><div class="fact-n">7</div><div class="fact-l">false claims blocked, one per run</div></div>
+      </div>
+
+      <div class="shots">
+        <figure class="shot fi">
+          <img src="assets/work/nego-live-board.jpg" alt="Live board: price line with the supplier's secret floor at SGD 29 and the buyer's secret maximum at SGD 34, a deal at SGD 31, each agent's private reasoning and the messages between them" width="1800" height="1017" loading="lazy">
+          <figcaption>The live board. The yellow band is where a deal was possible, between the supplier's secret floor and the buyer's secret maximum. Neither agent can see it. The side columns show each agent's private reasoning; the middle shows what they actually said.</figcaption>
+        </figure>
+        <div class="shots-2">
+          <figure class="shot fi">
+            <img src="assets/work/nego-lie-blocked.jpg" alt="A supplier message blocked by the verifier because it claimed a rival offer that wasn't in the records" width="1200" height="806" loading="lazy">
+            <figcaption>Turn 2 of a run: the supplier agent claims another buyer offered SGD 34/kg. That offer isn't in its records, so the verifier blocks the message and the agent has to try again.</figcaption>
+          </figure>
+          <figure class="shot fi">
+            <img src="assets/work/nego-n8n-canvas.jpg" alt="The n8n workflow: buyer agent, verifier, referee, supplier agent, verifier, referee, then Telegram approval and purchase order" width="1800" height="847" loading="lazy">
+            <figcaption>The workflow in n8n. Top row: the negotiation loop. Bottom row: owner approval, purchase order and Telegram messages.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="case-body">
+        <div class="fi">
+          <h3>How it works</h3>
+          <ol class="points">
+            <li><b>Separate data per side.</b> Each company's data sits behind its own MCP server with read-only database access. The buyer sees stock, demand forecast and budget; the supplier sees harvest lots, pricing and rival offers. Neither can query the other.</li>
+            <li><b>Agents decide their own moves.</b> Each agent checks its numbers, then makes an offer, a counter-offer, accepts or walks away, in a fixed structured format.</li>
+            <li><b>Every message is fact-checked.</b> A verifier agent checks each outgoing message against the sender's own records. Anything that doesn't match is blocked and sent back to be rewritten.</li>
+            <li><b>A referee enforces the rules.</b> Code nodes check each move is valid, keep score of offers and end the negotiation at the turn limit.</li>
+            <li><b>A planted trap in the data.</b> One harvest lot is listed twice, which makes 310 kg of stock look like 430 kg. The supplier agent has to spot the duplicate rather than sell stock it doesn't have.</li>
+            <li><b>A person signs off.</b> When the agents agree, the owner gets the terms on Telegram. Approve, and a purchase order is created and sent. Reject, and nothing happens.</li>
+          </ol>
+        </div>
+        <aside class="fi">
+          <h3>Built with</h3>
+          <ul class="stack">
+            <li>n8n</li>
+            <li>OpenAI</li>
+            <li>MCP (Python)</li>
+            <li>SQLite</li>
+            <li>Telegram Bot API</li>
+            <li>Docker</li>
+          </ul>
+          <p class="note">Test runs use made-up company data. Prices, stock and rival offers are not real.</p>
+        </aside>
       </div>
     </div>
-  </div>
-</div>
+  </article>
 
-<!-- FOOTER -->
+  <!-- 02 LIFECYCLE -->
+  <article class="case" id="lifecycle">
+    <div class="wrap">
+      <p class="case-meta fi"><b>02</b> &nbsp;Enterprise &middot; 2026</p>
+      <h2 class="fi">Lead-to-support lifecycle automation</h2>
+      <p class="lede fi">
+        Every enquiry, whether it comes in as a phone call, a web form or a WhatsApp message, goes through one n8n workflow.
+        It gets cleaned up, enriched, scored and checked against the CRM, then routed by what the customer actually wants.
+        Sales enquiries get a rep, support requests get a ticket with a deadline, billing questions get checked against Stripe,
+        and a day later everyone gets a short feedback survey.
+      </p>
+
+      <div class="facts fi">
+        <div class="fact"><div class="fact-n">56</div><div class="fact-l">n8n nodes</div></div>
+        <div class="fact"><div class="fact-n">3</div><div class="fact-l">intake channels: voice, form, WhatsApp</div></div>
+        <div class="fact"><div class="fact-n">4</div><div class="fact-l">intent routes</div></div>
+        <div class="fact"><div class="fact-n">2h / 24h</div><div class="fact-l">SLA for unhappy / other tickets</div></div>
+      </div>
+
+      <div class="shots">
+        <figure class="shot fi">
+          <img src="assets/work/ent-intake.jpg" alt="First half of the n8n workflow: three intake webhooks, validation, enrichment, lead scoring, CRM deduplication and hot, warm and cold routing" width="1800" height="521" loading="lazy">
+          <figcaption>First half. Three intake webhooks on the left, then validation, enrichment, lead scoring, CRM deduplication and the hot / warm / cold split. Bottom left: the daily Slack digest.</figcaption>
+        </figure>
+        <figure class="shot fi">
+          <img src="assets/work/ent-routing.jpg" alt="Second half of the n8n workflow: OpenAI intent classification splitting into support, billing, sales and other branches, merging into a feedback survey" width="1800" height="764" loading="lazy">
+          <figcaption>Second half. OpenAI labels the intent, then the flow splits into support (Zoho Desk with SLA checks), billing (Stripe), sales (Pipedrive) and everything else, before merging into the feedback survey.</figcaption>
+        </figure>
+      </div>
+
+      <div class="case-body">
+        <div class="fi">
+          <h3>How it works</h3>
+          <ol class="points">
+            <li><b>One way in.</b> Vapi voice calls, Tally forms and WhatsApp messages each have their own webhook. They're normalised into the same shape and checked for required fields. Incomplete submissions are logged, not silently dropped.</li>
+            <li><b>Enrich and score.</b> Company and contact details are looked up, bad email addresses are flagged, and each lead gets a score based on company size, the channel it came from and what the message asks about. Asking about pricing scores higher.</li>
+            <li><b>No duplicates.</b> Every lead is checked against the CRM. Existing records are updated; new ones are created.</li>
+            <li><b>Hot, warm or cold.</b> A hot lead (score 50 or more) sends a Slack message, puts a hold in the rep's calendar and fires a WhatsApp alert. Warm leads go into a Brevo nurture sequence with a follow-up two days later. Cold leads join the newsletter.</li>
+            <li><b>Read the intent.</b> OpenAI labels each message as sales, support, billing or other and rates the sentiment, returning JSON. Parsing is wrapped so one malformed reply can't stop the run.</li>
+            <li><b>Support with a deadline.</b> Unhappy customers are escalated on WhatsApp straight away. A Zoho Desk ticket is opened with an SLA of 2 hours for negative sentiment and 24 hours otherwise. The workflow checks back; if the ticket is still open it alerts Slack and logs the breach.</li>
+            <li><b>Billing and sales.</b> Billing questions look up the customer and invoice in Stripe and send a Brevo reminder if payment is overdue. Sales enquiries are assigned a rep, posted to Slack, and created as a person and an opportunity in Pipedrive.</li>
+            <li><b>Close the loop.</b> All branches merge into one interaction summary. A day later the customer gets an NPS survey and the answer is stored. A daily digest goes to Slack, and any workflow error pings the team.</li>
+          </ol>
+        </div>
+        <aside class="fi">
+          <h3>Built with</h3>
+          <ul class="stack">
+            <li>n8n</li><li>OpenAI</li><li>Vapi</li><li>Tally</li><li>WhatsApp (Meta API)</li><li>Zoho Desk</li><li>Stripe</li><li>Pipedrive</li><li>Brevo</li><li>Slack</li><li>Google Calendar</li><li>Google Sheets</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 VOICE -->
+  <article class="case" id="voice">
+    <div class="wrap">
+      <p class="case-meta fi"><b>03</b> &nbsp;Healthcare clinic &middot; 2026</p>
+      <h2 class="fi">AI voice agent for lead follow-up</h2>
+      <p class="lede fi">
+        When someone asks a clinic about an appointment, they get a personal WhatsApp and email within a minute, then a phone call
+        from an AI assistant. What happens on that call decides what they hear next: a booking confirmation, another try later,
+        or a polite close.
+      </p>
+
+      <div class="facts fi">
+        <div class="fact"><div class="fact-n">2</div><div class="fact-l">n8n workflows: outreach and call results</div></div>
+        <div class="fact"><div class="fact-n">8</div><div class="fact-l">OpenAI steps</div></div>
+        <div class="fact"><div class="fact-n">3</div><div class="fact-l">channels: phone, WhatsApp, email</div></div>
+        <div class="fact"><div class="fact-n">&lt;60s</div><div class="fact-l">from enquiry to first message</div></div>
+      </div>
+
+      <div class="shots">
+        <div class="shots-split">
+          <figure class="shot phone fi">
+            <img src="assets/work/voice-messages.jpg" alt="Phone notifications: a WhatsApp and email from the clinic using the lead's name and branch, then follow-ups confirming a 4:00 PM appointment" width="770" height="900" loading="lazy">
+            <figcaption>An end-to-end test on our own phone. The first WhatsApp and email use the lead's name, the clinic and the branch they chose. After the call, both follow-ups confirm the 4:00 PM slot agreed on the call. The booking link is a placeholder in the demo.</figcaption>
+          </figure>
+          <div class="shots-stack">
+            <figure class="shot fi">
+              <img src="assets/work/voice-lead-gen.jpg" alt="n8n Lead Generation workflow: Airtable trigger into three OpenAI steps feeding a Vapi voice call, a WhatsApp alert and a Gmail message" width="1600" height="736" loading="lazy">
+              <figcaption>Workflow 1: a new lead in Airtable fans out into the voice call, the WhatsApp message and the email, each written by its own OpenAI step.</figcaption>
+            </figure>
+            <figure class="shot fi">
+              <img src="assets/work/voice-classify.jpg" alt="n8n Lead Classification workflow: webhook, OpenAI classification, switch into WhatsApp, email, retry with wait, and Airtable updates" width="1600" height="602" loading="lazy">
+              <figcaption>Workflow 2: the call result arrives by webhook, OpenAI classifies it, and the flow branches into follow-up, retry or a record update.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-body">
+        <div class="fi">
+          <h3>How it works</h3>
+          <ol class="points">
+            <li><b>A new lead starts it.</b> When a lead lands in Airtable, the first workflow picks it up and tidies the fields.</li>
+            <li><b>Three messages, one record.</b> Three separate OpenAI steps write from the same lead details: a WhatsApp message, a follow-up email, and a short brief for the voice call, so the assistant knows the person's name, clinic and branch before it dials.</li>
+            <li><b>The call.</b> After a short wait, Vapi places the call using an ElevenLabs voice cloned for the clinic, so it sounds like the clinic's own receptionist rather than a stock voice.</li>
+            <li><b>Read the outcome.</b> When the call ends, Vapi sends the result to the second workflow. OpenAI reads it and decides what happened: booked, not interested, or didn't connect.</li>
+            <li><b>Follow up on what was said.</b> If they booked, the WhatsApp and email confirm the time and branch agreed on the call, with a booking link. If they're not interested, the record is updated and nothing else is sent.</li>
+            <li><b>Try again, within limits.</b> If the call didn't connect, the workflow waits, then calls again with the lead's details passed into the new attempt. It counts attempts and stops at the limit.</li>
+            <li><b>One source of truth.</b> Every outcome updates the lead's record in Airtable, so the clinic can see where each enquiry stands.</li>
+          </ol>
+        </div>
+        <aside class="fi">
+          <h3>Built with</h3>
+          <ul class="stack">
+            <li>n8n</li><li>Vapi</li><li>OpenAI</li><li>ElevenLabs</li><li>Airtable</li><li>WhatsApp (Meta API)</li><li>Gmail</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <!-- 04 PROPERTY -->
+  <article class="case" id="property">
+    <div class="wrap">
+      <p class="case-meta fi"><b>04</b> &nbsp;Real estate &middot; 2025</p>
+      <h2 class="fi">Multi-stage lead pipeline for property agents</h2>
+      <p class="lede fi">
+        A buyer fills in an enquiry form at 10 pm. The agent is at a viewing and replies the next morning, by which time the buyer
+        has called three other agents. This system replies on WhatsApp within a minute, any time of day, tells the agent on Telegram,
+        logs the lead and follows up with anyone who goes quiet.
+      </p>
+
+      <div class="facts fi">
+        <div class="fact"><div class="fact-n">&lt;60s</div><div class="fact-l">to the first WhatsApp reply</div></div>
+        <div class="fact"><div class="fact-n">3</div><div class="fact-l">Make.com scenarios</div></div>
+        <div class="fact"><div class="fact-n">24h</div><div class="fact-l">until an automatic follow-up</div></div>
+        <div class="fact"><div class="fact-n">2h</div><div class="fact-l">reminder before each viewing</div></div>
+      </div>
+
+      <div class="shots">
+        <figure class="shot light fi">
+          <img src="assets/work/re-make.jpg" alt="Make.com scenario: Tally form, set variables, OpenAI, Twilio WhatsApp request, Airtable record and Telegram message" width="1600" height="441" loading="lazy">
+          <figcaption>The main Make.com scenario: Tally form, tidy the fields, OpenAI writes the reply, WhatsApp sends it, Airtable logs the lead, Telegram tells the agent.</figcaption>
+        </figure>
+        <div class="shots-2">
+          <figure class="shot fi">
+            <img src="assets/work/re-whatsapp.jpg" alt="WhatsApp message confirming a property consultation with a date, time and reschedule link" width="900" height="543" loading="lazy">
+            <figcaption>What the buyer gets after booking: a WhatsApp confirmation with the time and a link to reschedule.</figcaption>
+          </figure>
+          <figure class="shot fi">
+            <img src="assets/work/re-telegram.jpg" alt="Telegram new lead alert listing intent, property type, budget, timeline and preferred area" width="900" height="462" loading="lazy">
+            <figcaption>What the agent gets: a Telegram summary of the lead seconds after the form is sent. Phone number hidden.</figcaption>
+          </figure>
+        </div>
+        <figure class="shot light fi">
+          <img src="assets/work/re-crm.jpg" alt="Airtable Kanban board with columns New, Contacted, Viewing Booked and Closed" width="1600" height="384" loading="lazy">
+          <figcaption>The agent's Airtable board. Leads move from New to Contacted to Viewing Booked by themselves; the agent moves them to Closed. Test data.</figcaption>
+        </figure>
+      </div>
+
+      <div class="case-body">
+        <div class="fi">
+          <h3>How it works</h3>
+          <ol class="points">
+            <li><b>One form link everywhere.</b> The agent puts a single Tally link in their Instagram bio, Facebook ads, PropertyGuru listings and on flyers as a QR code. It asks whether they want to buy, rent or invest, plus property type, budget, timeline and area.</li>
+            <li><b>Instant trigger.</b> A new submission starts the Make.com scenario straight away, not on a timer.</li>
+            <li><b>A reply that reads like a person.</b> OpenAI writes a short WhatsApp message: greets them by first name, confirms what they're looking for in one sentence, says the agent will be in touch and includes a Calendly link.</li>
+            <li><b>Send, log, alert.</b> The message goes out through the WhatsApp API, the lead is saved in Airtable, and the agent gets a Telegram summary on their phone.</li>
+            <li><b>Chase the quiet ones once.</b> A second scenario runs every morning. Anyone still marked New after 24 hours without a booking gets a follow-up and is moved to Contacted, so nobody is messaged twice.</li>
+            <li><b>Bookings handle themselves.</b> A third scenario watches Calendly. A booking marks the lead as Viewing Booked, sends a WhatsApp confirmation and a reminder two hours before.</li>
+          </ol>
+        </div>
+        <aside class="fi">
+          <h3>Built with</h3>
+          <ul class="stack">
+            <li>Make.com</li><li>Tally</li><li>OpenAI</li><li>Twilio (WhatsApp)</li><li>Airtable</li><li>Telegram Bot API</li><li>Calendly</li>
+          </ul>
+          <p class="note">Packaged as a productised service for property agents.</p>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 ZYPHER -->
+  <article class="case" id="support">
+    <div class="wrap">
+      <p class="case-meta fi"><b>05</b> &nbsp;SaaS &middot; Shopify app &middot; 2025&ndash;26</p>
+      <h2 class="fi">Zypher, an AI support agent for Shopify stores</h2>
+      <p class="lede fi">
+        A Shopify app that adds a support assistant to a store. It reads that store's own policies and pages, so when a customer
+        asks about refunds it answers with the store's actual return window and conditions, not a generic reply. Merchants install it,
+        sync, and switch it on from inside Shopify admin. We designed and built it end to end.
+      </p>
+
+      <div class="facts fi">
+        <div class="fact"><div class="fact-n">3</div><div class="fact-l">parts: backend, merchant app, storefront widget</div></div>
+        <div class="fact"><div class="fact-n">11</div><div class="fact-l">store sources synced on the test store</div></div>
+        <div class="fact"><div class="fact-n">4</div><div class="fact-l">most relevant sources used per answer</div></div>
+      </div>
+
+      <div class="shots">
+        <figure class="shot fi">
+          <img src="assets/work/zy-storefront.jpg" alt="Shopify theme editor with the Zypher widget open on a test store, answering a refund policy question from the store's own policy" width="1800" height="941" loading="lazy">
+          <figcaption>The widget on a test store. Asked "what is the refund policy", it answers from the store's own policy: 30 days, unused items, refunds in 5 to 10 business days, shipping not refunded. Appearance is set in the theme editor on the left.</figcaption>
+        </figure>
+        <figure class="shot fi">
+          <img src="assets/work/zy-admin.jpg" alt="Zypher merchant page inside Shopify admin showing setup checks, store connection and usage metrics" width="1800" height="949" loading="lazy">
+          <figcaption>The merchant page inside Shopify admin: setup checks, store sync and usage metrics in one place.</figcaption>
+        </figure>
+      </div>
+
+      <div class="case-body">
+        <div class="fi">
+          <h3>How it works</h3>
+          <ol class="points">
+            <li><b>Install and connect.</b> The merchant installs the app from Shopify and the store connects through Shopify's OAuth. There's nothing to set up outside Shopify.</li>
+            <li><b>Sync the store's knowledge.</b> One click imports the store's policies and pages as knowledge sources.</li>
+            <li><b>Answer from the store, not the internet.</b> For each question the backend splits the sources into chunks, picks the few that matter and gives only those to the model, with instructions to answer from them. Each answer records which sources it used.</li>
+            <li><b>Fast repeats.</b> Common questions are served from a short cache keyed on the store, the question and the source content, so answers update as soon as the store re-syncs.</li>
+            <li><b>Merchant controls.</b> Assistant name, greeting, tone and a switch to pause replies without losing settings. Usage numbers and customer conversations are on the same page, with a way to review answers.</li>
+            <li><b>Widget in the theme.</b> The storefront widget is a theme app extension, so launcher text, accent colour, position and size are set in Shopify's theme editor.</li>
+            <li><b>Billing built in.</b> Plans run through Shopify's own subscriptions. Syncing and the widget unlock once a plan is active.</li>
+          </ol>
+        </div>
+        <aside class="fi">
+          <h3>Built with</h3>
+          <ul class="stack">
+            <li>Node.js / Express</li><li>React</li><li>OpenAI</li><li>Shopify Admin API</li><li>Theme app extension</li><li>Shopify Billing</li><li>Render</li>
+          </ul>
+          <p class="note">Screenshots are from a Shopify development store with generated test data.</p>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<section class="closing">
+  <div class="wrap">
+    <h2 class="fi">Want something like this for your <em>business</em>?</h2>
+    <p class="lede fi">Book a free 20-minute call. We'll look at one workflow and tell you what we'd automate.</p>
+    <div class="actions fi">
+      <a href="https://wa.me/6590183930" class="btn">Message us on WhatsApp</a>
+      <a href="mailto:inquiry@coldtogoldsg.com" class="link">inquiry@coldtogoldsg.com</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="ft">
-      <a href="index.html" class="logo logo-ft"><img class="logo-mark" src="assets/logo.png" alt=""><span class="logo-wm g-text">Cold to Gold</span></a>
-      <span class="ft-t">© 2026 Cold to Gold · Singapore · AI Automation Agency</span>
+      <a href="index.html" class="logo logo-ft"><img class="logo-mark" src="assets/logo.png" alt="Cold to Gold"></a>
+      <span class="ft-t">&copy; 2026 Cold to Gold &middot; Singapore</span>
     </div>
   </div>
 </footer>
 
 <script>
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
   }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
-  document.querySelectorAll('.fi').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 40}ms`;
-    obs.observe(el);
-  });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </script>
+<script src="assets/robots.js"></script>
 </body>
 </html>
