@@ -17,10 +17,42 @@
   #hero h1 { margin: 0 auto; }
   #hero h1 em { font-style: normal; }
   #hero .actions { justify-content: center; margin-top: 40px; }
-  #hero .btn-white {
-    background: #fff; color: var(--ink); border: 1px solid var(--rule);
+  #hero .actions .btn {
+    position: relative; isolation: isolate; overflow: hidden;
+    font-family: var(--ff-h); font-weight: 700; font-size: 19px; letter-spacing: -0.005em;
+    padding: 15px 30px; border: 1px solid var(--navy);
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: color 0.35s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.35s ease;
   }
-  #hero .btn-white:hover { background: var(--paper-2); }
+  #hero .actions .btn::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s cubic-bezier(.7,0,.2,1);
+  }
+  #hero .actions .btn::after {
+    content: '\2192'; font-family: var(--ff-b); font-weight: 500;
+    display: inline-block; max-width: 0; opacity: 0; transform: translateX(-6px);
+    transition: max-width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+  #hero .actions .btn:hover {
+    transform: translateY(-3px); box-shadow: 0 14px 28px -14px rgba(21,24,31,0.45);
+  }
+  #hero .actions .btn:hover::before { transform: scaleX(1); }
+  #hero .actions .btn:hover::after { max-width: 1em; opacity: 1; transform: none; }
+  #hero .actions .btn:active { transform: translateY(-1px); }
+
+  #hero .btn-book { background: var(--navy); color: #fff; }
+  #hero .btn-book::before { background: var(--gold-lt); }
+  #hero .btn-book:hover { color: var(--ink); border-color: var(--gold-lt); }
+
+  #hero .btn-white { background: #fff; color: var(--navy); }
+  #hero .btn-white::before { background: var(--navy); }
+  #hero .btn-white:hover { color: #fff; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #hero .actions .btn, #hero .actions .btn::before, #hero .actions .btn::after { transition: none; }
+    #hero .actions .btn:hover { transform: none; }
+  }
   figure.hero-shot { margin-top: 80px; text-align: left; }
 
   /* ---- ABOUT ---- */
@@ -151,7 +183,7 @@
     <p class="kicker"><b>Cold to Gold</b> &nbsp;/&nbsp; AI automation agency</p>
     <h1>Turn cold leads into <em>gold</em> clients.</h1>
     <div class="actions">
-      <a href="https://wa.me/6590183930" class="btn">Book an appointment</a>
+      <a href="https://wa.me/6590183930" class="btn btn-book">Book an appointment</a>
       <a href="#about" class="btn btn-white">About Us</a>
     </div>
 
