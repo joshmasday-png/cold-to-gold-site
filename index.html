@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
   /* ---- HERO ---- */
@@ -17,42 +17,14 @@
   #hero h1 { margin: 0 auto; }
   #hero h1 em { font-style: normal; }
   #hero .actions { justify-content: center; margin-top: 40px; }
-  #hero .actions .btn {
-    position: relative; isolation: isolate; overflow: hidden;
-    font-family: var(--ff-h); font-weight: 700; font-size: 19px; letter-spacing: -0.005em;
-    padding: 15px 30px; border: 1px solid var(--navy);
-    display: inline-flex; align-items: center; gap: 10px;
-    transition: color 0.35s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.35s ease;
+  #hero .actions .btn-book {
+    background: var(--gold-lt); color: var(--ink); border: none;
+    font-family: var(--ff-h); font-weight: 900; font-size: 20px; letter-spacing: -0.005em;
+    padding: 16px 32px; display: inline-flex; align-items: center; gap: 12px;
   }
-  #hero .actions .btn::before {
-    content: ''; position: absolute; inset: 0; z-index: -1;
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.4s cubic-bezier(.7,0,.2,1);
-  }
-  #hero .actions .btn::after {
-    content: '\2192'; font-family: var(--ff-b); font-weight: 500;
-    display: inline-block; max-width: 0; opacity: 0; transform: translateX(-6px);
-    transition: max-width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-  }
-  #hero .actions .btn:hover {
-    transform: translateY(-3px); box-shadow: 0 14px 28px -14px rgba(21,24,31,0.45);
-  }
-  #hero .actions .btn:hover::before { transform: scaleX(1); }
-  #hero .actions .btn:hover::after { max-width: 1em; opacity: 1; transform: none; }
-  #hero .actions .btn:active { transform: translateY(-1px); }
+  #hero .actions .btn-book::after { content: '\2192'; font-family: var(--ff-b); font-weight: 600; }
+  #hero .actions .btn-book:hover { background: var(--gold-lt); color: var(--ink); }
 
-  #hero .btn-book { background: var(--navy); color: #fff; }
-  #hero .btn-book::before { background: var(--gold-lt); }
-  #hero .btn-book:hover { color: var(--ink); border-color: var(--gold-lt); }
-
-  #hero .btn-white { background: #fff; color: var(--navy); }
-  #hero .btn-white::before { background: var(--navy); }
-  #hero .btn-white:hover { color: #fff; }
-
-  @media (prefers-reduced-motion: reduce) {
-    #hero .actions .btn, #hero .actions .btn::before, #hero .actions .btn::after { transition: none; }
-    #hero .actions .btn:hover { transform: none; }
-  }
   figure.hero-shot { margin-top: 80px; text-align: left; }
 
   /* ---- ABOUT ---- */
@@ -169,6 +141,7 @@
   <div class="nav-inner">
     <a href="#" class="logo"><img class="logo-mark" src="assets/logo.png" alt="Cold to Gold"></a>
     <ul class="nav-links">
+      <li><a href="#about">About Us</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#pricing">Pricing</a></li>
@@ -184,7 +157,6 @@
     <h1>Turn cold leads into <em>gold</em> clients.</h1>
     <div class="actions">
       <a href="https://wa.me/6590183930" class="btn btn-book">Book an appointment</a>
-      <a href="#about" class="btn btn-white">About Us</a>
     </div>
 
     <figure class="shot hero-shot fi">

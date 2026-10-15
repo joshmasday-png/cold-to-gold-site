@@ -46,7 +46,7 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px;
 }
-.logo { display: inline-flex; align-items: center; text-decoration: none; }
+.logo { display: inline-flex; align-items: center; text-decoration: none; flex-shrink: 0; margin-right: 12px; }
 .logo-mark { display: block; height: 44px; width: auto; }
 .logo-ft .logo-mark { height: 36px; }
 .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
@@ -146,6 +146,11 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0; background: var(--p
   .nav-links a { font-size: 10.5px; letter-spacing: 0.04em; }
   .nav-links li:has(.nav-cta) { display: none; }
   .logo-mark { height: 34px; }
+}
+@media (max-width: 400px) {
+  .nav-links { gap: 9px; }
+  .nav-links a { font-size: 9.5px; letter-spacing: 0.02em; }
+  .logo-mark { height: 30px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
