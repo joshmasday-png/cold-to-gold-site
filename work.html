@@ -9,27 +9,28 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
   /* ---- PAGE HEAD ---- */
-  .page-head { padding: 150px 0 72px; }
+  .page-head { padding: 160px 0 80px; border-bottom: 1px solid var(--rule-lt); }
   .page-head .lede { margin-top: 26px; }
   .toc {
-    list-style: none; margin-top: 52px; border-top: 2px solid var(--ink);
+    list-style: none; margin-top: 56px; border-top: 1px solid var(--rule);
     display: grid; grid-template-columns: repeat(5, 1fr);
   }
   .toc a {
     display: block; padding: 14px 16px 0 0; text-decoration: none;
     font-size: 14.5px; line-height: 1.35;
   }
-  .toc a span { display: block; font-family: var(--ff-m); font-size: 12px; color: var(--gold); margin-bottom: 4px; }
-  .toc a:hover { color: var(--gold); }
+  .toc a span { display: block; font-family: var(--ff-h); font-weight: 700; font-size: 14px; color: var(--gold-lt); margin-bottom: 4px; }
+  .toc a:hover { color: var(--navy); }
 
   /* ---- CASE STUDY ---- */
-  .case { padding: 88px 0; border-top: 1px solid var(--rule); scroll-margin-top: 64px; }
-  .case-meta { font-family: var(--ff-m); font-size: 13px; color: var(--muted); margin-bottom: 18px; }
-  .case-meta b { color: var(--gold); font-weight: 500; }
+  .case { padding: 104px 0; scroll-margin-top: 72px; }
+  .case:nth-of-type(even) { background: rgba(246,245,241,0.72); }
+  .case-meta { font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+  .case-meta b { color: var(--gold); font-weight: 600; }
   .case h2 { max-width: 20ch; }
   .case .lede { margin-top: 22px; }
 
@@ -52,8 +53,8 @@
     margin-top: 52px; display: grid; grid-template-columns: 1fr 260px; gap: 64px;
   }
   .case-body h3 {
-    font-family: var(--ff-m); font-size: 12.5px; font-weight: 500; color: var(--muted);
-    letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px;
+    font-size: 12.5px; font-weight: 600; color: var(--ink);
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
   }
   .points { list-style: none; counter-reset: pt; }
   .points li {
@@ -62,21 +63,26 @@
   }
   .points li::before {
     content: counter(pt, decimal-leading-zero); position: absolute; left: 0; top: 17px;
-    font-family: var(--ff-m); font-size: 12.5px; color: var(--gold);
+    font-family: var(--ff-h); font-weight: 700; font-size: 14px; color: var(--gold-lt);
   }
   .points b { font-weight: 600; }
   .stack { list-style: none; }
-  .stack li { font-family: var(--ff-m); font-size: 14px; padding: 7px 0; border-top: 1px solid var(--rule-lt); }
+  .stack li { font-size: 15px; padding: 8px 0; border-top: 1px solid var(--rule-lt); }
   .note { margin-top: 22px; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
 
   /* ---- CLOSING ---- */
-  .closing { background: var(--navy); color: #fff; padding: 96px 0; }
-  .closing h2 { max-width: 18ch; }
+  .closing { background: var(--navy); color: #fff; padding: 104px 0; text-align: center; }
+  .closing .actions { justify-content: center; }
+  .closing h2 { max-width: 18ch; margin: 0 auto; }
   .closing h2 em { color: var(--gold-lt); }
-  .closing .lede { color: rgba(255,255,255,0.72); margin: 22px 0 36px; }
-  .closing .btn { background: var(--gold-lt); color: var(--ink); }
-  .closing .btn:hover { background: #fff; }
-  .closing .link { color: #fff; }
+  .closing .lede { color: rgba(255,255,255,0.75); margin: 20px auto 40px; }
+  .closing .btn-book {
+    background: var(--gold-lt); color: var(--ink);
+    font-family: var(--ff-h); font-weight: 900; font-size: 20px; padding: 17px 34px; gap: 12px;
+  }
+  .closing .btn-book::after { content: '\2192'; font-family: var(--ff-b); font-weight: 600; }
+  .closing .btn-outline { color: #fff; border-color: rgba(255,255,255,0.35); }
+  .closing .btn-outline:hover { background: rgba(255,255,255,0.08); }
 
   @media (max-width: 900px) {
     .toc { grid-template-columns: 1fr; }
@@ -112,7 +118,7 @@
 
 <header class="page-head">
   <div class="wrap">
-    <p class="kicker"><b>Our work</b> &nbsp;/&nbsp; 2025 to now</p>
+    <p class="eyebrow">Our work</p>
     <h1>Five things we've built.</h1>
     <p class="lede">From a WhatsApp follow-up for property agents to two AI agents negotiating a supply deal. Each one says what it does, what it's built on, and how it holds up.</p>
     <ol class="toc">
@@ -422,20 +428,42 @@
 
 <section class="closing">
   <div class="wrap">
-    <h2 class="fi">Want something like this for your <em>business</em>?</h2>
-    <p class="lede fi">Book a free 20-minute call. We'll look at one workflow and tell you what we'd automate.</p>
+    <h2 class="fi">Let's talk about your workflow.</h2>
+    <p class="lede fi">Book a free 20-minute call. We'll review one workflow and tell you what we would automate, and what we would leave alone.</p>
     <div class="actions fi">
-      <a href="https://wa.me/6590183930" class="btn">Message us on WhatsApp</a>
-      <a href="mailto:inquiry@coldtogoldsg.com" class="link">inquiry@coldtogoldsg.com</a>
+      <a href="https://wa.me/6590183930" class="btn btn-book">Book an appointment</a>
+      <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">Email us</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="ft">
-      <a href="index.html" class="logo logo-ft"><img class="logo-mark" src="assets/logo.png" alt="Cold to Gold"></a>
-      <span class="ft-t">&copy; 2026 Cold to Gold &middot; Singapore</span>
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <a href="index.html" class="logo"><img class="logo-mark" src="assets/logo.png" alt="Cold to Gold"></a>
+        <p>AI automation systems for growing businesses. Based in Singapore.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#about">About us</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="work.html">Our work</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/6590183930">WhatsApp +65 9018 3930</a></li>
+          <li><a href="mailto:inquiry@coldtogoldsg.com">inquiry@coldtogoldsg.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-base">
+      <span>&copy; 2026 Cold to Gold. All rights reserved.</span>
+      <span>Singapore</span>
     </div>
   </div>
 </footer>
@@ -446,6 +474,6 @@
   }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
   document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </script>
-<script src="assets/robots.js"></script>
+<script src="assets/cascade.js"></script>
 </body>
 </html>

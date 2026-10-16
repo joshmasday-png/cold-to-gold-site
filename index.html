@@ -4,134 +4,127 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cold to Gold — AI Automation Agency</title>
-<meta name="description" content="Cold to Gold builds n8n and AI automations for growing businesses: WhatsApp replies, voice follow-up, CRM sync and multi-agent systems.">
+<meta name="description" content="Cold to Gold designs and deploys AI automation systems for growing businesses: lead follow-up, voice agents, support assistants, CRM sync and multi-agent systems.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
   /* ---- HERO ---- */
-  #hero { padding: 150px 0 96px; text-align: center; }
-  #hero h1 { margin: 0 auto; font-weight: 750; }
-  #hero h1 em { font-style: normal; }
-  #hero .actions { justify-content: center; margin-top: 40px; }
-  #hero .actions .btn-book {
-    background: var(--gold-lt); color: var(--ink); border: none;
-    font-family: var(--ff-h); font-weight: 900; font-size: 20px; letter-spacing: -0.005em;
-    padding: 16px 32px; display: inline-flex; align-items: center; gap: 12px;
+  #hero {
+    min-height: min(88vh, 860px); display: flex; align-items: center;
+    padding: 140px 0 96px; text-align: center;
+    border-bottom: 1px solid var(--rule-lt);
   }
-  #hero .actions .btn-book::after { content: '\2192'; font-family: var(--ff-b); font-weight: 600; }
-  #hero .actions .btn-book:hover { background: var(--gold-lt); color: var(--ink); }
-
-  figure.hero-shot { margin-top: 80px; text-align: left; }
+  #hero .wrap { width: 100%; }
+  #hero h1 { margin: 0 auto; font-weight: 750; }
+  #hero .actions { justify-content: center; margin-top: 44px; }
+  .btn-book {
+    background: var(--gold-lt); color: var(--ink);
+    font-family: var(--ff-h); font-weight: 900; font-size: 20px; letter-spacing: -0.005em;
+    padding: 17px 34px; gap: 12px;
+  }
+  .btn-book::after { content: '\2192'; font-family: var(--ff-b); font-weight: 600; }
+  .btn-book:hover { background: var(--gold-lt); color: var(--ink); }
+  .built-on {
+    margin-top: 64px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+    gap: 10px 28px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #8A8F9C;
+  }
+  .built-on span:first-child { color: var(--muted); font-weight: 500; letter-spacing: 0.04em; text-transform: none; }
 
   /* ---- ABOUT ---- */
-  .about-lead {
-    font-family: var(--ff-h); font-weight: 700;
-    font-size: clamp(22px, 2.5vw, 30px); line-height: 1.3; letter-spacing: -0.01em;
-    max-width: 30em; margin-bottom: 48px;
-  }
-  .about-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-  .about-cols div { border-top: 2px solid var(--ink); padding-top: 20px; }
-  .about-cols h3 {
-    font-family: var(--ff-m); font-size: 13px; font-weight: 500; color: var(--gold);
-    margin-bottom: 10px;
-  }
-  .about-cols p { font-size: 15.5px; color: var(--muted); }
-  .about-cols p + p { margin-top: 12px; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 80px; align-items: start; }
+  .about-grid h2 { margin-bottom: 24px; }
+  .about-intro { font-size: 19px; color: var(--muted); }
+  .pillars { list-style: none; border-top: 1px solid var(--rule); }
+  .pillars li { padding: 26px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 180px 1fr; gap: 24px; }
+  .pillars h3 { font-size: 16px; color: var(--ink); }
+  .pillars p { font-size: 16px; color: var(--muted); }
 
   /* ---- SERVICES ---- */
-  .svc-list {
-    display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px;
-    list-style: none; counter-reset: svc;
-  }
-  .svc-list li {
-    counter-increment: svc;
-    display: grid; grid-template-columns: 44px 1fr; gap: 0 8px; align-content: start;
-    padding: 26px 0; border-top: 1px solid var(--rule);
-  }
-  .svc-list li::before {
-    content: counter(svc, decimal-leading-zero);
-    font-family: var(--ff-m); font-size: 13px; color: var(--gold); padding-top: 4px;
-  }
-  .svc-list h3 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
-  .svc-list p { grid-column: 2; font-size: 15.5px; color: var(--muted); }
-  .tools-line {
-    margin-top: 48px; font-family: var(--ff-m); font-size: 13.5px;
-    color: var(--muted); line-height: 1.8;
-  }
-  .tools-line span { color: var(--ink); }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .svc { background: #fff; border: 1px solid var(--rule-lt); border-radius: 6px; padding: 34px 30px; }
+  .svc-n { font-family: var(--ff-h); font-size: 15px; font-weight: 700; color: var(--gold-lt); margin-bottom: 18px; }
+  .svc h3 { font-size: 19px; margin-bottom: 10px; }
+  .svc p { font-size: 15.5px; color: var(--muted); }
+  .tools-line { text-align: center; margin-top: 48px; font-size: 15px; color: var(--muted); }
 
   /* ---- PROCESS ---- */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; list-style: none; }
-  .steps li { border-top: 2px solid var(--ink); padding-top: 20px; }
-  .step-when { font-family: var(--ff-m); font-size: 13px; color: var(--gold); margin-bottom: 10px; }
-  .steps h3 { font-family: var(--ff-h); font-size: 28px; font-weight: 700; margin-bottom: 10px; }
-  .steps p { font-size: 15.5px; color: var(--muted); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; list-style: none; position: relative; }
+  .steps::before {
+    content: ''; position: absolute; top: 27px; left: 16.66%; right: 16.66%;
+    height: 1px; background: var(--rule);
+  }
+  .steps li { text-align: center; position: relative; }
+  .step-dot {
+    width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 24px;
+    background: var(--paper); border: 1px solid var(--gold-lt);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--ff-h); font-weight: 700; font-size: 19px; color: var(--gold);
+  }
+  .step-when { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .steps h3 { font-family: var(--ff-h); font-size: 26px; font-weight: 700; margin-bottom: 12px; }
+  .steps p { font-size: 15.5px; color: var(--muted); max-width: 30ch; margin: 0 auto; }
 
   /* ---- PRICING ---- */
-  .plans {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule);
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+  .plan {
+    background: #fff; border: 1px solid var(--rule); border-radius: 6px;
+    padding: 38px 32px; display: flex; flex-direction: column;
   }
-  .plan { padding: 30px 28px 34px; display: flex; flex-direction: column; }
-  .plan + .plan { border-left: 1px solid var(--rule); }
-  .plan:first-child { padding-left: 0; }
-  .plan:last-child { padding-right: 0; }
-  .plan h3 { font-family: var(--ff-h); font-size: 26px; font-weight: 700; }
-  .plan-for { font-size: 15px; color: var(--muted); margin: 6px 0 22px; }
-  .plan ul { list-style: none; margin-bottom: 28px; flex: 1; }
-  .plan li { font-size: 15px; padding: 8px 0; border-top: 1px solid var(--rule-lt); }
-  .plan .link { align-self: flex-start; font-size: 15px; }
+  .plan.featured { border-top: 3px solid var(--navy); box-shadow: 0 30px 60px -40px rgba(15,36,64,0.5); }
+  .plan h3 { font-family: var(--ff-h); font-size: 28px; font-weight: 700; }
+  .plan-for { font-size: 15px; color: var(--muted); margin: 6px 0 26px; }
+  .plan ul { list-style: none; margin-bottom: 32px; flex: 1; }
+  .plan li { font-size: 15px; padding: 10px 0 10px 26px; border-top: 1px solid var(--rule-lt); position: relative; }
+  .plan li::before {
+    content: ''; position: absolute; left: 2px; top: 18px; width: 10px; height: 5px;
+    border-left: 1.5px solid var(--gold); border-bottom: 1.5px solid var(--gold); transform: rotate(-45deg);
+  }
+  .plan .btn { justify-content: center; }
 
-  /* ---- WORK INDEX ---- */
-  .work-index { list-style: none; border-top: 2px solid var(--ink); }
-  .work-index a {
-    display: grid; grid-template-columns: 70px 1fr 200px 24px; gap: 20px; align-items: baseline;
-    padding: 24px 0; border-bottom: 1px solid var(--rule);
-    text-decoration: none; transition: background 0.15s, padding 0.15s;
+  /* ---- WORK ---- */
+  .featured-work {
+    display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: center;
+    background: #fff; border: 1px solid var(--rule-lt); border-radius: 6px; padding: 40px;
+    text-decoration: none; margin-bottom: 24px; transition: border-color 0.15s;
   }
-  .work-index a:hover { background: var(--paper-2); padding-left: 12px; padding-right: 12px; }
-  .wi-year { font-family: var(--ff-m); font-size: 13px; color: var(--muted); }
-  .wi-title { font-family: var(--ff-h); font-size: clamp(21px, 2.4vw, 28px); font-weight: 700; line-height: 1.2; }
-  .wi-new {
-    font-family: var(--ff-m); font-size: 11px; font-weight: 500; color: var(--gold);
-    border: 1px solid var(--gold-lt); padding: 1px 6px; border-radius: 2px;
-    margin-left: 10px; vertical-align: 5px; letter-spacing: 0.04em; white-space: nowrap;
+  .featured-work figure.shot img { box-shadow: none; }
+  .fw-tag, .wc-tag { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .featured-work h3 { font-family: var(--ff-h); font-size: 32px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
+  .featured-work p { color: var(--muted); font-size: 16px; margin-bottom: 24px; }
+  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .work-card {
+    background: #fff; border: 1px solid var(--rule-lt); border-radius: 6px; padding: 30px 32px;
+    text-decoration: none; display: flex; flex-direction: column; transition: border-color 0.15s;
   }
-  .wi-ind { font-size: 14.5px; color: var(--muted); }
-  .wi-arrow { color: var(--gold); font-size: 18px; }
+  .work-card:hover, .featured-work:hover { border-color: var(--rule); }
+  .work-card h3 { font-family: var(--ff-h); font-size: 23px; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+  .work-card p { color: var(--muted); font-size: 15.5px; margin-bottom: 20px; flex: 1; }
 
   /* ---- CONTACT ---- */
-  #cta { background: var(--navy); color: #fff; border-top: none; }
-  #cta h2 { max-width: 17ch; }
-  #cta h2 em { color: var(--gold-lt); }
-  #cta .lede { color: rgba(255,255,255,0.72); margin: 22px 0 40px; }
-  .contact-rows { border-top: 1px solid rgba(255,255,255,0.22); max-width: 640px; }
-  .contact-rows a {
-    display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 20px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.22); text-decoration: none;
-    font-size: clamp(17px, 2.2vw, 22px);
-  }
-  .contact-rows a:hover { color: var(--gold-lt); }
-  .contact-rows small { font-family: var(--ff-m); font-size: 13px; color: rgba(255,255,255,0.65); }
+  #cta { background: var(--navy); color: #fff; text-align: center; }
+  #cta h2 { max-width: 18ch; margin: 0 auto; }
+  #cta .lede { color: rgba(255,255,255,0.75); margin: 20px auto 40px; }
+  #cta .actions { justify-content: center; }
+  #cta .btn-outline { color: #fff; border-color: rgba(255,255,255,0.35); }
+  #cta .btn-outline:hover { background: rgba(255,255,255,0.08); }
 
   @media (max-width: 900px) {
-    .svc-list, .steps, .about-cols { grid-template-columns: 1fr; }
-    .steps { gap: 32px; }
-    .plans { grid-template-columns: 1fr; }
-    .plan, .plan:first-child, .plan:last-child { padding: 26px 0 30px; }
-    .plan + .plan { border-left: none; border-top: 1px solid var(--rule); }
-    .work-index a { grid-template-columns: 1fr 20px; gap: 4px 12px; }
-    .wi-year, .wi-title, .wi-ind { grid-column: 1; }
-    .wi-arrow { grid-column: 2; grid-row: 1 / span 3; align-self: center; }
+    .about-grid, .featured-work { grid-template-columns: 1fr; gap: 40px; }
+    .featured-work { padding: 28px; }
+    .svc-grid, .plans, .work-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; gap: 48px; }
+    .steps::before { display: none; }
+    .pillars li { grid-template-columns: 1fr; gap: 6px; }
   }
   @media (max-width: 600px) {
-    #hero { padding: 120px 0 64px; }
-    figure.hero-shot { margin-top: 52px; }
-    .contact-rows a { flex-direction: column; gap: 2px; }
+    #hero { min-height: 0; padding: 120px 0 72px; }
+    .built-on { margin-top: 48px; gap: 8px 18px; font-size: 11.5px; }
+    .btn-book { font-size: 18px; padding: 15px 26px; }
   }
 </style>
 </head>
@@ -153,220 +146,227 @@
 
 <header id="hero">
   <div class="wrap">
-    <p class="kicker"><b>Cold to Gold</b> &nbsp;/&nbsp; AI automation agency</p>
+    <p class="eyebrow">AI Automation Agency</p>
     <h1>Turn cold leads into <em>gold</em> clients.</h1>
     <div class="actions">
       <a href="https://wa.me/6590183930" class="btn btn-book">Book an appointment</a>
     </div>
-
-    <figure class="shot hero-shot fi">
-      <img src="assets/work/nego-n8n-canvas.jpg" alt="n8n canvas showing buyer and supplier AI agents, verifiers, referees and a Telegram approval step" width="1800" height="847">
-      <figcaption>Fig. 1 &nbsp;The n8n workflow behind our multi-agent negotiation system. Two AI agents negotiate a bulk order, a verifier blocks any false claim, and a person approves the deal on Telegram.</figcaption>
-    </figure>
+    <div class="built-on">
+      <span>Built on</span><span>n8n</span><span>OpenAI</span><span>Make.com</span><span>Vapi</span><span>Shopify</span><span>Twilio</span>
+    </div>
   </div>
 </header>
 
-<section id="about" class="sec">
-  <div class="wrap">
-    <div class="sec-head fi">
-      <div class="sec-num">01 &nbsp;About us</div>
-      <div>
-        <h2>About us</h2>
-      </div>
+<section id="about" class="section">
+  <div class="wrap about-grid">
+    <div class="fi">
+      <p class="eyebrow">About us</p>
+      <h2>Automation built around how your business already works.</h2>
+      <p class="about-intro">Cold to Gold is an AI automation studio based in Singapore. We build the systems that sit between a company's leads, customers and tools, so enquiries get answered, follow-ups happen and records stay accurate without anyone chasing them.</p>
     </div>
-    <div class="indent">
-      <p class="about-lead fi">
-        Cold to Gold is an AI automation studio based in Singapore. We build the systems
-        that sit between a company's leads, customers and tools, so enquiries get answered, follow-ups happen
-        and records stay accurate without anyone chasing them.
-      </p>
-      <div class="about-cols">
-        <div class="fi">
-          <h3>What we build</h3>
-          <p>Workflows in n8n and Make.com, AI voice agents, customer support assistants and multi-agent systems, where several AI agents work together on one task.</p>
-          <p>Whether it's a single follow-up flow or a system that runs across sales, support and billing, every build is shaped around how your business already works.</p>
-        </div>
-        <div class="fi">
-          <h3>How we work</h3>
-          <p>We start with the one process that costs your team the most time. We build it on your own accounts and test it against real examples before it goes live.</p>
-          <p>We design and build every system ourselves, from the prompts and workflow logic to the screens your team uses. You get full documentation and full ownership.</p>
-        </div>
-        <div class="fi">
-          <h3>What we care about</h3>
-          <p>AI that sticks to the facts. Our systems answer from your own data, check what they say before they say it, and leave the decisions that matter to a person.</p>
-          <p>If something shouldn't be automated, we'll tell you.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="services" class="sec">
-  <div class="wrap">
-    <div class="sec-head fi">
-      <div class="sec-num">02 &nbsp;Services</div>
-      <div>
-        <h2>What we build</h2>
-        <p>Each project starts with one job your team does by hand and ends with a system that does it for them.</p>
-      </div>
-    </div>
-    <ol class="svc-list indent">
-      <li class="fi"><h3>WhatsApp replies and follow-up</h3><p>New enquiries get an answer straight away, a nudge the next day if they haven't booked, and a booking link when they're ready.</p></li>
-      <li class="fi"><h3>AI voice agents</h3><p>An assistant that calls new leads, asks the qualifying questions, retries when nobody picks up and logs what happened. Built on VAPI and Twilio.</p></li>
-      <li class="fi"><h3>Lead pipelines</h3><p>Website forms, ads and WhatsApp all land in one CRM with a status, an owner and a next step.</p></li>
-      <li class="fi"><h3>E-commerce flows</h3><p>Abandoned carts, post-purchase messages, review requests and restock alerts.</p></li>
-      <li class="fi"><h3>CRM and reporting sync</h3><p>Airtable or your CRM updates itself as leads move, so the numbers are right without anyone checking.</p></li>
-      <li class="fi"><h3>Agent systems</h3><p>Several AI agents working on one task, each limited to its own data, with checks on what they say and a person signing off at the end.</p></li>
-    </ol>
-    <p class="tools-line indent fi">
-      Tools we use: <span>n8n</span>, <span>Make.com</span>, <span>OpenAI</span>, <span>MCP</span>, <span>VAPI</span>, <span>Twilio</span>, <span>WhatsApp Business API</span>, <span>Telegram</span>, <span>Airtable</span>, <span>Calendly</span>, <span>Shopify</span>, <span>PandaDoc</span>, <span>Google Sheets</span>.
-    </p>
-  </div>
-</section>
-
-<section id="process" class="sec">
-  <div class="wrap">
-    <div class="sec-head fi">
-      <div class="sec-num">03 &nbsp;Process</div>
-      <div>
-        <h2>From first call to live in about two weeks</h2>
-      </div>
-    </div>
-    <ol class="steps indent">
-      <li class="fi">
-        <div class="step-when">Day 1</div>
-        <h3>Audit</h3>
-        <p>A 20-minute call. We go through how leads and requests move through your business today and pick the step that costs you the most time.</p>
+    <ul class="pillars fi">
+      <li>
+        <h3>What we build</h3>
+        <p>Workflows, AI voice agents, customer support assistants and multi-agent systems. Whether it's a single follow-up flow or a system that runs across sales, support and billing, every build is shaped around your operations.</p>
       </li>
-      <li class="fi">
-        <div class="step-when">Week 1</div>
-        <h3>Build</h3>
-        <p>We connect your tools, write the AI logic and run it against real examples until it handles the awkward cases.</p>
+      <li>
+        <h3>How we work</h3>
+        <p>We start with the process that costs your team the most time, build it on your own accounts and test it against real examples before it goes live. You receive full documentation and full ownership.</p>
       </li>
-      <li class="fi">
-        <div class="step-when">Week 2</div>
-        <h3>Hand over</h3>
-        <p>It goes live on your accounts with documentation your team can follow. We stay on for support and whatever you want automated next.</p>
+      <li>
+        <h3>What we stand for</h3>
+        <p>AI that sticks to the facts. Our systems answer from your own data, check what they say before they say it, and leave the decisions that matter to a person. If something shouldn't be automated, we'll tell you.</p>
       </li>
-    </ol>
-  </div>
-</section>
-
-<section id="pricing" class="sec">
-  <div class="wrap">
-    <div class="sec-head fi">
-      <div class="sec-num">04 &nbsp;Pricing</div>
-      <div>
-        <h2>Monthly retainer</h2>
-        <p>Builds, support and maintenance are billed monthly. We quote once we know the scope, usually at the end of the first call.</p>
-      </div>
-    </div>
-    <div class="indent">
-      <div class="plans fi">
-        <div class="plan">
-          <h3>Starter</h3>
-          <p class="plan-for">One workflow, done properly.</p>
-          <ul>
-            <li>1 automation workflow</li>
-            <li>Up to 2 tool integrations</li>
-            <li>WhatsApp or email automation</li>
-            <li>Basic Airtable CRM setup</li>
-            <li>7 days of support after delivery</li>
-          </ul>
-          <a href="https://wa.me/6590183930" class="link">Ask about Starter</a>
-        </div>
-        <div class="plan">
-          <h3>Pro Suite</h3>
-          <p class="plan-for">Your lead flow, end to end.</p>
-          <ul>
-            <li>Up to 3 automation workflows</li>
-            <li>Up to 5 tool integrations</li>
-            <li>WhatsApp, email and CRM</li>
-            <li>AI response logic</li>
-            <li>Full Airtable CRM pipeline</li>
-            <li>Calendly booking</li>
-            <li>14 days of support after delivery</li>
-          </ul>
-          <a href="https://wa.me/6590183930" class="link">Ask about Pro Suite</a>
-        </div>
-        <div class="plan">
-          <h3>Agency</h3>
-          <p class="plan-for">Everything, including voice.</p>
-          <ul>
-            <li>Audit of your whole stack</li>
-            <li>Open workflow scope</li>
-            <li>AI voice agent (VAPI and Twilio)</li>
-            <li>WhatsApp, email, CRM and voice</li>
-            <li>Custom prompts and logic</li>
-            <li>Team handover and documentation</li>
-            <li>30 days of priority support</li>
-          </ul>
-          <a href="https://wa.me/6590183930" class="link">Ask about Agency</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="work" class="sec">
-  <div class="wrap">
-    <div class="sec-head fi">
-      <div class="sec-num">05 &nbsp;Our work</div>
-      <div>
-        <h2>Recent projects</h2>
-      </div>
-    </div>
-    <ul class="work-index indent fi">
-      <li><a href="work.html#negotiation">
-        <span class="wi-year">2026</span>
-        <span class="wi-title">Multi-agent negotiation system<span class="wi-new">NEW</span></span>
-        <span class="wi-ind">Procurement</span>
-        <span class="wi-arrow">&rarr;</span>
-      </a></li>
-      <li><a href="work.html#lifecycle">
-        <span class="wi-year">2026</span>
-        <span class="wi-title">Lead-to-support lifecycle automation</span>
-        <span class="wi-ind">Enterprise</span>
-        <span class="wi-arrow">&rarr;</span>
-      </a></li>
-      <li><a href="work.html#voice">
-        <span class="wi-year">2026</span>
-        <span class="wi-title">AI voice agent for lead follow-up</span>
-        <span class="wi-ind">Healthcare clinic</span>
-        <span class="wi-arrow">&rarr;</span>
-      </a></li>
-      <li><a href="work.html#property">
-        <span class="wi-year">2025</span>
-        <span class="wi-title">Lead pipeline for property agents</span>
-        <span class="wi-ind">Real estate</span>
-        <span class="wi-arrow">&rarr;</span>
-      </a></li>
-      <li><a href="work.html#support">
-        <span class="wi-year">2025</span>
-        <span class="wi-title">Zypher, AI support agent for Shopify</span>
-        <span class="wi-ind">SaaS</span>
-        <span class="wi-arrow">&rarr;</span>
-      </a></li>
     </ul>
   </div>
 </section>
 
-<section id="cta" class="sec">
+<section id="services" class="section alt">
   <div class="wrap">
-    <h2 class="fi">Tell us which part of your week you'd hand to a <em>machine</em>.</h2>
-    <p class="lede fi">Book a free 20-minute call. We'll look at one workflow and tell you what we'd automate and what we'd leave alone.</p>
-    <div class="contact-rows fi">
-      <a href="https://wa.me/6590183930"><span>WhatsApp</span><small>+65 9018 3930 &rarr;</small></a>
-      <a href="mailto:inquiry@coldtogoldsg.com"><span>Email</span><small>inquiry@coldtogoldsg.com &rarr;</small></a>
+    <div class="section-head fi">
+      <p class="eyebrow">Services</p>
+      <h2>What we build</h2>
+      <p>Each engagement starts with one job your team does by hand and ends with a system that does it for them.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc fi"><div class="svc-n">01</div><h3>WhatsApp replies and follow-up</h3><p>New enquiries receive an answer straight away, a follow-up the next day if they haven't booked, and a booking link when they're ready.</p></div>
+      <div class="svc fi"><div class="svc-n">02</div><h3>AI voice agents</h3><p>An assistant that calls new leads, asks the qualifying questions, retries when nobody picks up and records the outcome.</p></div>
+      <div class="svc fi"><div class="svc-n">03</div><h3>Lead pipelines</h3><p>Website forms, ads and WhatsApp feed into one CRM, with a status, an owner and a next step for every lead.</p></div>
+      <div class="svc fi"><div class="svc-n">04</div><h3>E-commerce flows</h3><p>Abandoned carts, post-purchase messages, review requests and restock alerts, handled automatically.</p></div>
+      <div class="svc fi"><div class="svc-n">05</div><h3>CRM and reporting sync</h3><p>Your CRM updates itself as leads move through the pipeline, so the numbers are accurate without manual checks.</p></div>
+      <div class="svc fi"><div class="svc-n">06</div><h3>Agent systems</h3><p>Multiple AI agents working on one task, each limited to its own data, with checks on what they say and human sign-off at the end.</p></div>
+    </div>
+    <p class="tools-line fi">We work with n8n, Make.com, OpenAI, MCP, Vapi, Twilio, WhatsApp Business API, Telegram, Airtable, Calendly, Shopify, PandaDoc and Google Workspace.</p>
+  </div>
+</section>
+
+<section id="process" class="section">
+  <div class="wrap">
+    <div class="section-head fi">
+      <p class="eyebrow">Process</p>
+      <h2>From first call to live in about two weeks</h2>
+    </div>
+    <ol class="steps">
+      <li class="fi">
+        <div class="step-dot">1</div>
+        <div class="step-when">Day 1</div>
+        <h3>Audit</h3>
+        <p>A 20-minute call to map how leads and requests move through your business and identify the step that costs the most time.</p>
+      </li>
+      <li class="fi">
+        <div class="step-dot">2</div>
+        <div class="step-when">Week 1</div>
+        <h3>Build</h3>
+        <p>We connect your tools, write the AI logic and test it against real examples until it handles the edge cases.</p>
+      </li>
+      <li class="fi">
+        <div class="step-dot">3</div>
+        <div class="step-when">Week 2</div>
+        <h3>Handover</h3>
+        <p>The system goes live on your accounts with documentation your team can follow, and we remain available for support.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="pricing" class="section alt">
+  <div class="wrap">
+    <div class="section-head fi">
+      <p class="eyebrow">Pricing</p>
+      <h2>Monthly retainer</h2>
+      <p>Builds, support and maintenance are billed monthly. We provide a quote once we understand the scope, usually at the end of the first call.</p>
+    </div>
+    <div class="plans">
+      <div class="plan fi">
+        <h3>Starter</h3>
+        <p class="plan-for">A single workflow, done properly.</p>
+        <ul>
+          <li>1 automation workflow</li>
+          <li>Up to 2 tool integrations</li>
+          <li>WhatsApp or email automation</li>
+          <li>Basic Airtable CRM setup</li>
+          <li>7 days of support after delivery</li>
+        </ul>
+        <a href="https://wa.me/6590183930" class="btn btn-outline">Enquire about Starter</a>
+      </div>
+      <div class="plan featured fi">
+        <h3>Pro Suite</h3>
+        <p class="plan-for">Your lead flow, end to end.</p>
+        <ul>
+          <li>Up to 3 automation workflows</li>
+          <li>Up to 5 tool integrations</li>
+          <li>WhatsApp, email and CRM</li>
+          <li>AI response logic</li>
+          <li>Full Airtable CRM pipeline</li>
+          <li>Calendly booking</li>
+          <li>14 days of support after delivery</li>
+        </ul>
+        <a href="https://wa.me/6590183930" class="btn">Enquire about Pro Suite</a>
+      </div>
+      <div class="plan fi">
+        <h3>Agency</h3>
+        <p class="plan-for">Full stack, including voice.</p>
+        <ul>
+          <li>Audit of your whole stack</li>
+          <li>Open workflow scope</li>
+          <li>AI voice agent (Vapi and Twilio)</li>
+          <li>WhatsApp, email, CRM and voice</li>
+          <li>Custom prompts and logic</li>
+          <li>Team handover and documentation</li>
+          <li>30 days of priority support</li>
+        </ul>
+        <a href="https://wa.me/6590183930" class="btn btn-outline">Enquire about Agency</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <div class="wrap">
+    <div class="section-head fi">
+      <p class="eyebrow">Our work</p>
+      <h2>Selected projects</h2>
+    </div>
+
+    <a href="work.html#negotiation" class="featured-work fi">
+      <figure class="shot">
+        <img src="assets/work/nego-live-board.jpg" alt="Live board of the multi-agent negotiation: price range, each agent's private reasoning and the messages between them" width="1800" height="1017" loading="lazy">
+      </figure>
+      <div>
+        <p class="fw-tag">Featured &middot; Procurement</p>
+        <h3>Multi-agent negotiation system</h3>
+        <p>Two AI agents negotiate a bulk supply order, each limited to its own company's data. Every message is fact-checked before it is sent, and no deal goes through without the owner's approval.</p>
+        <span class="link">Read the case study</span>
+      </div>
+    </a>
+
+    <div class="work-grid">
+      <a href="work.html#lifecycle" class="work-card fi">
+        <p class="wc-tag">Enterprise</p>
+        <h3>Lead-to-support lifecycle automation</h3>
+        <p>One workflow that takes every enquiry from first contact through sales, support tickets and billing checks.</p>
+        <span class="link">Read the case study</span>
+      </a>
+      <a href="work.html#voice" class="work-card fi">
+        <p class="wc-tag">Healthcare</p>
+        <h3>AI voice agent for lead follow-up</h3>
+        <p>New enquiries receive a personal message and a call within minutes; the outcome of the call decides what happens next.</p>
+        <span class="link">Read the case study</span>
+      </a>
+      <a href="work.html#property" class="work-card fi">
+        <p class="wc-tag">Real estate</p>
+        <h3>Lead pipeline for property agents</h3>
+        <p>WhatsApp replies within a minute, instant agent alerts and automatic follow-up for leads that go quiet.</p>
+        <span class="link">Read the case study</span>
+      </a>
+      <a href="work.html#support" class="work-card fi">
+        <p class="wc-tag">SaaS</p>
+        <h3>Zypher, AI support agent for Shopify</h3>
+        <p>A Shopify app that answers customer questions from each store's own policies and pages.</p>
+        <span class="link">Read the case study</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="cta" class="section">
+  <div class="wrap">
+    <h2 class="fi">Let's talk about your workflow.</h2>
+    <p class="lede fi">Book a free 20-minute call. We'll review one workflow and tell you what we would automate, and what we would leave alone.</p>
+    <div class="actions fi">
+      <a href="https://wa.me/6590183930" class="btn btn-book">Book an appointment</a>
+      <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">Email us</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="ft">
-      <a href="#" class="logo logo-ft"><img class="logo-mark" src="assets/logo.png" alt="Cold to Gold"></a>
-      <span class="ft-t">&copy; 2026 Cold to Gold &middot; Singapore</span>
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <a href="#" class="logo"><img class="logo-mark" src="assets/logo.png" alt="Cold to Gold"></a>
+        <p>AI automation systems for growing businesses. Based in Singapore.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="work.html">Our work</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/6590183930">WhatsApp +65 9018 3930</a></li>
+          <li><a href="mailto:inquiry@coldtogoldsg.com">inquiry@coldtogoldsg.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-base">
+      <span>&copy; 2026 Cold to Gold. All rights reserved.</span>
+      <span>Singapore</span>
     </div>
   </div>
 </footer>
@@ -377,6 +377,6 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
   document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </script>
-<script src="assets/robots.js"></script>
+<script src="assets/cascade.js"></script>
 </body>
 </html>
