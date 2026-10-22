@@ -3,128 +3,214 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Turn cold leads into gold clients</title>
-<meta name="description" content="C2G Studios designs and deploys AI automation systems for growing businesses: lead follow-up, voice agents, support assistants, CRM sync and multi-agent systems.">
+<title>C2G Studios — Turn cold leads into gold clients</title>
+<meta name="description" content="C2G Studios is a Singapore AI automation studio. We build lead follow-up, voice agents, support assistants, CRM sync and multi-agent systems for growing businesses.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;550;600;650&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
   /* ---- HERO ---- */
-  #hero {
-    min-height: min(88vh, 860px); display: flex; align-items: center;
-    padding: 140px 0 96px; text-align: center;
-    border-bottom: 1px solid var(--rule-lt);
+  #hero { padding: 168px 0 0; position: relative; overflow: hidden; }
+  #hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgba(233,231,225,0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(233,231,225,0.045) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 80% 70% at 70% 40%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 40%, #000 30%, transparent 75%);
   }
-  #hero .wrap { width: 100%; }
-  #hero h1 { margin: 0 auto; font-weight: 750; }
-  #hero .actions { justify-content: center; margin-top: 44px; }
-  .btn-book {
-    background: var(--gold-lt); color: var(--ink);
-    font-family: var(--ff-h); font-weight: 900; font-size: 20px; letter-spacing: -0.005em;
-    padding: 17px 34px; gap: 12px;
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 72px; align-items: center; position: relative; }
+  #hero .label { margin-bottom: 30px; }
+  #hero h1 { color: #F4F2EC; }
+  #hero h1 .serif { color: var(--gold-lt); letter-spacing: -0.02em; }
+  #hero .lede { margin: 30px 0 42px; max-width: 30em; }
+
+  /* the activity log */
+  .log {
+    background: var(--night-2); border: 1px solid var(--rule-night); border-radius: 14px;
+    box-shadow: 0 40px 80px -40px rgba(0,0,0,0.7);
+    font-family: var(--ff-m); font-size: 13px; overflow: hidden;
   }
-  .btn-book::after { content: '\2192'; font-family: var(--ff-b); font-weight: 600; }
-  .btn-book:hover { background: var(--gold-lt); color: var(--ink); }
-  .built-on {
-    margin-top: 64px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-    gap: 10px 28px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: #8A8F9C;
+  .log-head {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 14px 20px; border-bottom: 1px solid var(--rule-night);
+    color: var(--on-night-muted); font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase;
   }
-  .built-on span:first-child { color: var(--muted); font-weight: 500; letter-spacing: 0.04em; text-transform: none; }
+  .log-head .live { display: inline-flex; align-items: center; gap: 8px; color: #8FC9A3; }
+  .log-head .live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .log ol { list-style: none; padding: 8px 0; }
+  .log li {
+    display: grid; grid-template-columns: 52px 1fr; gap: 14px;
+    padding: 12px 20px; line-height: 1.5;
+  }
+  .log li + li { border-top: 1px dashed rgba(233,231,225,0.07); }
+  .log time { color: #6E7584; }
+  .log b { color: var(--on-night); font-weight: 500; display: block; }
+  .log span { color: var(--on-night-muted); font-size: 12.5px; }
+  .log q { color: var(--on-night); quotes: '“' '”'; }
+  .log .ok b { color: var(--gold-lt); }
+  .log-foot {
+    padding: 14px 20px; border-top: 1px solid var(--rule-night);
+    color: #6E7584; font-size: 11.5px;
+  }
+
+  .hero-stats {
+    margin-top: 112px; border-top: 1px solid var(--rule-night);
+    display: grid; grid-template-columns: repeat(4, 1fr); position: relative;
+  }
+  .hero-stats div { padding: 28px 24px 40px 0; }
+  .hero-stats div + div { padding-left: 24px; border-left: 1px solid var(--rule-night); }
+  .hero-stats strong {
+    display: block; font-weight: 550; font-size: clamp(28px, 3vw, 40px);
+    letter-spacing: -0.035em; color: #F4F2EC; line-height: 1.1;
+  }
+  .hero-stats span { font-size: 14.5px; color: var(--on-night-muted); }
+
+  .tools {
+    background: var(--night); border-top: 1px solid var(--rule-night);
+    padding: 26px 0; overflow: hidden;
+  }
+  .tools .wrap { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .tools .label { flex-shrink: 0; }
+  .tools ul { display: flex; flex-wrap: wrap; gap: 10px 36px; list-style: none; }
+  .tools li { font-weight: 550; font-size: 16px; color: #C4C7CF; letter-spacing: -0.01em; }
 
   /* ---- ABOUT ---- */
-  .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 80px; align-items: start; }
-  .about-grid h2 { margin-bottom: 24px; }
-  .about-intro { font-size: 19px; color: var(--muted); }
-  .pillars { list-style: none; border-top: 1px solid var(--rule); }
-  .pillars li { padding: 26px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 180px 1fr; gap: 24px; }
-  .pillars h3 { font-size: 16px; color: var(--ink); }
-  .pillars p { font-size: 16px; color: var(--muted); }
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; }
+  .about h2 { margin-top: 22px; }
+  .about h2 .serif { color: var(--gold); }
+  .about-copy > p { font-size: 20px; line-height: 1.55; color: var(--ink-2); margin-bottom: 48px; }
+  .principles { list-style: none; border-top: 1px solid var(--rule); counter-reset: p; }
+  .principles li {
+    counter-increment: p; padding: 26px 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 56px 1fr; gap: 8px;
+  }
+  .principles li::before {
+    content: counter(p, decimal-leading-zero); font-family: var(--ff-m); font-size: 12.5px; color: var(--gold); padding-top: 4px;
+  }
+  .principles h3 { font-size: 19px; margin-bottom: 6px; }
+  .principles p { color: var(--muted); font-size: 16px; }
 
   /* ---- SERVICES ---- */
-  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .svc { background: #fff; border: 1px solid var(--rule-lt); border-radius: 6px; padding: 34px 30px; }
-  .svc-n { font-family: var(--ff-h); font-size: 15px; font-weight: 700; color: var(--gold-lt); margin-bottom: 18px; }
-  .svc h3 { font-size: 19px; margin-bottom: 10px; }
-  .svc p { font-size: 15.5px; color: var(--muted); }
-  .tools-line { text-align: center; margin-top: 48px; font-size: 15px; color: var(--muted); }
+  .svc-list { list-style: none; border-top: 1px solid var(--rule); }
+  .svc-list li {
+    display: grid; grid-template-columns: 80px 1.1fr 1.4fr; gap: 32px; align-items: baseline;
+    padding: 34px 0; border-bottom: 1px solid var(--rule);
+    transition: background 0.25s, padding 0.25s;
+  }
+  .svc-list .n { font-family: var(--ff-m); font-size: 13px; color: var(--gold); }
+  .svc-list h3 { font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -0.025em; line-height: 1.15; }
+  .svc-list p { color: var(--muted); font-size: 16.5px; }
+  @media (hover: hover) {
+    .svc-list li:hover { background: var(--white); padding-left: 20px; padding-right: 20px; }
+  }
+
+  /* ---- WORK ---- */
+  .feature {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; text-decoration: none;
+    background: var(--night); color: var(--on-night); border-radius: 16px; overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .feature figure { padding: 40px 0 40px 40px; }
+  .feature figure img { border-radius: 8px; border: 1px solid var(--rule-night); width: 100%; height: auto; transition: transform 0.6s cubic-bezier(.2,.7,.2,1); }
+  .feature:hover figure img { transform: scale(1.015); }
+  .feature-copy { padding: 48px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
+  .feature .label { color: var(--gold-lt); }
+  .feature h3 { font-size: clamp(28px, 2.8vw, 38px); line-height: 1.08; letter-spacing: -0.035em; margin: 18px 0 16px; }
+  .feature p { color: var(--on-night-muted); font-size: 16.5px; }
+  .feature .link { color: var(--on-night); border-color: var(--rule-night); align-self: flex-start; }
+  .feature:hover .link { border-color: var(--on-night); }
+
+  .work-rows { list-style: none; border-top: 1px solid var(--rule); margin-top: 48px; }
+  .work-rows a {
+    display: grid; grid-template-columns: 140px 1fr 1.2fr 40px; gap: 32px; align-items: baseline;
+    padding: 28px 0; border-bottom: 1px solid var(--rule); text-decoration: none;
+    transition: padding 0.25s, background 0.25s;
+  }
+  .work-rows .tag { font-family: var(--ff-m); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+  .work-rows h3 { font-size: 22px; letter-spacing: -0.025em; line-height: 1.2; }
+  .work-rows p { color: var(--muted); font-size: 15.5px; }
+  .work-rows .go { justify-self: end; font-size: 20px; transition: transform 0.25s; }
+  @media (hover: hover) {
+    .work-rows a:hover { background: var(--white); padding-left: 20px; padding-right: 20px; }
+    .work-rows a:hover .go { transform: translateX(4px); color: var(--gold); }
+  }
 
   /* ---- PROCESS ---- */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; list-style: none; position: relative; }
-  .steps::before {
-    content: ''; position: absolute; top: 27px; left: 16.66%; right: 16.66%;
-    height: 1px; background: var(--rule);
-  }
-  .steps li { text-align: center; position: relative; }
-  .step-dot {
-    width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 24px;
-    background: var(--paper); border: 1px solid var(--gold-lt);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--ff-h); font-weight: 700; font-size: 19px; color: var(--gold);
-  }
-  .step-when { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  .steps h3 { font-family: var(--ff-h); font-size: 26px; font-weight: 700; margin-bottom: 12px; }
-  .steps p { font-size: 15.5px; color: var(--muted); max-width: 30ch; margin: 0 auto; }
+  .steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule-night); }
+  .steps li { padding: 36px 40px 8px 0; }
+  .steps li + li { padding-left: 40px; border-left: 1px solid var(--rule-night); }
+  .steps .when { font-family: var(--ff-m); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold-lt); }
+  .steps h3 { font-size: 34px; letter-spacing: -0.035em; margin: 56px 0 14px; color: #F4F2EC; }
+  .steps p { color: var(--on-night-muted); font-size: 16px; max-width: 30ch; }
 
   /* ---- PRICING ---- */
-  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
   .plan {
-    background: #fff; border: 1px solid var(--rule); border-radius: 6px;
-    padding: 38px 32px; display: flex; flex-direction: column;
+    background: var(--white); border: 1px solid var(--rule-lt); border-radius: 16px;
+    padding: 36px 32px 32px; display: flex; flex-direction: column;
   }
-  .plan.featured { border-top: 3px solid var(--navy); box-shadow: 0 30px 60px -40px rgba(15,36,64,0.5); }
-  .plan h3 { font-family: var(--ff-h); font-size: 28px; font-weight: 700; }
-  .plan-for { font-size: 15px; color: var(--muted); margin: 6px 0 26px; }
+  .plan-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .plan h3 { font-size: 26px; letter-spacing: -0.03em; }
+  .plan .badge { font-family: var(--ff-m); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); background: var(--gold-lt); padding: 4px 9px; border-radius: 999px; }
+  .plan-for { font-size: 15.5px; color: var(--muted); margin: 8px 0 28px; }
   .plan ul { list-style: none; margin-bottom: 32px; flex: 1; }
-  .plan li { font-size: 15px; padding: 10px 0 10px 26px; border-top: 1px solid var(--rule-lt); position: relative; }
+  .plan li { font-size: 15px; padding: 11px 0 11px 26px; border-top: 1px solid var(--rule-lt); position: relative; }
   .plan li::before {
-    content: ''; position: absolute; left: 2px; top: 18px; width: 10px; height: 5px;
+    content: ''; position: absolute; left: 3px; top: 18px; width: 9px; height: 5px;
     border-left: 1.5px solid var(--gold); border-bottom: 1.5px solid var(--gold); transform: rotate(-45deg);
   }
   .plan .btn { justify-content: center; }
+  .plan.featured { background: var(--night); color: var(--on-night); border-color: var(--night); }
+  .plan.featured .plan-for { color: var(--on-night-muted); }
+  .plan.featured li { border-color: var(--rule-night); }
+  .plan.featured li::before { border-color: var(--gold-lt); }
+  .pricing-note { margin-top: 28px; font-size: 15px; color: var(--muted); text-align: center; }
 
-  /* ---- WORK ---- */
-  .featured-work {
-    display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: center;
-    background: #fff; border: 1px solid var(--rule-lt); border-radius: 6px; padding: 40px;
-    text-decoration: none; margin-bottom: 24px; transition: border-color 0.15s;
+  @media (max-width: 1080px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+    .log { max-width: 560px; }
   }
-  .featured-work figure.shot img { box-shadow: none; }
-  .fw-tag, .wc-tag { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-  .featured-work h3 { font-family: var(--ff-h); font-size: 32px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
-  .featured-work p { color: var(--muted); font-size: 16px; margin-bottom: 24px; }
-  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .work-card {
-    background: #fff; border: 1px solid var(--rule-lt); border-radius: 6px; padding: 30px 32px;
-    text-decoration: none; display: flex; flex-direction: column; transition: border-color 0.15s;
-  }
-  .work-card:hover, .featured-work:hover { border-color: var(--rule); }
-  .work-card h3 { font-family: var(--ff-h); font-size: 23px; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
-  .work-card p { color: var(--muted); font-size: 15.5px; margin-bottom: 20px; flex: 1; }
-
-  /* ---- CONTACT ---- */
-  #cta { background: var(--navy); color: #fff; text-align: center; }
-  #cta h2 { max-width: 18ch; margin: 0 auto; }
-  #cta .lede { color: rgba(255,255,255,0.75); margin: 20px auto 40px; }
-  #cta .actions { justify-content: center; }
-  #cta .btn-outline { color: #fff; border-color: rgba(255,255,255,0.35); }
-  #cta .btn-outline:hover { background: rgba(255,255,255,0.08); }
-
-  @media (max-width: 900px) {
-    .about-grid, .featured-work { grid-template-columns: 1fr; gap: 40px; }
-    .featured-work { padding: 28px; }
-    .svc-grid, .plans, .work-grid { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr; gap: 48px; }
-    .steps::before { display: none; }
-    .pillars li { grid-template-columns: 1fr; gap: 6px; }
+  @media (max-width: 960px) {
+    #hero { padding-top: 136px; }
+    .hero-stats { margin-top: 80px; grid-template-columns: 1fr 1fr; }
+    .hero-stats div:nth-child(3) { padding-left: 0; border-left: 0; }
+    .hero-stats div:nth-child(n+3) { border-top: 1px solid var(--rule-night); }
+    .about { grid-template-columns: 1fr; gap: 48px; }
+    .svc-list li { grid-template-columns: 56px 1fr; gap: 8px 16px; }
+    .svc-list li p { grid-column: 2; }
+    .feature { grid-template-columns: 1fr; }
+    .feature figure { padding: 28px 28px 0; }
+    .feature-copy { padding: 32px 28px 36px; }
+    .work-rows a { grid-template-columns: 1fr 32px; gap: 8px 16px; }
+    .work-rows .tag { grid-column: 1; }
+    .work-rows h3, .work-rows p { grid-column: 1; }
+    .work-rows .go { grid-row: 1 / span 3; grid-column: 2; align-self: center; }
+    .steps { grid-template-columns: 1fr; }
+    .steps li, .steps li + li { padding: 28px 0 32px; border-left: 0; }
+    .steps li + li { border-top: 1px solid var(--rule-night); }
+    .steps h3 { margin-top: 16px; }
+    .plans { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
   }
   @media (max-width: 600px) {
-    #hero { min-height: 0; padding: 120px 0 72px; }
-    .built-on { margin-top: 48px; gap: 8px 18px; font-size: 11.5px; }
-    .btn-book { font-size: 18px; padding: 15px 26px; }
+    #hero { padding-top: 120px; }
+    .log li { grid-template-columns: 44px 1fr; gap: 10px; padding: 11px 16px; }
+    .log-head, .log-foot { padding-left: 16px; padding-right: 16px; }
+    .hero-stats div { padding: 22px 12px 26px 0; }
+    .hero-stats div + div { padding-left: 16px; }
+    .hero-stats div:nth-child(3) { padding-left: 0; }
+    .tools .wrap { gap: 16px; }
+    .tools ul { gap: 8px 22px; }
+    .tools li { font-size: 14.5px; }
+    .about-copy > p { font-size: 18px; }
+    .principles li { grid-template-columns: 40px 1fr; }
+    .svc-list li { grid-template-columns: 1fr; padding: 28px 0; }
+    .svc-list li p { grid-column: 1; }
+    .plan { padding: 30px 24px 26px; }
   }
 </style>
 </head>
@@ -132,210 +218,213 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><img class="logo-mark" src="assets/logo.png" alt="C2G Studios"></a>
+    <a href="#" class="wordmark" aria-label="C2G Studios home">C2G <i>Studios</i></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     <ul class="nav-links">
-      <li><a href="#about">About Us</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="work.html">Our Work</a></li>
-      <li><a href="#cta" class="nav-cta">Book a Call</a></li>
+      <li><a href="#contact" class="nav-cta">Book a call</a></li>
     </ul>
   </div>
 </nav>
 
-<header id="hero">
+<header id="hero" class="on-night">
   <div class="wrap">
-    <p class="eyebrow">AI Automation Agency</p>
-    <h1>Turn cold leads into <em>gold</em> clients.</h1>
-    <div class="actions">
-      <a href="https://wa.me/6590183930" class="btn btn-book">Book an appointment</a>
+    <div class="hero-grid">
+      <div>
+        <p class="label fi">AI automation studio &middot; Singapore</p>
+        <h1 class="fi">Turn cold leads into <span class="serif">gold</span> clients.</h1>
+        <p class="lede fi">We build the systems that answer your enquiries, follow up on time and keep your records straight, so your team can spend the day closing instead of chasing.</p>
+        <div class="actions fi">
+          <a href="https://wa.me/6590183930" class="btn btn-gold">Book a free 20-min call <span class="arr">&rarr;</span></a>
+          <a href="work.html" class="btn btn-ghost">See our work</a>
+        </div>
+      </div>
+
+      <div class="log fi" aria-label="Example of an enquiry being handled automatically">
+        <div class="log-head"><span>Property enquiry &middot; 10:04 pm</span><span class="live">Running</span></div>
+        <ol>
+          <li><time>22:04</time><div><b>New enquiry from website form</b><span>Buying &middot; 3-room HDB &middot; Tampines &middot; Budget S$600k</span></div></li>
+          <li class="ok"><time>22:04</time><div><b>WhatsApp reply sent in 41 seconds</b><span><q>Hi Rachel, thanks for reaching out about a 3-room in Tampines. Pick a time that suits you here.</q></span></div></li>
+          <li><time>22:04</time><div><b>Lead saved to CRM</b><span>Status: New &middot; Owner: Agent Tan</span></div></li>
+          <li><time>22:05</time><div><b>Agent alerted on Telegram</b><span>Full summary, ready for the morning</span></div></li>
+          <li><time>09:00</time><div><b>Follow-up scheduled</b><span>Sent tomorrow if no viewing is booked</span></div></li>
+        </ol>
+        <div class="log-foot">Illustrative example based on our real estate lead pipeline</div>
+      </div>
     </div>
-    <div class="built-on">
-      <span>Built on</span><span>n8n</span><span>OpenAI</span><span>Make.com</span><span>Vapi</span><span>Shopify</span><span>Twilio</span>
+
+    <div class="hero-stats fi">
+      <div><strong>&lt; 60 sec</strong><span>to answer a new enquiry</span></div>
+      <div><strong>~2 weeks</strong><span>from first call to live</span></div>
+      <div><strong>24 / 7</strong><span>replies, nights and weekends</span></div>
+      <div><strong>100%</strong><span>yours: your accounts, your data</span></div>
     </div>
   </div>
 </header>
 
-<section id="about" class="section">
-  <div class="wrap about-grid">
-    <div class="fi">
-      <p class="eyebrow">About us</p>
-      <h2>Automation built around how your business already works.</h2>
-      <p class="about-intro">C2G (Cold to Gold) Studios is an AI automation studio based in Singapore. We build the systems that sit between a company's leads, customers and tools, so enquiries get answered, follow-ups happen and records stay accurate without anyone chasing them.</p>
-    </div>
-    <ul class="pillars fi">
-      <li>
-        <h3>What we build</h3>
-        <p>Workflows, AI voice agents, customer support assistants and multi-agent systems. Whether it's a single follow-up flow or a system that runs across sales, support and billing, every build is shaped around your operations.</p>
-      </li>
-      <li>
-        <h3>How we work</h3>
-        <p>We start with the process that costs your team the most time, build it on your own accounts and test it against real examples before it goes live. You receive full documentation and full ownership.</p>
-      </li>
-      <li>
-        <h3>What we stand for</h3>
-        <p>AI that sticks to the facts. Our systems answer from your own data, check what they say before they say it, and leave the decisions that matter to a person. If something shouldn't be automated, we'll tell you.</p>
-      </li>
+<div class="tools">
+  <div class="wrap">
+    <span class="label">Built on</span>
+    <ul>
+      <li>n8n</li><li>OpenAI</li><li>Make.com</li><li>WhatsApp</li><li>Vapi</li><li>Twilio</li><li>Airtable</li><li>Shopify</li>
     </ul>
   </div>
-</section>
+</div>
 
-<section id="services" class="section alt">
-  <div class="wrap">
-    <div class="section-head fi">
-      <p class="eyebrow">Services</p>
-      <h2>What we build</h2>
-      <p>Each engagement starts with one job your team does by hand and ends with a system that does it for them.</p>
+<section id="about" class="section">
+  <div class="wrap about">
+    <div class="fi">
+      <p class="label">About the studio</p>
+      <h2>Automation that fits how your business <span class="serif">already</span> works.</h2>
     </div>
-    <div class="svc-grid">
-      <div class="svc fi"><div class="svc-n">01</div><h3>WhatsApp replies and follow-up</h3><p>New enquiries receive an answer straight away, a follow-up the next day if they haven't booked, and a booking link when they're ready.</p></div>
-      <div class="svc fi"><div class="svc-n">02</div><h3>AI voice agents</h3><p>An assistant that calls new leads, asks the qualifying questions, retries when nobody picks up and records the outcome.</p></div>
-      <div class="svc fi"><div class="svc-n">03</div><h3>Lead pipelines</h3><p>Website forms, ads and WhatsApp feed into one CRM, with a status, an owner and a next step for every lead.</p></div>
-      <div class="svc fi"><div class="svc-n">04</div><h3>E-commerce flows</h3><p>Abandoned carts, post-purchase messages, review requests and restock alerts, handled automatically.</p></div>
-      <div class="svc fi"><div class="svc-n">05</div><h3>CRM and reporting sync</h3><p>Your CRM updates itself as leads move through the pipeline, so the numbers are accurate without manual checks.</p></div>
-      <div class="svc fi"><div class="svc-n">06</div><h3>Agent systems</h3><p>Multiple AI agents working on one task, each limited to its own data, with checks on what they say and human sign-off at the end.</p></div>
+    <div class="about-copy fi">
+      <p>C2G (Cold to Gold) Studios is a small automation studio in Singapore. We connect your leads, customers and tools so enquiries get answered, follow-ups happen and records stay accurate, without anyone having to chase them.</p>
+      <ol class="principles">
+        <li><div><h3>Start where the time goes</h3><p>We begin with the one task that costs your team the most hours, and fix that first.</p></div></li>
+        <li><div><h3>Stick to the facts</h3><p>Our AI answers from your own information, checks itself before it speaks and leaves the important decisions to a person.</p></div></li>
+        <li><div><h3>You own everything</h3><p>Every system runs on your own accounts, with clear documentation. If something shouldn't be automated, we'll tell you.</p></div></li>
+      </ol>
     </div>
-    <p class="tools-line fi">We work with n8n, Make.com, OpenAI, MCP, Vapi, Twilio, WhatsApp Business API, Telegram, Airtable, Calendly, Shopify, PandaDoc and Google Workspace.</p>
   </div>
 </section>
 
-<section id="process" class="section">
+<section id="services" class="section tint">
   <div class="wrap">
-    <div class="section-head fi">
-      <p class="eyebrow">Process</p>
-      <h2>From first call to live in about two weeks</h2>
+    <div class="sec-head">
+      <div class="fi">
+        <p class="label">Services</p>
+        <h2>What we build</h2>
+      </div>
+      <p class="fi">Every project starts with one job your team does by hand, and ends with a system that does it for them.</p>
     </div>
-    <ol class="steps">
-      <li class="fi">
-        <div class="step-dot">1</div>
-        <div class="step-when">Day 1</div>
-        <h3>Audit</h3>
-        <p>A 20-minute call to map how leads and requests move through your business and identify the step that costs the most time.</p>
-      </li>
-      <li class="fi">
-        <div class="step-dot">2</div>
-        <div class="step-when">Week 1</div>
-        <h3>Build</h3>
-        <p>We connect your tools, write the AI logic and test it against real examples until it handles the edge cases.</p>
-      </li>
-      <li class="fi">
-        <div class="step-dot">3</div>
-        <div class="step-when">Week 2</div>
-        <h3>Handover</h3>
-        <p>The system goes live on your accounts with documentation your team can follow, and we remain available for support.</p>
-      </li>
+    <ol class="svc-list">
+      <li class="fi"><span class="n">01</span><h3>WhatsApp replies and follow-up</h3><p>Every new enquiry gets an answer straight away, a reminder the next day if they haven't booked, and a booking link when they're ready.</p></li>
+      <li class="fi"><span class="n">02</span><h3>AI phone assistants</h3><p>An assistant that calls new leads, asks your questions, tries again when nobody picks up and records how each call went.</p></li>
+      <li class="fi"><span class="n">03</span><h3>Lead tracking</h3><p>Website forms, ads and WhatsApp all feed into one list, with a status, an owner and a next step for every lead.</p></li>
+      <li class="fi"><span class="n">04</span><h3>Online store messages</h3><p>Abandoned cart reminders, thank-you messages, review requests and back-in-stock alerts, sent automatically.</p></li>
+      <li class="fi"><span class="n">05</span><h3>Records that update themselves</h3><p>Your customer records and reports stay up to date as leads move along, so the numbers are right without manual checking.</p></li>
+      <li class="fi"><span class="n">06</span><h3>Teams of AI assistants</h3><p>Several AI assistants sharing one larger task, each limited to its own information, with checks on what they say and a person signing off at the end.</p></li>
     </ol>
-  </div>
-</section>
-
-<section id="pricing" class="section alt">
-  <div class="wrap">
-    <div class="section-head fi">
-      <p class="eyebrow">Pricing</p>
-      <h2>Monthly retainer</h2>
-      <p>Builds, support and maintenance are billed monthly. We provide a quote once we understand the scope, usually at the end of the first call.</p>
-    </div>
-    <div class="plans">
-      <div class="plan fi">
-        <h3>Starter</h3>
-        <p class="plan-for">A single workflow, done properly.</p>
-        <ul>
-          <li>1 automation workflow</li>
-          <li>Up to 2 tool integrations</li>
-          <li>WhatsApp or email automation</li>
-          <li>Basic Airtable CRM setup</li>
-          <li>7 days of support after delivery</li>
-        </ul>
-        <a href="https://wa.me/6590183930" class="btn btn-outline">Enquire about Starter</a>
-      </div>
-      <div class="plan featured fi">
-        <h3>Pro Suite</h3>
-        <p class="plan-for">Your lead flow, end to end.</p>
-        <ul>
-          <li>Up to 3 automation workflows</li>
-          <li>Up to 5 tool integrations</li>
-          <li>WhatsApp, email and CRM</li>
-          <li>AI response logic</li>
-          <li>Full Airtable CRM pipeline</li>
-          <li>Calendly booking</li>
-          <li>14 days of support after delivery</li>
-        </ul>
-        <a href="https://wa.me/6590183930" class="btn">Enquire about Pro Suite</a>
-      </div>
-      <div class="plan fi">
-        <h3>Agency</h3>
-        <p class="plan-for">Full stack, including voice.</p>
-        <ul>
-          <li>Audit of your whole stack</li>
-          <li>Open workflow scope</li>
-          <li>AI voice agent (Vapi and Twilio)</li>
-          <li>WhatsApp, email, CRM and voice</li>
-          <li>Custom prompts and logic</li>
-          <li>Team handover and documentation</li>
-          <li>30 days of priority support</li>
-        </ul>
-        <a href="https://wa.me/6590183930" class="btn btn-outline">Enquire about Agency</a>
-      </div>
-    </div>
   </div>
 </section>
 
 <section id="work" class="section">
   <div class="wrap">
-    <div class="section-head fi">
-      <p class="eyebrow">Our work</p>
-      <h2>Selected projects</h2>
+    <div class="sec-head">
+      <div class="fi">
+        <p class="label">Selected work</p>
+        <h2>Systems we've <span class="serif">shipped</span></h2>
+      </div>
+      <p class="fi">Real builds, with screenshots and the details of how each one works.</p>
     </div>
 
-    <a href="work.html#negotiation" class="featured-work fi">
-      <figure class="shot">
+    <a href="work.html#negotiation" class="feature fi">
+      <figure>
         <img src="assets/work/nego-live-board.jpg" alt="Live board of the multi-agent negotiation: price range, each agent's private reasoning and the messages between them" width="1800" height="1017" loading="lazy">
       </figure>
-      <div>
-        <p class="fw-tag">Featured &middot; Procurement</p>
-        <h3>Multi-agent negotiation system</h3>
-        <p>Two AI agents negotiate a bulk supply order, each limited to its own company's data. Every message is fact-checked before it is sent, and no deal goes through without the owner's approval.</p>
-        <span class="link">Read the case study</span>
+      <div class="feature-copy">
+        <div>
+          <p class="label plain">Featured &middot; Procurement</p>
+          <h3>Two AI agents negotiate a supply deal</h3>
+          <p>Each agent can only see its own company's data. Every message is fact-checked before it's sent, and no deal goes through without the owner's approval.</p>
+        </div>
+        <span class="link">Read the case study &rarr;</span>
       </div>
     </a>
 
-    <div class="work-grid">
-      <a href="work.html#lifecycle" class="work-card fi">
-        <p class="wc-tag">Enterprise</p>
-        <h3>Lead-to-support lifecycle automation</h3>
-        <p>One workflow that takes every enquiry from first contact through sales, support tickets and billing checks.</p>
-        <span class="link">Read the case study</span>
-      </a>
-      <a href="work.html#voice" class="work-card fi">
-        <p class="wc-tag">Healthcare</p>
-        <h3>AI voice agent for lead follow-up</h3>
-        <p>New enquiries receive a personal message and a call within minutes; the outcome of the call decides what happens next.</p>
-        <span class="link">Read the case study</span>
-      </a>
-      <a href="work.html#property" class="work-card fi">
-        <p class="wc-tag">Real estate</p>
-        <h3>Lead pipeline for property agents</h3>
-        <p>WhatsApp replies within a minute, instant agent alerts and automatic follow-up for leads that go quiet.</p>
-        <span class="link">Read the case study</span>
-      </a>
-      <a href="work.html#support" class="work-card fi">
-        <p class="wc-tag">SaaS</p>
-        <h3>Zypher, AI support agent for Shopify</h3>
-        <p>A Shopify app that answers customer questions from each store's own policies and pages.</p>
-        <span class="link">Read the case study</span>
-      </a>
+    <ul class="work-rows">
+      <li class="fi"><a href="work.html#lifecycle"><span class="tag">Enterprise</span><h3>Lead-to-support automation</h3><p>One system takes every enquiry from first contact through sales, support and billing.</p><span class="go">&rarr;</span></a></li>
+      <li class="fi"><a href="work.html#voice"><span class="tag">Healthcare</span><h3>AI phone follow-up for a clinic</h3><p>New enquiries get a personal message and a call within minutes.</p><span class="go">&rarr;</span></a></li>
+      <li class="fi"><a href="work.html#property"><span class="tag">Real estate</span><h3>Lead pipeline for property agents</h3><p>WhatsApp replies within a minute, instant agent alerts and automatic follow-up.</p><span class="go">&rarr;</span></a></li>
+      <li class="fi"><a href="work.html#support"><span class="tag">Shopify app</span><h3>Zypher, AI support for online stores</h3><p>Answers customer questions from each store's own policies and pages.</p><span class="go">&rarr;</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="process" class="section on-night">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="fi">
+        <p class="label">Process</p>
+        <h2>From first call to live in about <span class="serif" style="color:var(--gold-lt)">two weeks</span></h2>
+      </div>
+      <p class="fi" style="color:var(--on-night-muted)">No long discovery phase and no endless back-and-forth. One clear goal, built and tested on your own accounts.</p>
+    </div>
+    <ol class="steps">
+      <li class="fi"><span class="when">Day 1</span><h3>Review</h3><p>A 20-minute call to understand how enquiries move through your business and find the step that costs the most time.</p></li>
+      <li class="fi"><span class="when">Week 1</span><h3>Build</h3><p>We connect your tools, set up the AI and test it on real examples until it handles the awkward cases.</p></li>
+      <li class="fi"><span class="when">Week 2</span><h3>Handover</h3><p>It goes live on your accounts with simple instructions for your team, and we stay on hand for support.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="pricing" class="section tint">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="fi">
+        <p class="label">Pricing</p>
+        <h2>Simple monthly plans</h2>
+      </div>
+      <p class="fi">Building, support and upkeep are billed monthly. We'll give you a quote once we understand what you need, usually at the end of the first call.</p>
+    </div>
+    <div class="plans">
+      <div class="plan fi">
+        <div class="plan-top"><h3>Starter</h3></div>
+        <p class="plan-for">One task, done properly.</p>
+        <ul>
+          <li>1 automated workflow</li>
+          <li>Connects up to 2 of your tools</li>
+          <li>WhatsApp or email</li>
+          <li>Simple lead list in Airtable</li>
+          <li>7 days of support after launch</li>
+        </ul>
+        <a href="https://wa.me/6590183930" class="btn btn-ghost">Ask about Starter</a>
+      </div>
+      <div class="plan featured fi">
+        <div class="plan-top"><h3>Pro Suite</h3><span class="badge">Most chosen</span></div>
+        <p class="plan-for">Your whole lead flow, start to finish.</p>
+        <ul>
+          <li>Up to 3 automated workflows</li>
+          <li>Connects up to 5 of your tools</li>
+          <li>WhatsApp, email and customer records</li>
+          <li>AI-written replies</li>
+          <li>Full lead tracking in Airtable</li>
+          <li>Calendly booking</li>
+          <li>14 days of support after launch</li>
+        </ul>
+        <a href="https://wa.me/6590183930" class="btn btn-gold">Ask about Pro Suite</a>
+      </div>
+      <div class="plan fi">
+        <div class="plan-top"><h3>Agency</h3></div>
+        <p class="plan-for">Everything, including phone calls.</p>
+        <ul>
+          <li>Review of all your tools and processes</li>
+          <li>No fixed limit on workflows</li>
+          <li>AI phone assistant</li>
+          <li>WhatsApp, email, records and phone</li>
+          <li>Custom AI instructions</li>
+          <li>Team training and documentation</li>
+          <li>30 days of priority support</li>
+        </ul>
+        <a href="https://wa.me/6590183930" class="btn btn-ghost">Ask about Agency</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="cta" class="section">
-  <div class="wrap">
-    <h2 class="fi">Let's talk about your workflow.</h2>
-    <p class="lede fi">Book a free 20-minute call. We'll review one workflow and tell you what we would automate, and what we would leave alone.</p>
-    <div class="actions fi">
-      <a href="https://wa.me/6590183930" class="btn btn-book">Book an appointment</a>
-      <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">Email us</a>
+<section id="contact" class="cta on-night">
+  <div class="wrap cta-inner">
+    <h2 class="fi">Let's look at <span class="serif">your</span> workflow.</h2>
+    <div class="fi">
+      <p>Book a free 20-minute call. We'll look at one process and tell you honestly what we'd automate, and what we'd leave alone.</p>
+      <div class="actions">
+        <a href="https://wa.me/6590183930" class="btn btn-gold">WhatsApp us <span class="arr">&rarr;</span></a>
+        <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-ghost">Email us</a>
+      </div>
     </div>
   </div>
 </section>
@@ -344,13 +433,13 @@
   <div class="wrap">
     <div class="ft-grid">
       <div class="ft-brand">
-        <a href="#" class="logo"><img class="logo-mark" src="assets/logo.png" alt="C2G Studios"></a>
-        <p>AI automation systems for growing businesses. Based in Singapore.</p>
+        <a href="#" class="wordmark">C2G <i>Studios</i></a>
+        <p>AI automation for growing businesses. Based in Singapore.</p>
       </div>
       <div class="ft-col">
         <h4>Explore</h4>
         <ul>
-          <li><a href="#about">About us</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="work.html">Our work</a></li>
@@ -371,12 +460,6 @@
   </div>
 </footer>
 
-<script>
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-</script>
-<script src="assets/cascade.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>

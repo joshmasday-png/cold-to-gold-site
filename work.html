@@ -9,94 +9,98 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;550;600;650&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
   /* ---- PAGE HEAD ---- */
-  .page-head { padding: 160px 0 80px; border-bottom: 1px solid var(--rule-lt); }
-  .page-head .lede { margin-top: 26px; }
+  .page-head { padding: 176px 0 0; }
+  .page-head .label { margin-bottom: 28px; }
+  .page-head h1 { color: #F4F2EC; max-width: 12ch; }
+  .page-head h1 .serif { color: var(--gold-lt); }
+  .page-head .lede { margin-top: 28px; }
   .toc {
-    list-style: none; margin-top: 56px; border-top: 1px solid var(--rule);
+    list-style: none; margin-top: 88px; border-top: 1px solid var(--rule-night);
     display: grid; grid-template-columns: repeat(5, 1fr);
   }
+  .toc li + li { border-left: 1px solid var(--rule-night); }
   .toc a {
-    display: block; padding: 14px 16px 0 0; text-decoration: none;
-    font-size: 14.5px; line-height: 1.35;
+    display: block; padding: 22px 20px 30px; text-decoration: none; height: 100%;
+    font-size: 15px; font-weight: 500; line-height: 1.35; color: var(--on-night);
+    transition: background 0.2s;
   }
-  .toc a span { display: block; font-family: var(--ff-h); font-weight: 700; font-size: 14px; color: var(--gold-lt); margin-bottom: 4px; }
-  .toc a:hover { color: var(--navy); }
+  .toc li:first-child a { padding-left: 0; }
+  .toc a span { display: block; font-family: var(--ff-m); font-size: 12px; color: var(--gold-lt); margin-bottom: 10px; }
+  .toc a:hover { background: rgba(233,231,225,0.04); }
 
   /* ---- CASE STUDY ---- */
-  .case { padding: 104px 0; scroll-margin-top: 72px; }
-  .case:nth-of-type(even) { background: rgba(246,245,241,0.72); }
-  .case-meta { font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
-  .case-meta b { color: var(--gold); font-weight: 600; }
-  .case h2 { max-width: 20ch; }
-  .case .lede { margin-top: 22px; }
+  .case { padding: 128px 0; scroll-margin-top: 68px; border-bottom: 1px solid var(--rule); }
+  .case:nth-of-type(even) { background: var(--paper-2); }
+  .case-meta {
+    font-family: var(--ff-m); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 24px;
+  }
+  .case-meta b { color: var(--gold); font-weight: 500; }
+  .case h2 { max-width: 18ch; }
+  .case .lede { margin-top: 24px; max-width: 40em; }
 
   .facts {
-    display: flex; flex-wrap: wrap; gap: 0; margin-top: 40px;
+    display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 56px;
     border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
   }
-  .fact { padding: 18px 36px 18px 0; margin-right: 36px; border-right: 1px solid var(--rule-lt); }
-  .fact:last-child { border-right: none; margin-right: 0; }
-  .fact-n { font-family: var(--ff-h); font-size: 34px; font-weight: 700; line-height: 1.1; }
-  .fact-l { font-size: 13.5px; color: var(--muted); }
+  .fact { padding: 24px 24px 26px 0; }
+  .fact + .fact { padding-left: 24px; border-left: 1px solid var(--rule-lt); }
+  .fact-n { font-size: clamp(24px, 2.4vw, 34px); font-weight: 550; letter-spacing: -0.035em; line-height: 1.1; }
+  .fact-l { font-size: 14px; color: var(--muted); margin-top: 6px; }
 
-  .shots { margin-top: 52px; display: grid; gap: 36px; }
+  .shots { margin-top: 64px; display: grid; gap: 40px; }
   .shots-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
   .shots-split { display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: start; }
   .shots-stack { display: grid; gap: 28px; }
   figure.shot.light img { background: #f7f8fa; }
 
-  .case-body {
-    margin-top: 52px; display: grid; grid-template-columns: 1fr 260px; gap: 64px;
-  }
+  .case-body { margin-top: 72px; display: grid; grid-template-columns: 1fr 280px; gap: 80px; }
   .case-body h3 {
-    font-size: 12.5px; font-weight: 600; color: var(--ink);
-    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
+    font-family: var(--ff-m); font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 18px;
   }
-  .points { list-style: none; counter-reset: pt; }
+  .points { list-style: none; counter-reset: pt; border-bottom: 1px solid var(--rule-lt); }
   .points li {
     counter-increment: pt; position: relative;
-    padding: 14px 0 14px 40px; border-top: 1px solid var(--rule-lt); font-size: 16px;
+    padding: 18px 0 18px 52px; border-top: 1px solid var(--rule-lt); font-size: 16.5px; color: var(--ink-2);
   }
   .points li::before {
-    content: counter(pt, decimal-leading-zero); position: absolute; left: 0; top: 17px;
-    font-family: var(--ff-h); font-weight: 700; font-size: 14px; color: var(--gold-lt);
+    content: counter(pt, decimal-leading-zero); position: absolute; left: 0; top: 21px;
+    font-family: var(--ff-m); font-size: 12.5px; color: var(--gold);
   }
-  .points b { font-weight: 600; }
-  .stack { list-style: none; }
-  .stack li { font-size: 15px; padding: 8px 0; border-top: 1px solid var(--rule-lt); }
-  .note { margin-top: 22px; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
-
-  /* ---- CLOSING ---- */
-  .closing { background: var(--navy); color: #fff; padding: 104px 0; text-align: center; }
-  .closing .actions { justify-content: center; }
-  .closing h2 { max-width: 18ch; margin: 0 auto; }
-  .closing h2 em { color: var(--gold-lt); }
-  .closing .lede { color: rgba(255,255,255,0.75); margin: 20px auto 40px; }
-  .closing .btn-book {
-    background: var(--gold-lt); color: var(--ink);
-    font-family: var(--ff-h); font-weight: 900; font-size: 20px; padding: 17px 34px; gap: 12px;
+  .points b { font-weight: 600; color: var(--ink); }
+  .stack { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack li {
+    font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--rule); background: var(--white);
   }
-  .closing .btn-book::after { content: '\2192'; font-family: var(--ff-b); font-weight: 600; }
-  .closing .btn-outline { color: #fff; border-color: rgba(255,255,255,0.35); }
-  .closing .btn-outline:hover { background: rgba(255,255,255,0.08); }
+  .note { margin-top: 24px; font-size: 14px; color: var(--muted); line-height: 1.5; }
 
-  @media (max-width: 900px) {
-    .toc { grid-template-columns: 1fr; }
-    .toc a { padding: 12px 0; border-bottom: 1px solid var(--rule-lt); }
+  @media (max-width: 960px) {
+    .page-head { padding-top: 140px; }
+    .toc { grid-template-columns: 1fr; margin-top: 64px; }
+    .toc li + li { border-left: 0; border-top: 1px solid var(--rule-night); }
+    .toc a, .toc li:first-child a { padding: 16px 0; display: flex; gap: 16px; align-items: baseline; }
+    .toc a span { margin: 0; }
+    .facts { grid-template-columns: 1fr 1fr; }
+    .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+    .fact:nth-child(n+3) { border-top: 1px solid var(--rule-lt); }
     .shots-2, .shots-split { grid-template-columns: 1fr; }
     figure.shot.phone img { max-width: 360px; }
-    .case-body { grid-template-columns: 1fr; gap: 36px; }
-    .case { padding: 64px 0; }
+    .case-body { grid-template-columns: 1fr; gap: 40px; }
+    .case { padding: 88px 0; }
   }
   @media (max-width: 600px) {
-    .page-head { padding: 120px 0 56px; }
-    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
-    .fact { padding: 14px 0; margin-right: 0; border-right: none; }
-    .fact-n { font-size: 24px; }
+    .page-head { padding-top: 120px; }
+    .case { padding: 72px 0; }
+    .fact { padding: 18px 12px 20px 0; }
+    .fact + .fact { padding-left: 14px; }
+    .fact:nth-child(3) { padding-left: 0; }
+    .points li { padding-left: 40px; font-size: 16px; }
   }
 </style>
 </head>
@@ -104,24 +108,25 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo"><img class="logo-mark" src="assets/logo.png" alt="C2G Studios"></a>
+    <a href="index.html" class="wordmark" aria-label="C2G Studios home">C2G <i>Studios</i></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     <ul class="nav-links">
-      <li><a href="index.html#about">About Us</a></li>
+      <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#services">Services</a></li>
+      <li><a href="work.html" class="active">Work</a></li>
       <li><a href="index.html#process">Process</a></li>
       <li><a href="index.html#pricing">Pricing</a></li>
-      <li><a href="work.html" class="active">Our Work</a></li>
-      <li><a href="index.html#cta" class="nav-cta">Book a Call</a></li>
+      <li><a href="#contact" class="nav-cta">Book a call</a></li>
     </ul>
   </div>
 </nav>
 
-<header class="page-head">
+<header class="page-head on-night">
   <div class="wrap">
-    <p class="eyebrow">Our work</p>
-    <h1>Five things we've built.</h1>
-    <p class="lede">From a WhatsApp follow-up for property agents to two AI agents negotiating a supply deal. Each one says what it does, what it's built on, and how it holds up.</p>
-    <ol class="toc">
+    <p class="label fi">Our work</p>
+    <h1 class="fi">Five systems, <span class="serif">in detail.</span></h1>
+    <p class="lede fi">From a WhatsApp follow-up for property agents to two AI agents negotiating a supply deal. For each one: what it does, what it's built on, and how it holds up.</p>
+    <ol class="toc fi">
       <li><a href="#negotiation"><span>01</span>Multi-agent negotiation</a></li>
       <li><a href="#lifecycle"><span>02</span>Lead-to-support lifecycle</a></li>
       <li><a href="#voice"><span>03</span>AI voice follow-up</a></li>
@@ -426,13 +431,15 @@
 
 </main>
 
-<section class="closing">
-  <div class="wrap">
-    <h2 class="fi">Let's talk about your workflow.</h2>
-    <p class="lede fi">Book a free 20-minute call. We'll review one workflow and tell you what we would automate, and what we would leave alone.</p>
-    <div class="actions fi">
-      <a href="https://wa.me/6590183930" class="btn btn-book">Book an appointment</a>
-      <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-outline">Email us</a>
+<section id="contact" class="cta on-night">
+  <div class="wrap cta-inner">
+    <h2 class="fi">Let's look at <span class="serif">your</span> workflow.</h2>
+    <div class="fi">
+      <p>Book a free 20-minute call. We'll look at one process and tell you honestly what we'd automate, and what we'd leave alone.</p>
+      <div class="actions">
+        <a href="https://wa.me/6590183930" class="btn btn-gold">WhatsApp us <span class="arr">&rarr;</span></a>
+        <a href="mailto:inquiry@coldtogoldsg.com" class="btn btn-ghost">Email us</a>
+      </div>
     </div>
   </div>
 </section>
@@ -441,13 +448,13 @@
   <div class="wrap">
     <div class="ft-grid">
       <div class="ft-brand">
-        <a href="index.html" class="logo"><img class="logo-mark" src="assets/logo.png" alt="C2G Studios"></a>
-        <p>AI automation systems for growing businesses. Based in Singapore.</p>
+        <a href="index.html" class="wordmark">C2G <i>Studios</i></a>
+        <p>AI automation for growing businesses. Based in Singapore.</p>
       </div>
       <div class="ft-col">
         <h4>Explore</h4>
         <ul>
-          <li><a href="index.html#about">About us</a></li>
+          <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#services">Services</a></li>
           <li><a href="index.html#pricing">Pricing</a></li>
           <li><a href="work.html">Our work</a></li>
@@ -468,12 +475,6 @@
   </div>
 </footer>
 
-<script>
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
-  }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
-  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-</script>
-<script src="assets/cascade.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>
